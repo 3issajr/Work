@@ -1,0 +1,149 @@
+body{
+    background-image: url('./assets/images/banner-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+// Header
+header{
+    ul{
+    color: white;
+    font-size: 17px;
+    .nav-item{
+        color: white;
+        font-size: 17px;
+        text-decoration: none;
+    }
+    }
+   button{
+    margin-top:-10px;
+    font-weight: 600;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+}
+// Section 1 
+.banner{
+
+    .banner-image{
+
+        .price{
+            color: white;
+            font-weight: 600;
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            top:21rem;
+            right: 20rem;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
+            p{
+                text-align: center;
+                font-size: 25px;
+                padding-top:2px
+            }
+}
+        .discount{
+            color: white;
+            font-weight: 600;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:46rem;
+            right: 39rem;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
+            p{
+                text-align: center;
+                font-size: 25px;
+                padding-top:30px
+            }
+}
+       img{
+            width: max-content;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        }
+    }
+    .banner-text{
+        width: 60%;
+        h1{
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+            padding: 40px 0px;
+        }
+        .gaming{
+            background-image:url('./assets/images/caption-dec.png');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            padding-bottom:10px;
+       }
+        h3{
+            color: white;
+            font-weight: 800;
+        }
+        p{
+            color: white;
+            width: 57%;
+            padding: 25px 0px;
+
+        }
+    }
+    input{
+        text-align: center;
+        padding: 8px 0px;
+        width: 30%;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+}
+    .btn{
+        color: white;
+        background-color: #EE626B;
+        font-weight:600;
+        padding: 9px 10px;
+        position:absolute;
+        left: 32rem;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+}
+}
+
+.form-btn{
+    .create-account{
+        list-style-type: none;
+        text-decoration: none;
+        color:white
+    }
+}
+
+
+input:hover{
+    border: 1px solid red;
+}
+
+#checkbox:hover{
+    zoom: 2;
+}
