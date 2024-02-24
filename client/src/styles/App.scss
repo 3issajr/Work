@@ -1,29 +1,65 @@
 @import '_mixins';
 @import '_variables';
 
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box !important;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #282c34;
+}
+
+#loading{
+    @include flex;
+    padding-top: 18rem;
+    flex-direction: column;
+}
+
+.container{
+    z-index: 1;
+}
+
+
+
 body{
-    height: auto;
-    background-image: url('../assets//background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.9;
-    scroll-behavior: auto;
+    h1{
+       color: $primaryColor 
+    }
+    h2{
+        color: $primaryColor 
+    }
+    h3{
+        color: $primaryColor 
+    }
+    h5{
+        color: $primaryColor 
+    } 
+    
 }
 
 footer{
-    position: fixed; 
-    bottom: 0;
-    left: 0;
+    margin-top: auto;
     text-align: center;
-    width: 100%;
-    .link-light{
-        text-decoration: none;
+    z-index: 1;
+    .container{
+        color: $primaryColor 
     }
-    .bi:hover{
-      cursor: pointer;
+    .subscribe{
+        color: $primaryColor 
     }
-    .bi{
-        font-size: 20px;
+    .facebook{
+        @include bounce;    
+    }
+    .twitter{
+        @include bounce;    
+    }
+    .instagram{
+        @include bounce;    
     }
 }
 
@@ -31,4 +67,38 @@ nav{
     .navbar-brand:hover{
         zoom:1.5
     }
+    .navbar-nav{
+        font-size: 25px;
+    }
+    .dropdown-menu{
+        font-size:25px;
+    }
+    .title{
+        font-size: 35px;
+    }
 }
+
+.team{
+   p{
+    color: $primaryColor 
+} 
+}
+
+#line{
+ @include flex;
+  img {
+   @include line
+   }
+}
+
+.card-img-top{
+    height: 35rem;
+    opacity: 0.7;
+    &:hover{
+        opacity: 1;
+    }
+}
+
+
+
+

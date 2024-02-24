@@ -1,0 +1,30 @@
+@mixin bounce{
+    :hover{
+        cursor: pointer;
+        animation: bounce;
+        -webkit-animation: bounce;
+        animation-duration: 2s;
+        animation-iteration-count: infinite ;
+}
+}
+
+@mixin background{
+    height: auto;
+    background-image: url('../assets//background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+}
+
+@mixin flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin line{
+    height: 50%;
+    width: 50%;
+    text-align: center;
+}
