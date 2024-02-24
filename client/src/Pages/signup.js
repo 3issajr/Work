@@ -10,7 +10,7 @@ const signup = () => {
     <>
 
 <div className='container col-md-8 col-xl-6  text-md-start mx-auto mt-5' id='line'>
-    <img src={Line}/>
+    <img src={Line} alt='weddingline'/>
 </div>
 
 <section className="py-xl-5">
@@ -86,7 +86,6 @@ const signup = () => {
                                 </div>
                                 <div className="mb-3">
                                     <NavLink to='/signin' 
-                                    type="submit"
                                     className="btn btn-primary d-block w-100
                                     transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
                                     Already Have an Account?

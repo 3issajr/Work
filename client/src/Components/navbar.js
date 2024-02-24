@@ -18,14 +18,14 @@ const navbar = () => {
     <Slide left><NavLink to='/home' className='nav-link' style={{fontSize:"2.5rem",color:"#FEECE2"}}>𝑀𝓎𝒟𝒶𝓎</NavLink></Slide>
   
 {/* Shopping Cart */}
-    <NavLink to='/home' className='me-24 ' style={{fontSize:"2.5rem",color:"#FEECE2"}}><CiShoppingCart /></NavLink>
+    <NavLink to='/home' className='me-24' style={{fontSize:"2.5rem",color:"#FEECE2"}}><CiShoppingCart /></NavLink>
 
 {/* Side Menu */}
     <button  className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" ></span>
     </button>
 
-    <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" >
+    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
       <div className="offcanvas-header">
         <h5 className="title" id="offcanvasNavbarLabel">Ahmed Eissa</h5>
@@ -40,11 +40,7 @@ const navbar = () => {
           </li>
 
           <li className="nav-item">
-            <NavLink to='/product' className='nav-link' >Products</NavLink>
-          </li>
-
-          <li className="nav-item">
-            <NavLink to='/service' className='nav-link'>Services</NavLink>
+            <NavLink to='/shop' className='nav-link'>Shop</NavLink>
           </li>
 
           <li className="nav-item">

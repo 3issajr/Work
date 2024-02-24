@@ -15,7 +15,7 @@ const Signin = () => {
     <>
 
 <div className='container col-md-8 col-xl-6  text-md-start mx-auto mt-5' id='line'>
-    <img src={Line}/>
+    <img src={Line} alt='weddingline'/>
 </div>
 
 <section className="py-xl-5">

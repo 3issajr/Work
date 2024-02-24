@@ -13,11 +13,11 @@ import {Routes , Route} from 'react-router-dom'
 
 
 import React from 'react'
-import { ClimbingBoxLoader, ClipLoader, BounceLoader } from 'react-spinners'
+import {BounceLoader } from 'react-spinners'
 
 const App = () => {
 const [loading , setLoading] = useState(false)
-const LazyHome = React.lazy(() => import("./Pages/index"));
+// const LazyHome = React.lazy(() => <import("./Pages/index")>);
 
 useEffect(()=>{
   setLoading(true)

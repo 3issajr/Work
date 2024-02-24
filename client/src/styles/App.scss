@@ -14,19 +14,14 @@
     background-color: #282c34;
 }
 
-#loading{
-    @include flex;
-    padding-top: 18rem;
-    flex-direction: column;
-}
 
 .container{
     z-index: 1;
 }
 
-
-
 body{
+    overflow-y: scroll;
+    overflow-x: hidden;
     h1{
        color: $primaryColor 
     }
@@ -40,6 +35,11 @@ body{
         color: $primaryColor 
     } 
     
+}
+#loading{
+    @include flex;
+    padding-top: 18rem;
+    flex-direction: column;
 }
 
 footer{
@@ -75,9 +75,12 @@ nav{
     }
     .title{
         font-size: 35px;
+    }   
+    #offcanvasNavbar{
+        padding-right: 0px !important;
+        position: fixed !important;
     }
 }
-
 .team{
    p{
     color: $primaryColor 
