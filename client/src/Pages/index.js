@@ -1,22 +1,27 @@
-import React from 'react'
+'use client';
 
+import React  from 'react'
 import { Slide , Fade} from 'react-reveal'
+import { FaArrowRight } from "react-icons/fa";
+import { NavLink } from 'react-router-dom'
+
 import Image1 from '../assets/image1.jpg'
 import Image2 from '../assets/image2.jpg'
 import Image4 from '../assets/image4.jpg'
 import Avatar1 from '../assets/avatar2.jpg'
 import Avatar2 from '../assets/avatar4.jpg'
 import Line from '../assets/weddingline.png'
-import { FaArrowRight } from "react-icons/fa";
-import { NavLink } from 'react-router-dom'
 
-const index = () => {
+const Index = () => {
+
+   
   return (
     <>
 
 <div className='container col-md-8 col-xl-6  text-md-start mx-auto mt-5' id='line'>
     <img src={Line}/>
 </div>
+
 
     {/* Header Start */}
     <header className="container bg-primary-gradient my-2">
@@ -33,9 +38,9 @@ const index = () => {
 
                 </div>
 
-                </div>
-
             </div>
+            
+        </div>
 
     </header>
     {/* Header Ends */}
@@ -350,9 +355,11 @@ const index = () => {
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
       
     </>
   )
 }
 
-export default index
+export default Index

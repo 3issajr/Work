@@ -61,6 +61,7 @@ const contactus = () => {
                 <div className="col-md-6 col-lg-5 col-xl-4">
                     <div>
                         <form className="p-3 p-xl-4" method="post">
+
                             <div className="mb-3">
                                 <input 
                                 required
@@ -71,9 +72,17 @@ const contactus = () => {
                                 placeholder="Name" 
                                 />
                             </div>
+
                             <div className="mb-3">
                                 <input 
-                                className="form-control" type="email" id="email-1" name="email" placeholder="Email" required/></div>
+                                required
+                                className="form-control" 
+                                type="email" id="email-1" 
+                                name="email" 
+                                placeholder="Email" 
+                                />
+                            </div>
+
                             <div className="mb-3">
                                 <input 
                                 required
@@ -84,19 +93,27 @@ const contactus = () => {
                                 placeholder="Subject"
                                 />
                             </div>
+
                             <div className="mb-3">
                                 <textarea 
-                                    required
-                                    className="form-control" 
-                                    id="message-1"
-                                    name="message" 
-                                    rows="6"
-                                    placeholder="Message" 
+                                required
+                                className="form-control" 
+                                id="message-1"
+                                name="message" 
+                                rows="6"
+                                placeholder="Message" 
                                 />
                              </div>
+
                             <div>
-                                <button className="btn btn-primary d-block w-100 d-block w-100 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" type="submit">Send </button>
+                                <button 
+                                className="btn btn-primary d-block w-100 d-block w-100 
+                                transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" 
+                                type="submit">
+                                Send 
+                                </button>
                             </div>
+
                         </form>
 
                     </div>
@@ -107,9 +124,10 @@ const contactus = () => {
 
         </div>
 
-    </section>
+</section>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
     </>
   )
 }

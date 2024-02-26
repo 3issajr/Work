@@ -9,6 +9,8 @@ import Contactus from './Pages/contactus'
 import Signin from './Pages/signin'
 import Signup from './Pages/signup'
 import Aboutus from './Pages/aboutus'
+import Shop from './Pages/shop'
+import Cart from './Pages/cart'
 import {Routes , Route} from 'react-router-dom'
 
 
@@ -46,17 +48,17 @@ useEffect(()=>{
     <Suspense>
     <Background/>
     <Navbar/>
-    <Routes>
-      <Route path='/' element={<Index/>}></Route>
-      <Route path='/home' element={<Index/>}></Route>
-      <Route path='/product' element={Index}></Route>
-      <Route path='/service' element={Index}></Route>
-      <Route path='/aboutus' element={<Aboutus/>}></Route>
-      <Route path='/contactus' element={<Contactus/>}></Route>
-      <Route path='/team' element={<Team/>}></Route>
-      <Route path='/signin' element={<Signin/>}></Route>
-      <Route path='/signup' element={<Signup/>}></Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Index/>}></Route>
+        <Route path='/home' element={<Index/>}></Route>
+        <Route path='/shop' element={<Shop/>}></Route>
+        <Route path='/cart' element={<Cart/>}></Route>
+        <Route path='/aboutus' element={<Aboutus/>}></Route>
+        <Route path='/contactus' element={<Contactus/>}></Route>
+        <Route path='/signin' element={<Signin/>}></Route>
+        <Route path='/signup' element={<Signup/>}></Route>
+        <Route path='/team' element={<Team/>}></Route>
+      </Routes>
     <Footer/>
     </Suspense>
   )}

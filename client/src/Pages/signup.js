@@ -37,15 +37,17 @@ const signup = () => {
                                 <CiUser className='w-20 h-20' />
                             </div>
 
-                            <form className="text-center" method="post">
+                            <form className="text-center w-100" method="post">
+
                                 <div className="mb-3">
                                     <input 
                                     required
-                                    className="form-control" 
+                                    className="form-control text" 
                                     type="text" 
                                     name="username" 
                                     placeholder="Enter Your Username"/>
                                 </div>
+
                                 <div className="mb-3">
                                     <input 
                                     required
@@ -54,6 +56,7 @@ const signup = () => {
                                     name="email" 
                                     placeholder="Enter Your Email"/>
                                 </div>
+
                                 <div className="mb-3">
                                     <input
                                     required
@@ -62,6 +65,7 @@ const signup = () => {
                                     name="password"
                                     placeholder="Enter Your Password"/>
                                 </div>
+
                                 <div className="mb-3">
                                     <input 
                                     required
@@ -70,6 +74,7 @@ const signup = () => {
                                     name="password2" 
                                     placeholder="Re-Enter Your Password"/>
                                 </div>
+
                                 <div className="mb-5">
                                     <select className="form-control" type="select" name="gender">
                                         <option hidden select>Select Gender</option>
@@ -77,13 +82,16 @@ const signup = () => {
                                         <option value='female'>Female</option>
                                     </select>
                                 </div>
+
                                 <div className="mb-3">
                                     <button 
                                     type="submit"
                                     className="btn btn-primary d-block w-100 
                                     transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"> 
-                                    Login</button>
+                                    Login
+                                    </button>
                                 </div>
+
                                 <div className="mb-3">
                                     <NavLink to='/signin' 
                                     className="btn btn-primary d-block w-100
@@ -91,6 +99,7 @@ const signup = () => {
                                     Already Have an Account?
                                     </NavLink>
                                 </div>
+
                             </form>
 
                         </div>
@@ -103,7 +112,7 @@ const signup = () => {
 
         </div>
 
-    </section>
+</section>
       
     </>
   )

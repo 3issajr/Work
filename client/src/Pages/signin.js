@@ -34,7 +34,6 @@ const Signin = () => {
 
                 <div className="col-md-6 col-xl-4">
 
-                   
                     <div className="card mb-5 bg-dark text-white">
 
                         <div className="card-body d-flex flex-column align-items-center">
@@ -43,7 +42,7 @@ const Signin = () => {
                                 <CiUser className='w-20 h-20' />
                             </div>
 
-                            <form className="text-center" method="post">
+                            <form className="text-center w-100" method="post">
 
                                 <div className="mb-3">
                                     <input 
@@ -64,13 +63,18 @@ const Signin = () => {
                                 </div>
 
                                 <div className="mb-5">
-                                    <button className="btn btn-primary d-block w-100 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 " type="submit">Login</button>
+                                    <button 
+                                    className="btn btn-primary d-block w-100 
+                                    transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 " 
+                                    type="submit">
+                                    Login
+                                    </button>
                                 </div>
 
                                 <NavLink to='/signup'
                                  className='btn btn-primary d-block w-100 
                                  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 '>
-                                Sign up
+                                 Sign up
                                 </NavLink>
 
                                 <br/>
@@ -81,14 +85,14 @@ const Signin = () => {
                                  Forgot your password?
                                 </NavLink>
                                 
-                                <div className='flex justify-center'>
+                                <div className='inline-flex justify-center mt-4'>
                                     <input
-                                    className='w-5'
+                                    className='w-5 me-3 mt-1'
                                     id='checkbox'
                                     type="checkbox"
                                     value={showPassword}
                                     onChange={() => setShowPassword((prev) => !prev)}/>
-                                    <p className='pt-3 px-2 font-bold'>Show Password</p>
+                                    <p className='font-bold'>Show Password</p>
                                 </div>
                                 
                             </form>
@@ -103,7 +107,7 @@ const Signin = () => {
 
         </div>
 
-    </section>
+</section>
       
     </>
   )

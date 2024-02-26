@@ -4,9 +4,6 @@ import { FaInstagram } from "react-icons/fa";
 import Profile from '../assets/profile.jpg'
 import Line from '../assets/weddingline.png'
 
-
-
-
 const team = () => {
   return (
     <>
@@ -57,8 +54,7 @@ const team = () => {
     </div>
     
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-      
+    
     </>
   )
 }

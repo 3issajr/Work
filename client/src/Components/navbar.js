@@ -6,6 +6,7 @@ import Slide from 'react-reveal/Slide';
 
 
 const navbar = () => {
+  
   return (
     <>
     <div>
@@ -39,8 +40,20 @@ const navbar = () => {
             <NavLink to='/home' className='nav-link'>Home</NavLink>
           </li>
 
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Shop
+            </a>
+            <ul className="dropdown-menu px-2">
+              <li><NavLink to='/shop' className='dropdown-item'>Venues</NavLink></li>
+              <li><NavLink to='/shop1' className='dropdown-item'>Accessories</NavLink></li>
+              <li><NavLink to='/shop2' className='dropdown-item'>Photographers</NavLink></li>
+              <li><NavLink to='/shop3' className='dropdown-item'>Videographers</NavLink></li>
+            </ul>
+          </li>
+
           <li className="nav-item">
-            <NavLink to='/shop' className='nav-link'>Shop</NavLink>
+          <NavLink to='/cart' className='nav-link'>Cart</NavLink>
           </li>
 
           <li className="nav-item">

@@ -32,6 +32,7 @@ const footer = () => {
             </ul>
 
             <p className="mb-0">Copyright © 2024 MyDay</p>
+
         </div>
 
         
@@ -50,8 +51,11 @@ const footer = () => {
         
 
     </footer>
+    
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
     <Outlet/>
+
     </>
   )
 }

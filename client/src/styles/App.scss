@@ -15,15 +15,10 @@
 }
 
 
-.container{
-    z-index: 1;
-}
 
 body{
-    overflow-y: scroll;
-    overflow-x: hidden;
     h1{
-       color: $primaryColor 
+        color: $primaryColor 
     }
     h2{
         color: $primaryColor 
@@ -36,6 +31,10 @@ body{
     } 
     
 }
+.container{
+    z-index: 1;
+}
+
 #loading{
     @include flex;
     padding-top: 18rem;
@@ -76,10 +75,6 @@ nav{
     .title{
         font-size: 35px;
     }   
-    #offcanvasNavbar{
-        padding-right: 0px !important;
-        position: fixed !important;
-    }
 }
 .team{
    p{
@@ -103,5 +98,27 @@ nav{
 }
 
 
+.photographers, .videographers, .venues, .accessories {
+    h1{
+        @include shopbtn
+    }
+}
+
+input[type=text],[type=password],[type=email], select{
+    text-align: center;
+}
 
 
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
