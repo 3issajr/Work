@@ -98,11 +98,24 @@ nav{
 }
 
 
-.photographers, .videographers, .venues, .accessories {
+.outdoor1, .outdoor2, .outdoor3, .outdoor4,
+.indoor1, .indoor2, .indoor3, .indoor4,
+.jewelry, .shoes, .suit, .necktie, .dress, .crown
+
+
+
+ {
+    img{
+         height: 30rem;
+         width: 100%;
+     }
     h1{
         @include shopbtn
     }
 }
+
+
+
 
 input[type=text],[type=password],[type=email], select{
     text-align: center;

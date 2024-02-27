@@ -1,6 +1,6 @@
 import React from 'react'
 import Line from '../assets/weddingline.png'
-import {Fade} from 'react-reveal'
+import Fade from 'react-reveal'
 
 const shop = () => {
   return (

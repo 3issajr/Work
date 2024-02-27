@@ -4,13 +4,17 @@ import Navbar from './Components/navbar'
 import Footer from './Components/footer'
 import Background from './Components/background'
 import Index from './Pages/index'
-import Team from './Pages/team'
-import Contactus from './Pages/contactus'
-import Signin from './Pages/signin'
-import Signup from './Pages/signup'
-import Aboutus from './Pages/aboutus'
 import Shop from './Pages/shop'
 import Cart from './Pages/cart'
+import Signin from './Pages/signin'
+import Signup from './Pages/signup'
+import Contactus from './Pages/contactus'
+import Aboutus from './Pages/aboutus'
+import Team from './Pages/team'
+import Menaccessories from './Pages/accessories/menaccessories'
+import Womenaccessories from './Pages/accessories/womenaccessories'
+import Indoor from './Pages/venues/indoor'
+import Outdoor from './Pages/venues/outdoor'
 import {Routes , Route} from 'react-router-dom'
 
 
@@ -52,6 +56,10 @@ useEffect(()=>{
         <Route path='/' element={<Index/>}></Route>
         <Route path='/home' element={<Index/>}></Route>
         <Route path='/shop' element={<Shop/>}></Route>
+        <Route path='/outdoor' element={<Outdoor/>}></Route>
+        <Route path='/indoor' element={<Indoor/>}></Route>
+        <Route path='/menaccessories' element={<Menaccessories/>}></Route>
+        <Route path='/womenaccessories' element={<Womenaccessories/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
         <Route path='/aboutus' element={<Aboutus/>}></Route>
         <Route path='/contactus' element={<Contactus/>}></Route>

@@ -42,7 +42,7 @@ const signup = () => {
                                 <div className="mb-3">
                                     <input 
                                     required
-                                    className="form-control text" 
+                                    className="form-control text " 
                                     type="text" 
                                     name="username" 
                                     placeholder="Enter Your Username"/>

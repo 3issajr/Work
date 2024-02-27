@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { CiShoppingCart } from "react-icons/ci";
 import Slide from 'react-reveal/Slide';
+import { Nav } from 'react-bootstrap';
 
 
 const navbar = () => {
@@ -28,6 +29,7 @@ const navbar = () => {
 
     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
+
       <div className="offcanvas-header">
         <h5 className="title" id="offcanvasNavbarLabel">Ahmed Eissa</h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -36,19 +38,44 @@ const navbar = () => {
       <div className="offcanvas-body" >
 
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3" >
+
           <li className="nav-item">
             <NavLink to='/home' className='nav-link'>Home</NavLink>
           </li>
 
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <NavLink to="" className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Shop
-            </a>
+            </NavLink>
+
             <ul className="dropdown-menu px-2">
-              <li><NavLink to='/shop' className='dropdown-item'>Venues</NavLink></li>
-              <li><NavLink to='/shop1' className='dropdown-item'>Accessories</NavLink></li>
-              <li><NavLink to='/shop2' className='dropdown-item'>Photographers</NavLink></li>
-              <li><NavLink to='/shop3' className='dropdown-item'>Videographers</NavLink></li>
+
+            <li><NavLink to='/shop2' className='nav-link dropdown-item text-white'>Photographers</NavLink></li>
+            <li><NavLink to='/shop3' className='nav-link dropdown-item text-white'>Videographers</NavLink></li>
+
+            <li className='nav-item dropdown'>
+              <a className='nav-link dropdown-toggle disabled text-white' href="/venues#" role='button' data-bs-toggle="dropdown" aria-expanded="false" >
+                Venues
+              </a>
+                <ul className="dropdown-submenu px-3">
+                  <li><NavLink to='/indoor' className='dropdown-item'>Indoor Wedding</NavLink></li>
+                  <li><NavLink to='/outdoor' className='dropdown-item'>Outdoor Weeding</NavLink></li>
+                </ul>
+              </li>
+
+
+              <li className='nav-item dropdown'>
+                <a className='nav-link dropdown-toggle disabled text-white' href='#' role='button' data-bs-toggle="dropdown" aria-expanded="false">
+                Accessories
+                </a>
+                <ul className="dropdown-submenu px-3">
+                  <li><NavLink to='/womenaccessories' className='dropdown-item'>Bride</NavLink></li>
+                  <li><NavLink to='/menaccessories' className='dropdown-item'>Groom</NavLink></li>
+                </ul>
+              </li>
+
+              
+
             </ul>
           </li>
 
