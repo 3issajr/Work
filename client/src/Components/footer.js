@@ -44,7 +44,7 @@ const footer = () => {
 
                 <form className="d-flex justify-content-center flex-wrap flex-lg-nowrap" method="post" >
                     <div className="my-2"><input className="border rounded-pill shadow-sm form-control" type="email" name="email" placeholder="Your Email"/></div>
-                    <div className="my-2"><button className="btn btn-primary shadow ms-2 d-block w-100 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" type="submit">Subscribe </button></div>
+                    <div className="my-2"><button className="btn btn-info shadow ms-2 d-block w-100 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" type="submit">Subscribe </button></div>
                 </form>
 
             </div>
@@ -52,10 +52,10 @@ const footer = () => {
 
     </footer>
     
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
     <Outlet/>
 
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     </>
   )
 }

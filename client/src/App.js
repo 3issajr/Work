@@ -1,13 +1,19 @@
-import  {Suspense, useState, useEffect} from 'react'
-import { Reveal } from 'react-reveal'
+import React from 'react'
+import {useState, useEffect} from 'react'
+import {Zoom } from 'react-reveal'
+import {Routes , Route} from 'react-router-dom'
+import {BounceLoader, } from 'react-spinners'
+
 import Navbar from './Components/navbar'
 import Footer from './Components/footer'
 import Background from './Components/background'
 import Index from './Pages/index'
 import Shop from './Pages/shop'
 import Cart from './Pages/cart'
-import Signin from './Pages/signin'
-import Signup from './Pages/signup'
+import Signin from './Pages/account/signin'
+import Signup from './Pages/account/signup'
+import Forgetpass from './Pages/account/forgetpass'
+import Changepass from './Pages/account/changepass'
 import Contactus from './Pages/contactus'
 import Aboutus from './Pages/aboutus'
 import Team from './Pages/team'
@@ -15,15 +21,13 @@ import Menaccessories from './Pages/accessories/menaccessories'
 import Womenaccessories from './Pages/accessories/womenaccessories'
 import Indoor from './Pages/venues/indoor'
 import Outdoor from './Pages/venues/outdoor'
-import {Routes , Route} from 'react-router-dom'
+import Photographers from './Pages/graphers/photographers'
+import Videographers from './Pages/graphers/videographers'
+import Logo from '../src/assets/1000139094-removebg-preview.png'
 
-
-import React from 'react'
-import {BounceLoader } from 'react-spinners'
 
 const App = () => {
 const [loading , setLoading] = useState(false)
-// const LazyHome = React.lazy(() => <import("./Pages/index")>);
 
 useEffect(()=>{
   setLoading(true)
@@ -34,45 +38,49 @@ useEffect(()=>{
 
 
   return (
-    <>
     <div className='App'>
       {loading ? (
         <div id='loading' className='col-12 col-md-12 col-xl-12' >
-          <Reveal right>
-            <h1 style={{fontSize:"6rem"}}>𝓜𝔂𝓓𝓪𝔂</h1>
-          </Reveal>
+          <div className='d-flex justify-center col-12'>
+          <Zoom >
+            <img src={Logo} style={{height:"30rem",width:"30rem"}}/>
+          </Zoom>
+          </div>
 
-          <Reveal left>
+          <Zoom>
             <BounceLoader size={100} color={"#F37A24"} loading={loading}/>
-          </Reveal>
+          </Zoom>
       </div>
       )
       :
   (
-    <Suspense>
+    <>
     <Background/>
-    <Navbar/>
-      <Routes>
-        <Route path='/' element={<Index/>}></Route>
-        <Route path='/home' element={<Index/>}></Route>
-        <Route path='/shop' element={<Shop/>}></Route>
-        <Route path='/outdoor' element={<Outdoor/>}></Route>
-        <Route path='/indoor' element={<Indoor/>}></Route>
-        <Route path='/menaccessories' element={<Menaccessories/>}></Route>
-        <Route path='/womenaccessories' element={<Womenaccessories/>}></Route>
-        <Route path='/cart' element={<Cart/>}></Route>
-        <Route path='/aboutus' element={<Aboutus/>}></Route>
-        <Route path='/contactus' element={<Contactus/>}></Route>
-        <Route path='/signin' element={<Signin/>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/team' element={<Team/>}></Route>
-      </Routes>
-    <Footer/>
-    </Suspense>
+      <Navbar/>
+        <Routes>
+          <Route path='/' element={<Index/>}></Route>
+          <Route path='/home' element={<Index/>}></Route>
+          <Route path='/shop' element={<Shop/>}></Route>
+          <Route path='/outdoor' element={<Outdoor/>}></Route>
+          <Route path='/indoor' element={<Indoor/>}></Route>
+          <Route path='/menaccessories' element={<Menaccessories/>}></Route>
+          <Route path='/womenaccessories' element={<Womenaccessories/>}></Route>
+          <Route path='/photographers' element={<Photographers/>}></Route>
+          <Route path='/videographers' element={<Videographers/>}></Route>
+          <Route path='/cart' element={<Cart/>}></Route>
+          <Route path='/aboutus' element={<Aboutus/>}></Route>
+          <Route path='/contactus' element={<Contactus/>}></Route>
+          <Route path='/signin' element={<Signin/>}></Route>
+          <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/forgetpass' element={<Forgetpass/>}></Route>
+          <Route path='/changepass' element={<Changepass/>}></Route>
+          <Route path='/team' element={<Team/>}></Route>
+        </Routes>
+      <Footer/>
+      </>
   )}
     </div>
 
-    </>
   )
 }
 

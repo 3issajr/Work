@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
-import Indoor1 from '../../assets/indoor1.jpg'
-import Indoor2 from '../../assets/indoor2.jpeg'
-import Indoor3 from '../../assets/indoor3.jpeg'
-import Indoor4 from '../../assets/indoor4.jpeg'
+import Indoor1 from '../../assets/indoor/indoor1.jpg'
+import Indoor2 from '../../assets/indoor/indoor2.jpeg'
+import Indoor3 from '../../assets/indoor/indoor3.jpeg'
+import Indoor4 from '../../assets/indoor/indoor4.jpeg'
 
 const indoor = () => {
   return (

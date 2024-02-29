@@ -25,8 +25,11 @@ const team = () => {
                 <div className="card border-0 shadow-none">
 
                     <div className="card-body text-center d-flex flex-column align-items-center p-4 bg-dark">
-                        <img className="rounded-circle mb-3 fit-cover" width="450" height="450" src={Profile} alt="profile"/>
+
+                        <img className="rounded-circle mb-3 fit-cover" width="650" height="650" src={Profile} alt="profile"/>
+
                         <h5 className="italic my-2"><strong>Ahmed Eissa</strong></h5>
+                        
                         <p className="italic my-2 mb-4"><strong>Team Leader</strong></p>
                         
                         <ul className="list-inline fs-6 text-muted w-100 mb-0">

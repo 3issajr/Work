@@ -3,6 +3,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import Line from '../assets/weddingline.png'
+import Logo from '../assets/1000139094-removebg-preview.png'
 
 
 const contactus = () => {
@@ -12,119 +13,76 @@ const contactus = () => {
         <img src={Line}/>
     </div>
 
-    <div className="container col-md-8 col-xl-6 text-center mx-auto">
+    <div className="container col-md-8 col-xl-6 text-center mx-auto mb-3">
         <h2 className="w-lg-50">𝐹𝑒𝑒𝓁 𝐹𝓇𝑒𝑒 𝒯𝑜 𝒞𝑜𝓃𝓉𝒶𝒸𝓉 𝒰𝓈 𝒜𝓃𝓎𝒯𝒾𝓂𝑒</h2>
     </div>
 
-<section className="position-relative mb-20  mt-3 py-xl-5 text-white">
-    
-        <div className="container bg-dark rounded py-5">
+    <section class="container bg-dark position-relative mb-5 w-50 border border-0 rounded-4 " id='contactus' >
 
-        <div className="col-md-8 col-xl-6 text-center mx-auto">
-            <h2 className="w-lg-50">𝒲𝑒'𝓇𝑒 𝑜𝓅𝑒𝓃 𝒻𝑜𝓇 𝒶𝓃𝓎 𝓈𝓊𝑔𝑔𝑒𝓈𝓉𝒾𝑜𝓃 𝑜𝓇 𝒿𝓊𝓈𝓉 𝓉𝑜 𝒽𝒶𝓋𝑒 𝒶 𝒸𝒽𝒶𝓉</h2>
-        </div>
+        <div class="container position-relative">
 
-            <div className="row d-flex justify-content-center">
-                
-                <div className="col-md-6 col-lg-4 col-xl-4">
-                    
-                    <div className="d-flex flex-column justify-content-center align-items-start h-100">
-                       
-                       
-                        <div className="d-flex align-items-center p-3">
-                            <BsFillTelephoneFill style={{fontSize:"30px"}} className='border border-white rounded w-10 h-10' />
-                            <div className="px-2">
-                                <h3 className="mb-0">Phone</h3>
-                                <h4 className="mb-0">+123456789</h4>
-                            </div>
-                        </div>
+            <div class="row justify-center">
 
-                        <div className="d-flex align-items-center p-3">
-                            <MdEmail style={{fontSize:"30px"}} className='border border-white rounded w-10 h-10' />                                
-                            <div className="px-2">
-                                <h3 className="mb-0">Email</h3>
-                                <h4 className="mb-0">mydaycs@gmail.com</h4>
-                            </div>
-                        </div>
+                <div class="col-xl-6 pt-5"><img src={Logo} width="736" height="574"/></div>
 
-                        <div className="d-flex align-items-center p-3">
-                            <IoLocation style={{fontSize:"30px"}}  className='border border-white rounded w-10 h-10'/>           
-                            <div className="px-2">
-                                <h3 className="mb-0">Location</h3>
-                                <h4 className="mb-0">NewCairo</h4>
-                            </div>
-                        </div>
+                <div class="col-md-6 col-xl-5">
 
-                    </div>
-                </div>
-
-                <div className="col-md-6 col-lg-5 col-xl-4">
                     <div>
-                        <form className="p-3 p-xl-4" method="post">
+                        <form class="p-3 p-xl-4" method="post">
 
-                            <div className="mb-3">
-                                <input 
-                                required
-                                className="form-control" 
-                                type="text" 
-                                name="name" 
-                                id="name-1" 
-                                placeholder="Name" 
-                                />
+                            <h1 className='text-center'>Contact us</h1>
+                        
+                            <div class="mb-3">
+                                <h2 class="form-label" for="name">Name</h2>
+                                <input class="form-control" type="text" id="name" name="name" placeholder='Enter Your Name'/>
                             </div>
 
-                            <div className="mb-3">
-                                <input 
-                                required
-                                className="form-control" 
-                                type="email" id="email-1" 
-                                name="email" 
-                                placeholder="Email" 
-                                />
+                            <div class="mb-3">
+                                <h2 class="form-label" for="email">Email</h2>
+                                <input class="form-control" type="email" id="email" name="email" placeholder='Enter Your Email'/>
                             </div>
 
-                            <div className="mb-3">
-                                <input 
-                                required
-                                className="form-control" 
-                                type="text"
-                                name="subject" 
-                                id="subject-1" 
-                                placeholder="Subject"
-                                />
+                            <div class="mb-3">
+                                <h2 class="form-label" for="message">Message</h2>
+                                <textarea class="form-control text-center" id="message" name="message" rows="6" placeholder='Write Your Subject'></textarea>
                             </div>
 
-                            <div className="mb-3">
-                                <textarea 
-                                required
-                                className="form-control" 
-                                id="message-1"
-                                name="message" 
-                                rows="6"
-                                placeholder="Message" 
-                                />
-                             </div>
-
-                            <div>
-                                <button 
-                                className="btn btn-primary d-block w-100 d-block w-100 
-                                transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" 
-                                type="submit">
-                                Send 
+                            <div class="mb-3">
+                                <button class="btn btn-info 
+                                shadow  d-block w-100 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" 
+                                type="submit">Send
                                 </button>
                             </div>
 
                         </form>
-
                     </div>
 
                 </div>
+
+                    <div className='p-3 p-xl-4 d-flex justify-center flex-row gap-5'>
+
+                        <div id='location' className=''>
+                            <IoLocation id='contact-icon'></IoLocation>
+                            <p>New Cairo</p>
+                        </div>
+
+                        <div id='email' className=''>
+                            <MdEmail id='contact-icon'></MdEmail>
+                            <p>MyDayCS@gmail.com</p>
+                        </div>
+
+                        <div id='telephone' className=''>
+                            <BsFillTelephoneFill id='contact-icon'></BsFillTelephoneFill>
+                            <p>+12345678</p>
+                        </div>
+
+                    </div>
 
             </div>
 
         </div>
 
-</section>
+    </section>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 

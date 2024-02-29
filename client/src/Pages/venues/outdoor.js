@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
-import Outdoor1 from '../../assets/outdoor1.jpeg'
-import Outdoor2 from '../../assets/outdoor2.jpeg'
-import Outdoor3 from '../../assets/outdoor3.jpeg'
-import Outdoor4 from '../../assets/outdoor4.jpeg'
+import Outdoor1 from '../../assets/outdoor/outdoor1.jpeg'
+import Outdoor2 from '../../assets/outdoor/outdoor2.jpeg'
+import Outdoor3 from '../../assets/outdoor/outdoor3.jpeg'
+import Outdoor4 from '../../assets/outdoor/outdoor4.jpeg'
 
 const outdoor = () => {
   return (

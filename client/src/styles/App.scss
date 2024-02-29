@@ -7,14 +7,35 @@
     box-sizing: border-box !important;
 }
 
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+#message{
+    color: #FEECE2;
+}
 .App{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #282c34;
+    background-color: #FEECE2;
 }
 
-
+#loading{
+    @include flex;
+    padding-top: 18rem;
+    flex-direction: column;
+}
 
 body{
     h1{
@@ -29,18 +50,35 @@ body{
     h5{
         color: $primaryColor 
     } 
-    
+ 
 }
+
 .container{
     z-index: 1;
 }
 
-#loading{
+#line{
     @include flex;
-    padding-top: 18rem;
-    flex-direction: column;
-}
+     img {
+      @include line
+      }
+   }
 
+nav{
+    .navbar-brand:hover{
+        zoom:1.5
+    }
+    .navbar-nav{
+        font-size: 25px;
+    }
+    .dropdown-menu{
+        font-size:25px;
+    }
+    .title{
+        font-size: 35px;
+    }   
+}
+    
 footer{
     margin-top: auto;
     text-align: center;
@@ -62,31 +100,31 @@ footer{
     }
 }
 
-nav{
-    .navbar-brand:hover{
-        zoom:1.5
+#aboutus{
+    #aboutus-1, #aboutus-2, #aboutus-3{
+        align-items: stretch;
+        display: flex;
+        flex: 1;
     }
-    .navbar-nav{
-        font-size: 25px;
-    }
-    .dropdown-menu{
-        font-size:25px;
-    }
-    .title{
-        font-size: 35px;
-    }   
 }
+
+
+#contactus{
+    #contact-icon{
+       font-size: 30px;
+       width: 100%;
+       color: #FEECE2;
+    }
+    p{
+        padding-top: 10px;
+        color: #FEECE2;
+    }
+}
+
 .team{
    p{
     color: $primaryColor 
-} 
-}
-
-#line{
- @include flex;
-  img {
-   @include line
-   }
+    } 
 }
 
 .card-img-top{
@@ -100,10 +138,9 @@ nav{
 
 .outdoor1, .outdoor2, .outdoor3, .outdoor4,
 .indoor1, .indoor2, .indoor3, .indoor4,
-.jewelry, .shoes, .suit, .necktie, .dress, .crown
-
-
-
+.jewelry, .shoes, .suit, .necktie, .dress, .crown,
+.antikka, .hossam,
+.kirolos, .mahmoud
  {
     img{
          height: 30rem;
@@ -114,24 +151,9 @@ nav{
     }
 }
 
-
-
-
 input[type=text],[type=password],[type=email], select{
     text-align: center;
 }
 
 
 
-html {
-    overflow: scroll;
-    overflow-x: hidden;
-}
-::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}

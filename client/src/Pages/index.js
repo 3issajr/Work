@@ -65,7 +65,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Outdoor Wedding</h2>
 
                                 <div className="my-3 d-flex justify-center">
-                                    <button className="d-flex btn btn-primary btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                    <button className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
                                 </div>
 
                         </div>
@@ -105,7 +105,7 @@ const Index = () => {
                             <h2 className="fw-bold text-center text-white mb-5">Celebrating the Love: A Wedding to Remember</h2>
                             <h2 className="mb-5 text-center">Indoor Wedding</h2>
                             <div className="my-3 text-center d-flex justify-center">
-                                <button className="d-flex btn btn-primary btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                <button className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
                             </div>
 
                         </div>
@@ -139,7 +139,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Wedding Tables</h2>
 
                             <div className="my-3 d-flex justify-center">
-                                <button className="d-flex btn btn-primary btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                <button className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
                             </div>
 
                         </div>
@@ -191,7 +191,7 @@ const Index = () => {
                                 <Fade>
                                     <h3 className="fw-bold card-title">Easy To Book&nbsp;</h3>
                                     <h4 className="card-text mb-4">Book your Wedding Components</h4>
-                                    <button className="btn btn-primary btn-lg shadow " type="button">Book Now</button>
+                                    <button className="btn btn-info btn-lg shadow " type="button">Book Now</button>
                                 </Fade>
                             </div>
 
@@ -209,7 +209,7 @@ const Index = () => {
                                 <Fade>
                                     <h3 className="fw-bold card-title">Easy To Buy&nbsp;</h3>
                                     <h4 className="mb-4">Buy Suits, Dress and Accessories</h4>
-                                    <button className="btn btn-primary btn-lg shadow" type="button">Buy Now</button>
+                                    <button className="btn btn-info btn-lg shadow" type="button">Buy Now</button>
                                 </Fade>
                             </div>
 
@@ -227,7 +227,7 @@ const Index = () => {
                                 <Fade>
                                     <h3 className="fw-bold card-title">Easy To Watch&nbsp;</h3>
                                     <h4 className="card-text mb-4">Check our Indoor/Outdoor Venues</h4>
-                                    <button className="btn btn-primary btn-lg shadow " type="button">Watch Now</button>
+                                    <button className="btn btn-info btn-lg shadow " type="button">Watch Now</button>
                                 </Fade>
                             </div>
 
@@ -245,7 +245,7 @@ const Index = () => {
                                 <Fade>
                                     <h3 className="fw-bold card-title">Easy Payment&nbsp;</h3>
                                     <h4 className="card-text mb-4">We Accept Visa Payment or Cash Payment</h4>
-                                    <button className="btn btn-primary btn-lg shadow" type="button">Buy Now</button>
+                                    <button className="btn btn-info btn-lg shadow" type="button">Buy Now</button>
                                 </Fade>
                             </div>
 
@@ -342,7 +342,7 @@ const Index = () => {
                     </div>
 
                     <div className="my-2 text-center">
-                        <NavLink to='/contactus' className="btn btn-primary fs-5 py-2 px-4 " role="button" >Contact us</NavLink>
+                        <NavLink to='/contactus' className="btn btn-info fs-5 py-2 px-4 " role="button" >Contact us</NavLink>
                     </div>
 
                 </div>
