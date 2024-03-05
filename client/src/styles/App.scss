@@ -24,6 +24,18 @@ html {
 #message{
     color: #FEECE2;
 }
+#signuploading{
+    .login-overylay{
+        @include overlay;
+    }
+}
+
+#signuploading {
+    .login-spinner{
+        @include flex;
+    }
+}
+
 .App{
     display: flex;
     flex-direction: column;

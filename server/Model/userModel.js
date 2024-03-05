@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const {isEmail} = require('validator')
-
+var validateEmail = function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
 const userSchema = new mongoose.Schema(
     {
         name:{
             type:String,
             lowercase:true,
-            required : [true, "Please Enter Your Name"]
+            unique:true,
+            required : [true, "Please Enter Your Name"],
+            minlength : [5, "Minimum Username Length is 5 Characters"]
         },
         email:{
             type:String,
@@ -15,7 +19,8 @@ const userSchema = new mongoose.Schema(
             unique:true,
             trim:true,
             required : [true, "Please Enter Your E-mail"],
-            validate : [isEmail, 'Please enter a valid email']
+            // validate : [validateEmail, 'Please enter a valid email'],
+            // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
         firstpass:{
             type:String,

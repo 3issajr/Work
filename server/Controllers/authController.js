@@ -1,27 +1,58 @@
 const User = require('../Model/userModel')
 const jwt = require('jsonwebtoken')
-
+var validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
 
 exports.addUsers = async (req , res)=>{
     try{
         const registeredUser = new User(req.body);
 
-        if(!registeredUser.name || !registeredUser.email || !registeredUser.firstpass || !registeredUser.secondpass || !registeredUser.gender){
-            res.status(400).json({error :"Empty Field"})
-            console.log("Field Error")
+        if(!registeredUser.name){
+            res.status(400).json({error :"Please Fill Your Name"})
+            console.log("Name Error")
             return;
         }
-        if(registeredUser.firstpass !== registeredUser.secondpass){
+        else if(!registeredUser.email){
+            res.status(400).json({error :"Please Fill Your Email"})
+            console.log("Email Error")
+            return;
+        }
+        else if(!registeredUser.firstpass){
+          res.status(400).json({error :"Please Fill Your Password"})
+          console.log("Firstpass Error")
+          return;
+        }
+        else if(!registeredUser.secondpass){
+          res.status(400).json({error :"Please Fill Your Password"})
+          console.log("Secondpass Error")
+          return;
+        }
+        else if(!registeredUser.gender){
+          res.status(400).json({error :"Please Choose Your Gender"})
+          console.log("Gender Error")
+          return;
+        }
+        
+        else if(registeredUser.firstpass !== registeredUser.secondpass){
             res.status(400).json({error : "Password MisMatch"})
             console.log("Password Error")
             return;
         }
+        else if (!validateEmail(registeredUser.email)) {
+            res.status(400).json({ error: 'Invalid Email Format' });
+            console.log("Email Format Error")
+            return;
+        }
+     
         await registeredUser.save()
          res.status(201).json(registeredUser)
          console.log("User Created")
     }
     catch(err){
         res.status(500).json({error : err.message})
+        console.log(err)
     }
 }
 

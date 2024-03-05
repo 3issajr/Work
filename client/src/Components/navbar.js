@@ -2,10 +2,13 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import ReactDOM from "react-dom";
 import axios from 'axios'
 import { Outlet } from 'react-router-dom';
 import { CiShoppingCart } from "react-icons/ci";
 import Slide from 'react-reveal/Slide';
+import {CircleLoader} from 'react-spinners'
+
 
 
 const Navbar = () => {
@@ -18,7 +21,17 @@ const Navbar = () => {
     axios.get('http://localhost:3000/signout',{withCredentials:true})
     localStorage.removeItem('user');
     setIsLoggedIn(false);
-    setUsers('');
+    const loginDiv = (
+      <div className="login-overlay">
+        <div className="login-spinner" style={{width:"50%",height:"50%"}}>
+          <CircleLoader color="#ffffff" size={50} />
+        </div>
+      </div>
+    );
+    ReactDOM.render(loginDiv, document.getElementById("signuploading"));
+    
+    setTimeout(()=>{setUsers('');},1000)
+    
   };
   
 
@@ -58,7 +71,7 @@ const Navbar = () => {
     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
       <div className="offcanvas-header">
-        <h5 className="title" id="offcanvasNavbarLabel">{users}</h5>
+        <h5 className="title" id="offcanvasNavbarLabel">{users}</h5><span id='signuploading'></span>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
 
@@ -122,7 +135,7 @@ const Navbar = () => {
             </a>
             <ul className="dropdown-menu px-2">
                 <li>
-                  <button  id='my-div' className='nav-link btn btn-danger w-30 mx-4 mt-1 hidden' onClick={handleLogout}>Log Out</button>
+                  <button  id='my-div' className='nav-link  w-30  mt-1 hidden' onClick={handleLogout}>Log Out</button>
                 </li>
             </ul>
           </li>

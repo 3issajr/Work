@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {Zoom } from 'react-reveal'
 import {Routes , Route} from 'react-router-dom'
-import {BounceLoader, } from 'react-spinners'
+import {BounceLoader} from 'react-spinners'
 
 import Navbar from './Components/navbar'
 import Footer from './Components/footer'

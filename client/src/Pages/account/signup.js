@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import axios from 'axios'
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import {Reveal} from 'react-reveal'
+import {CircleLoader} from 'react-spinners'
+import {Reveal, Zoom} from 'react-reveal'
 import { CiUser } from "react-icons/ci";
 import Line from '../../assets/weddingline.png'
 
@@ -25,18 +26,27 @@ const handleSubmit = async (e)=>{
         axios.post("http://localhost:3000/signup",newUser)
         
         .then((result)=>{
+            console.log(result)
             if(result.status == 201){
-                console.log(result)
 
                 localStorage.setItem("user",JSON.stringify(newUser.name))
+                
+                const loginDiv = (
+                    <Reveal>
+                      <div className="login-spinner d-flex justify-center mb-1">
+                        <CircleLoader color="#ffffff" size={50} />
+                      </div>   
+                    </Reveal>
+                  );
+                  ReactDOM.render(loginDiv, document.getElementById("message"));
 
-                document.getElementById("message").innerHTML = "Successfully Registered";
+                  setTimeout(() => {navigate('/');}, 1000); 
 
-                setTimeout(() => {navigate('/'); window.location.reload();}, 1000); 
             }
         })
     
         .catch((err)=>{
+            console.log(err)
             if(err.response.status == 400){
                 const errorMessage = (
                     <Reveal>
@@ -51,7 +61,6 @@ const handleSubmit = async (e)=>{
 
   return (
     <>
-
 <div className='container col-md-8 col-xl-6  text-md-start mx-auto mt-5' id='line'>
     <img src={Line} alt='weddingline'/>
 </div>
@@ -80,7 +89,8 @@ const handleSubmit = async (e)=>{
                                 <CiUser className='w-20 h-20' />
                             </div>
 
-                            <div id="message" className='container flex justify-center p-3  font-extrabold text-2xl'style={{borderRadius:"10px",width:"20rem",color:"#FEECE2"}}></div>
+                            <span id='signuploading'></span>
+                            <div id="message" className='container flex justify-center p-3  font-extrabold text-2xl'style={{borderRadius:"10px",color:"red"}}></div>
 
                             <form onSubmit={handleSubmit} className="text-center w-100">
 
@@ -124,7 +134,7 @@ const handleSubmit = async (e)=>{
                                     placeholder="Re-Enter Your Password"/>
                                 </div>
 
-                                <div className="mb-3">
+                                <div className="mb-5">
                                     <select 
                                     className="form-control" 
                                     type="select"
