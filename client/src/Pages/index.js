@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React  from 'react'
 import { Slide , Fade} from 'react-reveal'
@@ -7,9 +7,12 @@ import { NavLink } from 'react-router-dom'
 
 import Image1 from '../assets/image1.jpg'
 import Image2 from '../assets/image2.jpg'
-import Image4 from '../assets/image4.jpg'
+import Photographer from '../assets/photographers/antikka.jpg'
+import Videographer from '../assets/videographers/mahmoud ahmed.jpg'
 import Avatar1 from '../assets/avatar2.jpg'
 import Avatar2 from '../assets/avatar4.jpg'
+import Jewelry from '../assets/men-jewelry.jpg'
+
 import Line from '../assets/weddingline.png'
 
 const Index = () => {
@@ -65,7 +68,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Outdoor Wedding</h2>
 
                                 <div className="my-3 d-flex justify-center">
-                                    <button className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                    <NavLink to='outdoor' className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
                                 </div>
 
                         </div>
@@ -85,27 +88,28 @@ const Index = () => {
         </div>
         {/* First Box Ends */}
 
+        {/* Second Box Starts */}
         <div className="container mt-5">
 
             <div className="bg-dark border rounded border-0 border-dark overflow-hidden">
 
-            {/* Second Box Starts */}
             <Slide left>
 
                 <div className="row g-0">
 
                     <div className="col-md-6 " style={{minHeight: "250px"}}>
-                        <img className="w-100 h-96 fit-cover" src={Image2}/>
+                        <img className="w-100 h-96 fit-cover" src={Videographer}/>
                     </div>
 
                     <div className="col-md-6">
 
                         <div className="text-white p-4 p-md-5">
 
-                            <h2 className="fw-bold text-center text-white mb-5">Celebrating the Love: A Wedding to Remember</h2>
-                            <h2 className="mb-5 text-center">Indoor Wedding</h2>
+                            <h2 className="fw-bold text-center text-white mb-5">May The Years Ahead Be Filled With Love And Joy</h2>
+                            <h2 className="mb-5 text-center">Videographer</h2>
+
                             <div className="my-3 text-center d-flex justify-center">
-                                <button className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                <NavLink to='/indoor' className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
                             </div>
 
                         </div>
@@ -115,12 +119,11 @@ const Index = () => {
                 </div>
 
             </Slide>
-            {/* Second Box Ends */}
-
 
         </div>
 
     </div>
+        {/* Second Box Ends */}
 
         {/* Third Box Starts */}
         <div className="container mt-5">
@@ -136,7 +139,7 @@ const Index = () => {
                         <div className="text-white p-4 p-md-5">
 
                             <h2 className="fw-bold text-center text-white mb-5">With Love, Joy, and Happiness: The Wedding of Bride and Groom</h2>
-                            <h2 className="mb-5 text-center">Wedding Tables</h2>
+                            <h2 className="mb-5 text-center">Accessories</h2>
 
                             <div className="my-3 d-flex justify-center">
                                 <button className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
@@ -147,7 +150,7 @@ const Index = () => {
                     </div>
 
                     <div className="col-md-6 order-first order-md-last" style={{minHeight: "250px"}}>
-                        <img className="w-100 h-96 fit-cover" src={Image4}/>
+                        <img className="w-100 h-96 fit-cover" src={Jewelry}/>
                     </div>
 
                 </div>
@@ -158,6 +161,45 @@ const Index = () => {
 
         </div>
         {/* Third Box Ends */}
+
+        {/* Fourth Box Starts */}
+        <div className="container mt-5">
+
+            <div className="bg-dark border rounded border-0 border-dark overflow-hidden">
+
+            <Slide left>
+
+                <div className="row g-0">
+
+                <div className="col-md-6" style={{minHeight: "250px"}}>
+                        <img className="w-100 h-96 fit-cover" src={Photographer}/>
+                    </div>
+
+
+                    <div className="col-md-6">
+
+                        <div className="text-white p-4 p-md-5">
+
+                            <h2 className="fw-bold text-center text-white mb-5">Celebrating the Love: A Wedding to Remember</h2>
+                            <h2 className="mb-5 text-center">Photographers</h2>
+
+                            <div className="my-3 d-flex justify-center">
+                                <NavLink to='/photographer' className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                   
+                </div>
+
+            </Slide>
+
+            </div>
+
+        </div>
+        {/* Fourth Box Ends */}
 
     </section>
     {/* Intro Ends */}

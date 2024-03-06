@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactDOM from "react-dom";
+import Createroot from "react-dom";
 import axios from 'axios'
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ const handleSubmit = async (e)=>{
                       </div>   
                     </Reveal>
                   );
-                  ReactDOM.render(loginDiv, document.getElementById("message"));
+                  Createroot.render(loginDiv, document.getElementById("message"));
 
                   setTimeout(() => {navigate('/');}, 1000); 
 
@@ -53,7 +53,22 @@ const handleSubmit = async (e)=>{
                         <p>{err.response.data.error}</p>
                     </Reveal>
                 );
-                ReactDOM.render(errorMessage, document.getElementById("message"));
+                Createroot.render(errorMessage, document.getElementById("message"));
+            }
+
+            if(err.response.status == 500){
+                if(err.response.data.error.includes("User Validation failed")){
+                    document.getElementById("message").innerTEXT = "asdas"
+                        
+                    const errorMessage = (
+                      
+                        <Reveal>
+                            <p>Invalid Email Format</p>
+                            
+                        </Reveal>
+                    );
+                    Createroot.render(errorMessage, document.getElementById("message"));
+                }
             }
         })
     }
@@ -90,7 +105,7 @@ const handleSubmit = async (e)=>{
                             </div>
 
                             <span id='signuploading'></span>
-                            <div id="message" className='container flex justify-center p-3  font-extrabold text-2xl'style={{borderRadius:"10px",color:"red"}}></div>
+                            <div id="message" className='container flex justify-center text-center p-3  font-extrabold text-2xl'style={{borderRadius:"10px",color:"red"}}></div>
 
                             <form onSubmit={handleSubmit} className="text-center w-100">
 

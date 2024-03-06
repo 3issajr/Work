@@ -40,11 +40,11 @@ exports.addUsers = async (req , res)=>{
             console.log("Password Error")
             return;
         }
-        else if (!validateEmail(registeredUser.email)) {
-            res.status(400).json({ error: 'Invalid Email Format' });
-            console.log("Email Format Error")
-            return;
-        }
+        // else if (!validateEmail(registeredUser.email)) {
+        //     res.status(400).json({ error: 'Invalid Email Format' });
+        //     console.log("Email Format Error")
+        //     return;
+        // }
      
         await registeredUser.save()
          res.status(201).json(registeredUser)
