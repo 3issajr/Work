@@ -153,6 +153,7 @@ footer{
 .jewelry, .shoes, .suit, .necktie, .dress, .crown,
 .antikka, .hossam,
 .kirolos, .mahmoud
+
  {
     img{
          height: 30rem;
@@ -166,6 +167,17 @@ footer{
 input[type=text],[type=password],[type=email], select{
     text-align: center;
 }
+
+.bride, .groom
+{
+    img{
+        height: 45rem;
+        width: 100%;
+    }
+        h1{
+            @include shopbtn
+        }
+    }
 
 
 

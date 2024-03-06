@@ -71,7 +71,7 @@ const Navbar = () => {
     <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
       <div className="offcanvas-header">
-        <h5 className="title" id="offcanvasNavbarLabel">{users}</h5><span id='signuploading'></span>
+        <h5 className="title text-capitalize" id="offcanvasNavbarLabel">{users}</h5><span id='signuploading'></span>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
 

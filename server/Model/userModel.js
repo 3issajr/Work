@@ -19,8 +19,6 @@ const userSchema = new mongoose.Schema(
             unique:true,
             trim:true,
             required : [true, "Please Enter Your E-mail"],
-            validate : [validateEmail, 'Please enter a valid email'],
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
         firstpass:{
             type:String,
@@ -58,8 +56,8 @@ userSchema.statics.login = async function(email , password){
         console.log("Incorrect Password")
         throw Error('Incorrect Password')
     }
-    console.log("Incorrect Email")
-    throw Error('Incorrect Email')
+    console.log("Email Doesn't Exists")
+    throw Error("Email Doesn't Exists")
 }
 
 const userModel = mongoose.model("User",userSchema)

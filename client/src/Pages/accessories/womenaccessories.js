@@ -1,4 +1,5 @@
 import React from 'react'
+import { Img } from 'react-image'
 import { NavLink } from 'react-bootstrap'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
@@ -7,7 +8,16 @@ import Shoes from '../../assets/women-shoes.jpg'
 import Dress from '../../assets/women-dress.jpg'
 import Crown from '../../assets/women-crown.jpg'
 
+
 const womenaccessories = () => {
+
+        // Placeholder component displayed while the image is loading
+        const MyLoader = () => <div><h1>Loading...</h1></div>;
+    
+        // Component displayed if the image fails to load
+        const MyErrorComponent = () => <div>Error loading image.</div>;
+    
+
   return (
     <>
 
@@ -55,7 +65,13 @@ const womenaccessories = () => {
         <div className='shoes col-6 p-4'>
             <Fade right>
                 <div>
-                    <NavLink to=''><img src={Shoes} alt='women-wedding-shoes'/></NavLink>
+                    <NavLink to=''>
+                        <Img
+                src={Shoes}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                        />
+                    </NavLink>
                     <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙎𝙝𝙤𝙚𝙨</h1>
                 </div>
             </Fade>

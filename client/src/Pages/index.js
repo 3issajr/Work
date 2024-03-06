@@ -1,6 +1,6 @@
 'use client'
 
-import React  from 'react'
+import React, { useState }  from 'react'
 import { Slide , Fade} from 'react-reveal'
 import { FaArrowRight } from "react-icons/fa";
 import { NavLink } from 'react-router-dom'
@@ -16,7 +16,8 @@ import Jewelry from '../assets/men-jewelry.jpg'
 import Line from '../assets/weddingline.png'
 
 const Index = () => {
-
+ 
+  
    
   return (
     <>
@@ -109,7 +110,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Videographer</h2>
 
                             <div className="my-3 text-center d-flex justify-center">
-                                <NavLink to='/indoor' className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
+                                <NavLink to='/videographers' className="d-flex btn btn-info btn-lg me-2 animate-bounce " role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
                             </div>
 
                         </div>
@@ -142,7 +143,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Accessories</h2>
 
                             <div className="my-3 d-flex justify-center">
-                                <button className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></button>
+                                <NavLink to='/category' className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
                             </div>
 
                         </div>
@@ -184,7 +185,7 @@ const Index = () => {
                             <h2 className="mb-5 text-center">Photographers</h2>
 
                             <div className="my-3 d-flex justify-center">
-                                <NavLink to='/photographer' className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
+                                <NavLink to='/photographers' className="d-flex btn btn-info btn-lg me-2 animate-bounce" role="button" href="#">See More &nbsp;<FaArrowRight className='mt-2'/></NavLink>
                             </div>
 
                         </div>

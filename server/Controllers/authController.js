@@ -8,6 +8,8 @@ var validateEmail = function(email) {
 exports.addUsers = async (req , res)=>{
     try{
         const registeredUser = new User(req.body);
+        const existingUser = await User.findOne({ email: registeredUser.email });
+
 
         if(!registeredUser.name){
             res.status(400).json({error :"Please Fill Your Name"})
@@ -40,11 +42,22 @@ exports.addUsers = async (req , res)=>{
             console.log("Password Error")
             return;
         }
-        // else if (!validateEmail(registeredUser.email)) {
-        //     res.status(400).json({ error: 'Invalid Email Format' });
-        //     console.log("Email Format Error")
-        //     return;
-        // }
+        else if (!validateEmail(registeredUser.email)) {
+            res.status(400).json({ error: 'Invalid Email Format' });
+            console.log("Email Format Error")
+            return;
+        }
+        else if (registeredUser.name.length <6) {
+            res.status(400).json({ error: 'Minimum Username Character length is 6' });
+            console.log("Username Format Error")
+            return;
+        }
+
+        else if (existingUser) {
+            res.status(400).json({ error: 'Email Already Exists' });
+            console.log("Email already exists ")
+            return;
+        }
      
         await registeredUser.save()
          res.status(201).json(registeredUser)

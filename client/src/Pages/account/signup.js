@@ -57,9 +57,7 @@ const handleSubmit = async (e)=>{
             }
 
             if(err.response.status == 500){
-                if(err.response.data.error.includes("User Validation failed")){
-                    document.getElementById("message").innerTEXT = "asdas"
-                        
+
                     const errorMessage = (
                       
                         <Reveal>
@@ -69,7 +67,6 @@ const handleSubmit = async (e)=>{
                     );
                     Createroot.render(errorMessage, document.getElementById("message"));
                 }
-            }
         })
     }
 

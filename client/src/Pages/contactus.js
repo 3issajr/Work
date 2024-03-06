@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import { Reveal } from 'react-reveal';
 import Line from '../assets/weddingline.png'
-import Logo from '../assets/1000139094-removebg-preview.png'
+import Logo from '../assets/contactusimage.png'
 import axios from 'axios'
 
 
@@ -52,7 +52,7 @@ const Contactus = () => {
         <img src={Line}/>
     </div>
 
-    <div className="container col-md-8 col-xl-6 text-center mx-auto mb-3">
+    <div className="container text-center my-5">
         <h2 className="w-lg-50">𝐹𝑒𝑒𝓁 𝐹𝓇𝑒𝑒 𝒯𝑜 𝒞𝑜𝓃𝓉𝒶𝒸𝓉 𝒰𝓈 𝒜𝓃𝓎𝒯𝒾𝓂𝑒</h2>
     </div>
 
@@ -62,14 +62,14 @@ const Contactus = () => {
 
                 <div id="message" className='container flex justify-center pt-2 font-extrabold text-2xl'style={{borderRadius:"10px",color:"red"}}></div>
 
-            <div class="row justify-center">
+            <div class="row justify-center col-md-6 col-md-12 col-sm-12 ">
 
                 <div class="col-xl-6 pt-5"><img src={Logo} width="736" height="574"/></div>
 
-                <div class="col-md-6 col-xl-5">
+                <div class="col-md-6 col-xl-5 col-md-12 col-sm-12">
 
 
-                    <div>
+                    <div className='mb-3'>
                         <form onSubmit={handleSubmit} class="p-3 p-xl-4" method="post">
 
                             <h1 className='text-center'>Contact us</h1>
@@ -121,7 +121,7 @@ const Contactus = () => {
 
                 </div>
 
-                    <div className='p-3 p-xl-4 d-flex justify-center flex-row gap-5'>
+                    <div className=' d-flex justify-center flex-row gap-5 col-12 col-md-12 col-sm-12'>
 
                         <div id='location' className=''>
                             <IoLocation id='contact-icon'></IoLocation>

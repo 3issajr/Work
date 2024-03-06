@@ -17,6 +17,7 @@ import Changepass from './Pages/account/changepass'
 import Contactus from './Pages/contactus'
 import Aboutus from './Pages/aboutus'
 import Team from './Pages/team'
+import Category from './Pages/category'
 import Menaccessories from './Pages/accessories/menaccessories'
 import Womenaccessories from './Pages/accessories/womenaccessories'
 import Indoor from './Pages/venues/indoor'
@@ -63,6 +64,7 @@ useEffect(()=>{
           <Route path='/shop' element={<Shop/>}></Route>
           <Route path='/outdoor' element={<Outdoor/>}></Route>
           <Route path='/indoor' element={<Indoor/>}></Route>
+          <Route path='/category' element={<Category/>}></Route>
           <Route path='/menaccessories' element={<Menaccessories/>}></Route>
           <Route path='/womenaccessories' element={<Womenaccessories/>}></Route>
           <Route path='/photographers' element={<Photographers/>}></Route>
