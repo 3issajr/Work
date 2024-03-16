@@ -1,11 +1,20 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Img } from 'react-image'
+import {CircleLoader} from 'react-spinners'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
 import Image1 from '../../assets/videographers/kirolos.jpg'
 import Image2 from '../../assets/videographers/mahmoud ahmed.jpg'
 
 const videographers = () => {
+
+         // Placeholder component displayed while the image is loading
+         const MyLoader = () => <div className='d-flex justify-center align-middle'><CircleLoader/></div>;
+    
+         // Component displayed if the image fails to load
+         const MyErrorComponent = () => <div><h1>Error loading image.</h1></div>;
+
   return (
     <>
 
@@ -44,7 +53,13 @@ const videographers = () => {
         <div className='kirolos col-6 p-4' >
             <Fade left>
                 <div>
-                <NavLink to=""><img src={Image1} alt='kirolos videographer'/></NavLink>
+                <NavLink to=''>
+                    <Img
+                src={Image1}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                    />
+                </NavLink> 
                 <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙆𝙞𝙧𝙤𝙡𝙤𝙨 𝙈𝙞𝙘𝙝𝙚𝙖𝙡</h1>
                 </div>
             </Fade>
@@ -53,7 +68,13 @@ const videographers = () => {
         <div className='mahmoud col-6 p-4'>
             <Fade right>
                 <div>
-                <NavLink to=""><img src={Image2} alt='mahmoud ahmed videographer'/></NavLink>
+                <NavLink to=''>
+                    <Img
+                src={Image2}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                    />
+                </NavLink> 
                 <h1 className='btn btn-primary d-block w-100  border-0 bg-dark'>𝙈𝙖𝙝𝙢𝙤𝙪𝙙 𝘼𝙝𝙢𝙚𝙙</h1>
                 </div>
             </Fade>

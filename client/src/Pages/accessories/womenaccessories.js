@@ -1,6 +1,7 @@
 import React from 'react'
 import { Img } from 'react-image'
 import { NavLink } from 'react-bootstrap'
+import {CircleLoader} from 'react-spinners'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
 import Jewlery from '../../assets/women-jewelry.jpg'
@@ -8,16 +9,14 @@ import Shoes from '../../assets/women-shoes.jpg'
 import Dress from '../../assets/women-dress.jpg'
 import Crown from '../../assets/women-crown.jpg'
 
-
 const womenaccessories = () => {
 
         // Placeholder component displayed while the image is loading
-        const MyLoader = () => <div><h1>Loading...</h1></div>;
+        const MyLoader = () => <div className='d-flex justify-center align-middle'><CircleLoader/></div>;
     
         // Component displayed if the image fails to load
-        const MyErrorComponent = () => <div>Error loading image.</div>;
+        const MyErrorComponent = () => <div><h1>Error loading image.</h1></div>;
     
-
   return (
     <>
 
@@ -56,7 +55,13 @@ const womenaccessories = () => {
         <div className='jewelry col-6 p-4' >
             <Fade left>
                 <div>
-                    <NavLink to=''><img src={Jewlery} alt='women-jewelry'/></NavLink>
+                <NavLink to=''>
+                        <Img
+                src={Jewlery}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                        />
+                </NavLink>
                     <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙅𝙚𝙬𝙚𝙡𝙧𝙮</h1>
                 </div>
             </Fade>
@@ -80,7 +85,13 @@ const womenaccessories = () => {
         <div className='dress col-6 p-4'>
             <Fade left>
                 <div>
-                    <NavLink to =''><img src={Dress} alt='wedding-dress'/></NavLink>
+                <NavLink to=''>
+                    <Img
+                src={Dress}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                    />
+                </NavLink>
                     <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝘿𝙧𝙚𝙨𝙨</h1>
                 </div>
             </Fade>
@@ -89,7 +100,13 @@ const womenaccessories = () => {
         <div className='crown col-6 p-4'>
             <Fade right>
             <div>
-                <NavLink to=''><img src={Crown} alt='wedding-crown'/></NavLink>
+                <NavLink to=''>
+                    <Img
+                src={Crown}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                    />
+                    </NavLink>
                 <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝘾𝙧𝙤𝙬𝙣</h1>
             </div>
             </Fade>

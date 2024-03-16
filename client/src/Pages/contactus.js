@@ -60,7 +60,7 @@ const Contactus = () => {
 
         <div class="container position-relative">
 
-                <div id="message" className='container flex justify-center pt-2 font-extrabold text-2xl'style={{borderRadius:"10px",color:"red"}}></div>
+                <div id="message" className='container flex justify-center pt-2 font-extrabold text-2xl'style={{borderRadius:"10px"    }}></div>
 
             <div class="row justify-center col-md-6 col-md-12 col-sm-12 ">
 
@@ -72,7 +72,6 @@ const Contactus = () => {
                     <div className='mb-3'>
                         <form onSubmit={handleSubmit} class="p-3 p-xl-4" method="post">
 
-                            <h1 className='text-center'>Contact us</h1>
                         
                             <div class="mb-3">
                                 <h2 class="form-label" for="name">Name</h2>
@@ -101,8 +100,8 @@ const Contactus = () => {
                                 <h2 class="form-label" for="message">Message</h2>
                                 <textarea 
                                 class="form-control text-center" 
-                                id="message" 
-                                name="message" 
+                                id="contact-message" 
+                                name="contact-message" 
                                 rows="6" 
                                 placeholder='Write Your Subject'
                                 onChange={(e)=>setSubject(e.target.value)}

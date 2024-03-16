@@ -1,5 +1,7 @@
 import React from 'react'
+import { Img } from 'react-image'
 import { NavLink, h1 } from 'react-bootstrap'
+import {CircleLoader} from 'react-spinners'
 import Line from '../../assets/weddingline.png'
 import Fade from 'react-reveal'
 import Necktie from '../../assets/men-necktie.jpg'
@@ -8,6 +10,13 @@ import Jewelry from '../../assets/men-jewelry.jpg'
 import Shoes from '../../assets/men-shoes.jpg'
 
 const menaccessories = () => {
+
+          // Placeholder component displayed while the image is loading
+          const MyLoader = () => <div className='d-flex justify-center align-middle'><CircleLoader/></div>;
+    
+          // Component displayed if the image fails to load
+          const MyErrorComponent = () => <div><h1>Error loading image.</h1></div>;
+          
   return (
     <>
 
@@ -46,7 +55,13 @@ const menaccessories = () => {
         <div className='jewelry col-6 p-4' >
             <Fade left>
             <div>
-                <NavLink to=''><img src={Jewelry} alt='wedding jewelry'/></NavLink>
+                <NavLink to=''>
+                    <Img
+                src={Jewelry}
+                loader={<MyLoader />}
+                unloader={<MyErrorComponent />}
+                    />
+                </NavLink> 
                 <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙅𝙚𝙬𝙚𝙡𝙧𝙮</h1>
             </div>
             </Fade>
@@ -55,8 +70,14 @@ const menaccessories = () => {
         <div className='shoes col-6 p-4'>
             <Fade right>
             <div>
-                <NavLink to=''><img src={Shoes} alt='men-wedding-shoes'/></NavLink>
-                <h1 to='' className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙎𝙝𝙤𝙚𝙨</h1>
+                    <NavLink to=''>
+                        <Img
+                    src={Shoes}
+                    loader={<MyLoader />}
+                    unloader={<MyErrorComponent />}
+                        />
+                    </NavLink> 
+                <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙎𝙝𝙤𝙚𝙨</h1>
             </div>
             </Fade>
         </div>
@@ -64,8 +85,14 @@ const menaccessories = () => {
         <div className='suit col-6 p-4'>
             <Fade left>
                 <div>
-                    <NavLink to=''><img src={Suits} alt='suit'/></NavLink>
-                    <h1 to='' className='btn btn-primary d-block w-100    border-0 bg-dark'>𝙎𝙪𝙞𝙩</h1>
+                <NavLink to=''>
+                        <Img
+                    src={Suits}
+                    loader={<MyLoader />}
+                    unloader={<MyErrorComponent />}
+                        />
+                    </NavLink> 
+                    <h1 className='btn btn-primary d-block w-100    border-0 bg-dark'>𝙎𝙪𝙞𝙩</h1>
                 </div>
             </Fade>
         </div>
@@ -73,8 +100,14 @@ const menaccessories = () => {
         <div className='necktie col-6 p-4'>
             <Fade right>
                 <div>
-                    <NavLink to=''><img src={Necktie} alt='necktie'/></NavLink>
-                    <h1 to='' className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙉𝙚𝙘𝙠𝙩𝙞𝙚</h1>
+                    <NavLink to=''>
+                        <Img
+                    src={Necktie}
+                    loader={<MyLoader />}
+                    unloader={<MyErrorComponent />}
+                        />
+                    </NavLink> 
+                    <h1 className='btn btn-primary d-block w-100 border-0 bg-dark'>𝙉𝙚𝙘𝙠𝙩𝙞𝙚</h1>
                 </div>
             </Fade>
         </div>

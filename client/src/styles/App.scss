@@ -22,7 +22,7 @@ html {
 }
 
 #message{
-    color: #FEECE2;
+    color: #FF0000;
 }
 #signuploading{
     .login-overylay{
@@ -89,6 +89,10 @@ nav{
     .title{
         font-size: 35px;
     }   
+    position: fixed;
+}
+.navbar{
+    position: fixed;
 }
     
 footer{
