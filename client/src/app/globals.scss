@@ -1,0 +1,84 @@
+@import "@fontsource/playfair-display/400-italic.css"; // Specify weight and style
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '_mixins';
+@import '_variables';
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+ font-weight: 600
+}
+
+
+#firstheader , #header-left , #header-right{
+   @include FlexSpaceBetween();
+}
+
+#firstheader{
+    @include FlexSpaceBetween();
+    background-color: #474747;
+    color: white;
+}
+#secondheader{
+    @include FlexSpaceAround();
+    padding: 1.5rem 0px;
+
+}
+
+#hero {
+    @include FlexCenter();
+}
+
+#header-left , #header-right {
+    gap: 10px;
+    padding: 15px;
+}
+
+#navbar-items{
+    padding:0px 15px;
+    gap:3rem
+}
+
+#navbar-list{
+    padding: 10px 0px;
+    gap:8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar-btn{
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#image-caption{
+    position: absolute;
+    top:52%;
+    left:30%;
+    text-align: center;
+    font-family: "Playfair Display"
+}
+
+#img-btn{
+    @include FlexCenter;
+}
+#btn-1{
+  border: 2px solid red;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
