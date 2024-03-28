@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'mixins';
+@import 'variables';
+
+@font-face {
+    font-family: 'Fairplay Display';
+    src: url('../../../public/fonts/PlayfairDisplay-Medium.ttf') format('truetype'); /* Adjust the path if needed */
+    /* Add more @font-face rules for other font weights or styles */
+  }
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Fairplay Display';
+}
+
+
+#header{
+    @include FlexAround;
+    padding: 15px 0px;
+    background-color: #474747;
+}
+#leftheader,#rightheader{
+    @include FlexCenter;
+    gap:10px;
+    color: white;
+}
+
+#topnav{
+    margin-top: 2rem;
+    @include FlexEvenly() ;
+    #navbtndiv{
+        margin-left:3rem;
+    }
+    #navbtn{
+        padding: 8px 13px;
+        border: 2px solid black;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+}   #navitems{
+    @include FlexBetween;
+    padding: 0px 0px;
+}
+}
+
+///////////////////////////////////////////////////
+
+#hero{
+    @include FlexCenter;
+    margin-top:2rem;
+    position: relative;
+    #herotext{
+        position: absolute;
+        top:40%;
+        left:37%;
+        text-align: center;
+    }
+    #herobtns{
+        margin-top: 1rem;
+        @include FlexAround();
+        #leftbtn{
+          padding: 10px 10px;
+          background-color: red;
+          color: white;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
+    }
+    #rightbtn{
+        padding: 10px 10px;
+        color: black;
+        border: 2px  solid black;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }
+    }
+    h1{
+        font-family: 'Fairplay Display';
+        font-size: 3rem;
+    }
+    p{
+        font-size: 15px;
+    }
+}
+
+///////////////////////////////////////////////////
+
+#browse{
+    @include FlexCenter();
+    #box1,#box2,#box3,#box4{
+        @include FlexCenter();
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 10px;
+        font-family: 'Fairplay Display';
+        margin: 0px 20px;
+        border: 1px solid rgb(121, 121, 121);
+        border-radius:20px ;
+        -webkit-border-radius:20px ;
+        -moz-border-radius:20px ;
+        -ms-border-radius:20px ;
+        -o-border-radius:20px ;
+
+        h1{
+            font-weight: 600;
+            font-size: 1.5rem;
+            padding: 15px 0px;
+        }
+} #browse-header{
+    font-family: 'Fairplay Display';
+    font-size: 4rem;
+    padding: 3rem 0px;
+} button{
+    padding: 15px 0px;
+    color: #AD343E;
+    font-weight: 600;
+}
+}
+
+///////////////////////////////////////////////////
+/// 
+
+#about{
+    @include FlexCenter();
+    margin-top:2rem;
+    #aboutimg{
+        position: relative;
+    }#aboutabs{
+        background-color: #474747;
+        position: absolute;
+        left: 50%;
+        top:70%
+    }
+}
