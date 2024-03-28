@@ -1,6 +1,10 @@
 import Hero from './components/hero'
 import Browse from './components/browse'
 import About from './components/about'
+import Service from './components/services'
+import Content from './components/content'
+import Testimonals from './components/testimonals'
+import Blog from './components/blogs'
 
 export default function Home(){
     return(
@@ -10,6 +14,14 @@ export default function Home(){
         <Browse/>
 
         <About/>
+
+        <Service/>
+
+        <Content/>
+
+        <Testimonals/>
+
+        <Blog/>
         </>
     )
 }

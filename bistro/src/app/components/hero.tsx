@@ -13,7 +13,7 @@ export default function Hero(){
                     <Image src={image} width={1100} height={1000} alt='hero'/> 
                 </div>
 
-                <div id='herotext'>
+                <div id='herotext' className=''>
 
                     <h1>Best food for <br/>your taste</h1>
 

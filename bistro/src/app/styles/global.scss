@@ -11,6 +11,12 @@
     /* Add more @font-face rules for other font weights or styles */
   }
 
+@font-face {
+    font-family: 'DM Sans';
+    src: url('../../../public/fonts/DMSans-Black.ttf') format('truetype'); /* Adjust the path if needed */
+    /* Add more @font-face rules for other font weights or styles */
+  }
+
 *{
     padding: 0;
     margin: 0;
@@ -18,6 +24,7 @@
     font-family: 'Fairplay Display';
 }
 
+///////////////////////////////////////////////////
 
 #header{
     @include FlexAround;
@@ -29,6 +36,9 @@
     gap:10px;
     color: white;
 }
+
+///////////////////////////////////////////////////
+
 
 #topnav{
     margin-top: 2rem;
@@ -59,7 +69,7 @@
     #herotext{
         position: absolute;
         top:40%;
-        left:37%;
+        left:41%;
         text-align: center;
     }
     #herobtns{
@@ -97,14 +107,14 @@
 
 ///////////////////////////////////////////////////
 
-#browse{
+#browse {
     @include FlexCenter();
     #box1,#box2,#box3,#box4{
         @include FlexCenter();
+        font-family: 'Fairplay Display';
         flex-direction: column;
         text-align: center;
         padding: 30px 10px;
-        font-family: 'Fairplay Display';
         margin: 0px 20px;
         border: 1px solid rgb(121, 121, 121);
         border-radius:20px ;
@@ -112,13 +122,13 @@
         -moz-border-radius:20px ;
         -ms-border-radius:20px ;
         -o-border-radius:20px ;
-
+} 
+    #box1-title,#box2-title,#box3-title,#box4-title{
         h1{
-            font-weight: 600;
-            font-size: 1.5rem;
-            padding: 15px 0px;
+            padding: 1.5rem;
         }
-} #browse-header{
+    }
+#browse-header{
     font-family: 'Fairplay Display';
     font-size: 4rem;
     padding: 3rem 0px;
@@ -130,17 +140,186 @@
 }
 
 ///////////////////////////////////////////////////
-/// 
 
-#about{
+#about {
     @include FlexCenter();
+    padding: 5rem;
     margin-top:2rem;
+    background-color: #F9F9F7;
     #aboutimg{
         position: relative;
     }#aboutabs{
         background-color: #474747;
+        border-radius: 5px;
         position: absolute;
         left: 50%;
-        top:70%
+        top:50%    ;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+} #phone, #envelope, #location, #aboutabs-header{
+        padding: 15px 15px;
+        display: flex;
+        gap:15px; 
+        color: white;
     }
+    #aboutside{
+        width: 29%;
+        margin-left: 4rem;
+        font-family: 'DM Sans';
+        #aboutside-p1{
+            color: $color3;
+        }
+        #aboutside-p2{
+            color:  $color2;
+        }
+    }
+    
+}
+
+///////////////////////////////////////////////////
+
+#services{
+    
+    @include FlexCenter();
+    margin-top: 2rem;
+    h1{
+      width: 50%;
+      padding: 7rem 0px;
+    }
+
+    #box1,#box2,#box3,#box4{
+        text-align: left;
+        p{
+            font-size: 20px;
+        }
+        h2{
+            padding: 1.5rem 0px;
+        }
+        padding: 10px;
+    } 
+}
+
+///////////////////////////////////////////////////
+
+
+#content{
+    @include FlexCenter();
+    background-color: #F9F9F7;
+    padding: 5rem;
+    #clock,#percentage,#cart{
+        display: flex;
+        gap: 10px;
+    }
+    aside{
+        width: 20%;
+    }
+}
+
+///////////////////////////////////////////////////
+
+
+#testimonals{
+    hr{
+        margin:30px 0px
+    }
+
+    #testimonals-header{
+        font-family: 'Fairplay Display';
+        font-size: 4rem;
+        padding: 3rem 0px;
+    } 
+
+    @include FlexCenter();
+
+        #box1,#box2,#box3 {
+        @include FlexCenter();
+        background-color: #F9F9F7;
+        font-family: 'Fairplay Display';
+        padding: 30px 10px;
+        margin: 0px 20px;
+        border-radius:20px ;
+        -webkit-border-radius:20px ;
+        -moz-border-radius:20px ;
+        -ms-border-radius:20px ;
+        -o-border-radius:20px ;
+
+        #box1-title,#box2-title,#box3-title,#box4-title{
+            h1{
+                padding-bottom: 2rem;
+                color: #AD343E;
+            }
+        }
+        #avatar1,#avatar2,#avatar3{
+            @include FlexCenter;
+            justify-content: start;
+            gap: 10px;    
+        }
+    } 
+    
+}
+
+///////////////////////////////////////////////////
+
+#blogs{
+    background-color: #F9F9F7;
+    margin-top: 2rem;
+    min-height: 50%;
+
+    #blogbtn{
+        padding: 10px;
+        color: white;
+        background-color: #AD343E;
+        border: 2px solid #AD343E;
+        border-radius: 20px    ;
+        -webkit-border-radius: 20px    ;
+        -moz-border-radius: 20px    ;
+        -ms-border-radius: 20px    ;
+        -o-border-radius: 20px    ;
+}
+
+    #blog-header{
+        @include FlexEvenly();
+        padding: 2rem;
+    }
+     
+    #blogmain{
+        width: 20%;
+        background-color: white;
+        margin: 2rem;
+    
+    small{
+        padding: 1rem;
+    }
+    #blog-img{
+        width: 100%;
+    }
+    
+    #blogmain-p1{
+    font-family: $dmsans;
+    color: $color3;
+    padding: 1rem;
+    }
+
+    #blogmain-p2{
+    font-family: $dmsans;
+    color: $color2;
+    padding: 1rem;
+    }
+}
+
+
+    #box1,#box2,#box3,#box4{
+    background-color: white;
+        small, p{
+            padding: 1rem;
+        }
+      border:2px solid white;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+}
 }
