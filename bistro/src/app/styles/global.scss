@@ -30,11 +30,12 @@
     @include FlexAround;
     padding: 15px 0px;
     background-color: #474747;
-}
-#leftheader,#rightheader{
-    @include FlexCenter;
-    gap:10px;
-    color: white;
+
+    #leftheader,#rightheader {
+        @include FlexCenter;
+        gap:10px;
+        color: white;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -43,10 +44,12 @@
 #topnav{
     margin-top: 2rem;
     @include FlexEvenly() ;
+
     #navbtndiv{
         margin-left:3rem;
     }
-    #navbtn{
+
+    #navbtn {
         padding: 8px 13px;
         border: 2px solid black;
         border-radius: 20px;
@@ -54,10 +57,12 @@
         -moz-border-radius: 20px;
         -ms-border-radius: 20px;
         -o-border-radius: 20px;
-}   #navitems{
-    @include FlexBetween;
-    padding: 0px 0px;
-}
+    } 
+
+    #navitems {
+        @include FlexBetween;
+        padding: 0px 0px;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -109,7 +114,8 @@
 
 #browse {
     @include FlexCenter();
-    #box1,#box2,#box3,#box4{
+
+    #box1,#box2,#box3,#box4 {
         @include FlexCenter();
         font-family: 'Fairplay Display';
         flex-direction: column;
@@ -122,21 +128,24 @@
         -moz-border-radius:20px ;
         -ms-border-radius:20px ;
         -o-border-radius:20px ;
-} 
+    } 
+
     #box1-title,#box2-title,#box3-title,#box4-title{
-        h1{
+        h1 {
             padding: 1.5rem;
         }
     }
-#browse-header{
-    font-family: 'Fairplay Display';
-    font-size: 4rem;
-    padding: 3rem 0px;
-} button{
-    padding: 15px 0px;
-    color: #AD343E;
-    font-weight: 600;
-}
+    #browse-header {
+        font-family: 'Fairplay Display';
+        font-size: 4rem;
+        padding: 3rem 0px;
+    } 
+
+    button{
+        padding: 15px 0px;
+        color: #AD343E;
+        font-weight: 600;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -146,9 +155,12 @@
     padding: 5rem;
     margin-top:2rem;
     background-color: #F9F9F7;
-    #aboutimg{
+
+    #aboutimg {
         position: relative;
-    }#aboutabs{
+    } 
+
+    #aboutabs{
         background-color: #474747;
         border-radius: 5px;
         position: absolute;
@@ -158,21 +170,26 @@
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
-} #phone, #envelope, #location, #aboutabs-header{
-        padding: 15px 15px;
-        display: flex;
-        gap:15px; 
-        color: white;
-    }
-    #aboutside{
+    }  
+    #phone, #envelope, #location, #aboutabs-header{
+            padding: 15px 15px;
+            display: flex;
+            gap:15px; 
+            color: white;
+        } 
+
+    #aboutside {
         width: 29%;
         margin-left: 4rem;
         font-family: 'DM Sans';
-        #aboutside-p1{
+        #aboutside-p1 {
             color: $color3;
         }
-        #aboutside-p2{
+        #aboutside-p2 {
             color:  $color2;
+        }
+        h1{
+            width: 80%
         }
     }
     
@@ -184,12 +201,12 @@
     
     @include FlexCenter();
     margin-top: 2rem;
-    h1{
+    h1 {
       width: 50%;
       padding: 7rem 0px;
     }
 
-    #box1,#box2,#box3,#box4{
+    #box1,#box2,#box3,#box4 {
         text-align: left;
         p{
             font-size: 20px;
@@ -204,15 +221,16 @@
 ///////////////////////////////////////////////////
 
 
-#content{
+#content {
     @include FlexCenter();
     background-color: #F9F9F7;
     padding: 5rem;
-    #clock,#percentage,#cart{
+
+    #clock,#percentage,#cart {
         display: flex;
         gap: 10px;
     }
-    aside{
+    aside {
         width: 20%;
     }
 }
@@ -246,12 +264,12 @@
         -o-border-radius:20px ;
 
         #box1-title,#box2-title,#box3-title,#box4-title{
-            h1{
+            h1 {
                 padding-bottom: 2rem;
                 color: #AD343E;
             }
-        }
-        #avatar1,#avatar2,#avatar3{
+        } 
+        #avatar1,#avatar2,#avatar3 {
             @include FlexCenter;
             justify-content: start;
             gap: 10px;    
@@ -277,49 +295,136 @@
         -moz-border-radius: 20px    ;
         -ms-border-radius: 20px    ;
         -o-border-radius: 20px    ;
-}
+    }
 
     #blog-header{
         @include FlexEvenly();
         padding: 2rem;
     }
      
-    #blogmain{
+    #blogmain {
         width: 20%;
         background-color: white;
         margin: 2rem;
     
-    small{
-        padding: 1rem;
-    }
-    #blog-img{
-        width: 100%;
-    }
-    
-    #blogmain-p1{
-    font-family: $dmsans;
-    color: $color3;
-    padding: 1rem;
-    }
-
-    #blogmain-p2{
-    font-family: $dmsans;
-    color: $color2;
-    padding: 1rem;
-    }
-}
-
-
-    #box1,#box2,#box3,#box4{
-    background-color: white;
-        small, p{
+        small{
             padding: 1rem;
         }
-      border:2px solid white;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+        #blog-img{
+            width: 100%;
+        }
+        
+        #blogmain-p1{
+        font-family: $dmsans;
+        color: $color3;
+        padding: 1rem;
+        }
+
+        #blogmain-p2{
+        font-family: $dmsans;
+        color: $color2;
+        padding: 1rem;
+        }
+    }
+
+
+    #box1,#box2,#box3,#box4 {
+    background-color: white;
+    border:2px solid white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    
+        small, p {
+            padding: 1rem;
+        }
+    }
 }
+
+///////////////////////////////////////////////////
+
+#footer {
+ background-color: $bgcolor;
+ color: white;
+ padding: 5rem 0px;
+
+
+    #leftfooter {
+        @include FlexCenter();
+        flex-direction: column;
+        padding-top: 0px;
+
+        #leftfooter-header {
+            @include FlexCenter();
+            width: 100%;
+            gap: 20px;
+        }
+
+        #leftfooter-p {
+            @include FlexCenter();
+            width: 40%;
+            font-size: 20px;
+            padding: 50px 0px;
+            text-align: center
+        }
+
+        #leftfooter-icons {
+            @include FlexCenter();
+            gap:20px;
+            width: 50%;
+
+            .icon{
+            text-align: center;
+            padding: 10px;
+             background-color: red;
+             border-radius: 20px;
+             -webkit-border-radius: 20px;
+             -moz-border-radius: 20px;
+             -ms-border-radius: 20px;
+             -o-border-radius: 20px;
+            }
+        }
+    }
+
+    #middlefooter {
+        @include FlexCenter();
+
+        #middlefooter-column1,#middlefooter-column2 {
+            @include FlexCenter();
+            flex-direction: column;
+
+            #middlefooter-column1-list , #middlefooter-column2-list {
+                @include FlexCenter();
+                padding:2rem;
+                gap: 10px;
+                color: #DBDFD0;
+                font-family: $dmsans;
+                font-size: 20px;
+                flex-direction: column;
+            }
+        }
+    }
+
+    #rightfooter{
+      @include FlexCenter();
+
+      #rightfooter-image {
+        .img {
+            padding: 10px;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+            }
+        }
+    }
+
+    #bottomfooter{
+        @include FlexCenter();
+        text-align: center;
+        padding: 5rem;
+    }
 }
