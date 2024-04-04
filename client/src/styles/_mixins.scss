@@ -1,0 +1,29 @@
+@mixin FlexCenter(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin FlexStart(){
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+@mixin FlexAround(){
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin FlexBetween(){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin FlexEvenly(){
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

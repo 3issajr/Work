@@ -1,0 +1,30 @@
+#testimonals{
+    @include FlexCenter();
+
+        .testimonials-box {
+        background-color: #F9F9F7;
+        font-family: 'Fairplay Display';
+        padding: 30px 10px;
+        border-radius:20px ;
+        -webkit-border-radius:20px ;
+        -moz-border-radius:20px ;
+        -ms-border-radius:20px ;
+        -o-border-radius:20px ;
+        h1{
+            color: #AD343E;
+            font-weight: 600
+        }
+    } 
+    
+    hr{
+        margin:30px 0px
+    }
+
+    #testimonals-header{
+        font-family: 'Fairplay Display';
+        font-size: 4rem;
+        padding: 3rem 0px;
+    } 
+
+    
+}

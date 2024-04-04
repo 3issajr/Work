@@ -1,0 +1,31 @@
+#about {
+    @include FlexCenter();
+    position: relative;
+    padding-top: 10px;
+    padding: 5rem;
+    background-color: #F9F9F7;
+
+    #aboutabs{
+        background-color: #474747;
+        position: absolute;
+        left: 33%;
+        top:45%    ;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }  
+    #phone, #envelope, #location, #aboutabs-header{
+            padding: 10px 25px;
+            display: flex;
+            color: white;
+            width: 100%;
+    } 
+    #aboutside {
+        width: 29%;
+        margin-left: 2rem;
+        font-family: 'DM Sans';
+    }
+    
+}

@@ -1,0 +1,44 @@
+#contactpage{
+    background-color: $bgcolor2;
+    #contact-form{ 
+        margin-bottom: -10rem;   
+        #firstrow , #secondrow , #thirdrow{
+            label{
+                padding-bottom: 10px;
+            }
+            input{
+                padding: 10px;
+                border:2px solid grey;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                -ms-border-radius: 20px;
+                -o-border-radius: 20px;
+            }
+            textarea{
+                border: 2px solid grey;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                -ms-border-radius: 20px;
+                -o-border-radius: 20px;
+            }
+        }
+        #contactbtn{
+            button{
+                background-color: #AD343E;
+            }
+        }   
+    }
+
+    #contactmethods{
+        padding: 15rem ;
+        h1{
+            font-family: $dmsansBlack;
+        }
+        p{
+            font-family: $dmsans;
+            
+        }
+    }
+}

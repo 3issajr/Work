@@ -1,0 +1,9 @@
+#header{
+    @include FlexAround;
+    background-color: #474747;
+
+    #leftheader,#rightheader {
+        @include FlexCenter;
+        color: white;
+    }
+}

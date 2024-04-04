@@ -1,0 +1,17 @@
+#registerpage{
+    background-color: $bgcolor2;
+
+    #registration-form{
+        button , .btn {
+         background-color: #AD343E;
+         &:hover{
+            background-color: red;
+         }
+        }    
+        table{
+            tr,td{
+                padding: 2rem 5rem;
+            }
+        }
+    }
+}

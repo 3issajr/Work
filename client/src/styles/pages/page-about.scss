@@ -1,0 +1,54 @@
+#aboutpage {
+    display: flex;
+    flex-direction: column;
+    #aboutimage {
+        width: 100%;
+        position: relative;
+        .img {
+            width: 100%;
+        }
+    }
+
+    #playbutton {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        gap: 10px;
+    }
+
+    #boxs {
+        @include FlexCenter();
+        gap: 3rem;
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            gap: 20px;
+            p {
+                padding-top: 10px;
+            }
+        }
+    }
+
+    #mainbox{
+        background-color: #F9F9F7;
+        #boxes{
+            #box1 , #box2 , #box3 , #box4{
+                background-color: white;
+            }
+        }
+    }
+    #leftbox{
+        #leftbox-header{
+            p{
+                font-family: $dmsans;
+            }
+        }
+    }
+}

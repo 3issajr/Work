@@ -1,0 +1,44 @@
+#hero{
+    @include FlexCenter;
+    position: relative;
+    background-color: #F9F9F7;
+    #herotext {
+        position: absolute;
+        top: 62%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+}
+    #herobtns{
+        margin-top: 1rem;
+        @include FlexCenter();
+        #leftbtn{
+          padding: 10px 10px;
+          background-color: #AD343E;
+          color: white;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
+        }
+        #rightbtn{
+            padding: 10px 10px;
+            color: black;
+            border: 2px  solid black;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+        }
+    }
+ 
+    p{
+        font-size: 15px;
+    }
+}

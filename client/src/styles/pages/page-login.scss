@@ -1,0 +1,16 @@
+#loginpage{
+    background-color: $bgcolor2;
+    #login-form{
+        button {
+         background-color: #AD343E;
+         &:hover{
+            background-color: red;
+         }
+        }    
+    table{
+            tr,td{
+                padding: 1rem 5rem;
+            }
+        }
+    }
+}

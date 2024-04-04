@@ -1,0 +1,15 @@
+#services{
+    
+    @include FlexCenter();
+    h1 {
+      width: 70%;
+      padding: 3rem 0px;
+    }
+
+    .service-box {
+        text-align: left;        
+        h2{
+            padding: 20px 0px;
+        }
+    } 
+}

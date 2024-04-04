@@ -1,0 +1,91 @@
+#footer {
+    background-color: $bgcolor;
+   
+       #leftfooter {
+           @include FlexStart();
+           #leftfooter-p {
+               text-align: justify;
+               width: 25%;
+               font-family:$dmsans
+           }
+           #leftfooter-icons {
+               @include FlexCenter();
+               .icon{
+               padding: 10px;
+               border-radius: 20px;
+               background-color: #AD343E
+               }
+           }
+       }
+   
+       #middlefooter {
+           @include FlexCenter();
+           align-items: start;    
+           #middlefooter-column1,#middlefooter-column2 {
+               @include FlexCenter();
+               flex-direction: column;
+               align-items: center;
+   
+               #middlefooter-column1-list , #middlefooter-column2-list {
+                   display: flex;
+                   justify-content: start;
+                   flex-direction: column;
+                   font-family: $dmsans;
+                   font-size: 16px;
+                   color: #DBDFD0;
+                   padding:2rem;
+                   gap: 10px;
+               }
+           }
+       }
+   
+       #rightfooter{
+       @include FlexCenter();
+       align-content: start;
+       flex-direction: column;
+         #rightfooter-image {
+           .img {
+               border-radius: 10px;
+               -webkit-border-radius: 10px;
+               -moz-border-radius: 10px;
+               -ms-border-radius: 10px;
+               -o-border-radius: 10px;
+           }
+           }
+       }
+   
+       #bottomfooter{
+       }
+       @media only screen and (max-width: 720px) {
+           #footer {
+             #leftfooter {
+               flex-direction: column;
+             }
+       
+             #middlefooter {
+               #middlefooter-column1, #middlefooter-column2 {
+                 padding: 2rem;
+               }
+             }
+           }
+         }
+       
+         @media only screen and (min-width: 768px) {
+           #leftfooter-p {
+             width: 40%;
+           }
+       
+           #leftfooter-icons {
+             width: 50%;
+           }
+       
+           #middlefooter-column1, #middlefooter-column2 {
+             padding: 2rem;
+           }
+       
+           #bottomfooter {
+             padding: 5rem;
+           }
+         }
+       
+   }

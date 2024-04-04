@@ -1,0 +1,15 @@
+#content {
+    @include FlexCenter();
+    background-color: #F9F9F7;
+    padding: 5rem;
+
+    #clock,#percentage,#cart {
+        p{
+            font-family: $dmsans;
+            font-weight: 600;
+        }
+    }
+    aside {
+        width: 20%;
+    }
+}

@@ -1,0 +1,116 @@
+#menupage{
+    #menu-header{
+        flex-direction: column;
+        @include FlexCenter();
+        h1{
+            font-family: 'Fair Display';
+        }
+        #menu-navigation{
+            padding: 15px 0px;
+            .button{
+                color: white;
+                margin: 0px 10px;
+                background-color: #AD343E;
+                padding:5px 20px;
+                border:2px solid #AD343E;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                -ms-border-radius: 20px;
+                -o-border-radius: 20px;
+            }
+        }
+    }
+
+    #menu-content{
+        @include FlexCenter();
+        #menuitem{
+            @include FlexCenter();
+            flex-direction: column;
+            margin: 20px 10px;
+            #iteminfo {
+                @include FlexCenter();
+                flex-direction: column;
+                padding: 10px 0px;
+                
+                #price{
+                    color: #AD343E;
+                    font-weight: 1000;
+                }
+                #name{
+                    color: $color1;
+                    padding: 10px 0px;
+                }
+                #info{
+                    color: $color1;
+                    width: 70%;
+                }
+                }
+        }
+    }
+
+    #orderapp{
+        @include FlexCenter();
+        padding: 5rem 0px;
+        background-color: $bgcolor2;
+        .appimg{
+            width: 100%;
+            padding: 2rem 5rem;
+            background-color: white;
+            border:2px solid white;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+}
+    }
+    #leftdiv{
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        width: 30%;
+        p{
+            color: $color1;
+            width: 60%;
+        }
+    }
+    #rightdiv{
+        width: 50%;
+        #firstrow{
+            @include FlexCenter();
+        }
+        #secondrow{
+            @include FlexCenter();
+            padding: 20px 0px
+        }
+        #thirdrow{
+            @include FlexCenter();
+        }
+    }
+}
+@media (max-width: 768px) {
+    #menu-header p {
+        width: 80%; /* Adjust width for smaller screens */
+    }
+
+    #menu-navigation .button {
+        margin: 10px; /* Adjust margin for smaller screens */
+    }
+
+    #menuitem {
+        margin: 10px; /* Adjust margin for smaller screens */
+    }
+
+    #leftdiv, #rightdiv {
+        width: 100%; /* Make the divs full width on smaller screens */
+        margin-top: 20px; /* Adjust margin-top for smaller screens */
+    }
+
+    #rightdiv #firstrow, #rightdiv #secondrow, #rightdiv #thirdrow {
+        flex-direction: column; /* Change flex-direction to column for smaller screens */
+        align-items: center; /* Align items to center for smaller screens */
+    }
+
+    /* Additional media queries and adjustments as needed */
+}

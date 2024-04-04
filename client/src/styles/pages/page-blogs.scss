@@ -1,0 +1,28 @@
+#pagespage {
+    background-color: #F9F9F7;
+
+    #blog-header {
+        @include FlexCenter();
+        flex-direction: column;
+    }
+
+    #blog-content {
+        @include FlexCenter();
+        padding: 3rem 0px;
+    }
+
+    #blogitem {
+        margin: 20px 10px;
+        #bloginfo {
+            p {
+                font-family: $dmsans;
+            }
+        }
+    }
+
+    @media (max-width: 768px) { 
+        #blogitem {
+            margin: 10px;
+        }
+    }
+}

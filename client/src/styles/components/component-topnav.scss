@@ -1,0 +1,14 @@
+#topnav{
+    @include FlexEvenly() ;
+    padding-top: 20px;
+    #navbtn {
+        font-family: $dmsansBlack;
+        padding: 5px 10px;
+        border: 2px solid black;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    } 
+}
