@@ -1,11 +1,11 @@
 const User = require('../models/userModel')
+const jwt = require('jsonwebtoken')
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
   };
   
-
 exports.addUser = async (req , res)=>{
     try{
         const registeredUser = new User(req.body);
@@ -72,8 +72,8 @@ exports.addUser = async (req , res)=>{
     }
 
   await registeredUser.save()
-  res.status(201).json(registeredUser)
-  console.log("User Created")
+  res.status(201).json({message:"Registeration Succesfully"})
+  console.log("User Created Successfully")
 }
 catch(err){
     res.status(500).json({error : err.message})
@@ -81,28 +81,64 @@ catch(err){
 }
 }
 
-exports.loginUser = async (req ,res)=>{
-    const {email , password} = req.body
 
-    try{
-     const user = await User.login(email,password)
-     res.status(200).json(user)
+exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    const secret = process.env.JWT_SECRET || "your-secret-key";
+    const maxAge = 3600000; // 1 hour
+  
+    try {
+      const user = await User.login(email, password);
+      const token = jwt.sign({ id: user._id, email: user.email }, secret, { expiresIn: maxAge });
+  
+      res.cookie('token', token, {
+        httpOnly: true,
+        path: "/",
+        domain: 'localhost',
+        expires: new Date(Date.now() + maxAge),
+        secure: true,
+        sameSite: 'none',
+      });
+  
+      res.status(200).json({ user, token });
+    } catch (err) {
+      console.error("Login Error:", err);
+      res.status(400).json({ error: err.message });
     }
-    catch (err) {
-     res.status(400).json({error : err.message})
-     console.log("Login Error")
+  };
+  
+exports.logOut = (req, res) => {
+try {
+    if (req.cookies['token']) {
+    res.clearCookie('token', { path: "/" });
+    res.status(200).json({ message: "Successfully Logged Out" });
+    } else {
+    // If no token is present, assume the user is already logged out
+    res.status(200).json({ message: "Already logged out" });
     }
+} catch (err) {
+    console.error("Logout Error:", err);
+    res.status(500).json({ message: "Failed to clear token" });
 }
+};
 
-exports.logOut =  (req , res) =>{
-    try { 
-      if(req.cookies['token']){
-        res.clearCookie('token' , {path:"/"})
-        res.status(200).json({message:"Logged out"})
-        console.log("Token Deleted")
-      }
+exports.getUser = async (req , res) => {
+    try {
+        const email = req.decodedToken.email;
+
+        if (!email) {
+            return res.status(404).json({ error: "User email not provided" });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const userData = {email: user.email, name: user.name, gender: user.gender };
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json({ error: "Internal server error" });
     }
-    catch (err) {
-      res.status(401).json({message : "Failed To Clear"})
-    }
-  }
+};

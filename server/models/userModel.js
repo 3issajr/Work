@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema(
         name : {
             type:String,
             lowercase:true,
-            required : [true , "Please Enter Your Name"],
+            required :true,
             minlength : [5 , "Minimum Username Length is 5 Characters"]
         },
         email : {
@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema(
             lowercase:true,
             unique:true,
             trim:true,
-            required : [true , "Please Enter Your E-mail"]
+            required :true
         },
         gender : {
             type:String,
@@ -22,16 +22,16 @@ const userSchema = mongoose.Schema(
         phone : {
             type:String,
             unique:true,
-            required : [true , "Please Enter Your Phone Number"]
+            required :true
         },
         firstpass : {
             type:String,
-            required : [true , "Please Enter Your Password"],
+            required :true,
             minlength : [6 , "Minimum Password Length is 6 Characters"]
         },
         secondpass : {
             type:String,
-            required : [true , "Please Re-Enter Your Password"],
+            required :true,
             minlength : [6 , "Minimum Password Length is 6 Characters"]
         }
     }
