@@ -7,6 +7,9 @@ const adminController = require('../controllers/adminController')
 const requireAuth = require('../middlewares/authMiddleware')
 
 
+
+//  User Section
+
 router.post('/signup', authController.addUser)
 
 router.post('/signin',authController.loginUser)
@@ -19,7 +22,19 @@ router.post('/contact',contactController.addContact)
 
 router.post('/book',bookController.addBook)
 
-router.post('/')
+
+//  Admin Section
+
+
+router.post('/menu',adminController.addMenu)
+
+router.get('/menu',adminController.getMenu)
+
+router.delete('/menu/:id',adminController.deleteMenu)
+
+router.put('/menu/:id', adminController.updateMenu);
+
+router.get('/user',adminController.getUser)
 
 
 module.exports = router

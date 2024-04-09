@@ -2,7 +2,7 @@ import { useState , useEffect } from "react";
 import {Link,useLocation , useNavigate} from 'react-router-dom'
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown,Space} from 'antd';
-import AdminMenu from "./AdminMenu";
+import AdminMenu from "./Admin_Menu";
 
 
 
@@ -40,7 +40,7 @@ export default function AdminDashBoard(){
   
     return(
         <>
-        <div id ='dashboard flex ' className="h-screen bg-slate-200">
+        <div id ='dashboard' className=" ">
             <div id='dashboard-header' className="flex justify-center items-center">
                 <h1 className="text-7xl text-red-800 italic" >Dashboard</h1>
             </div>
@@ -54,12 +54,11 @@ export default function AdminDashBoard(){
             </Dropdown>
 
             <div className="flex justify-center gap-10 mt-20">
-                <button to ='/Admin/menu' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Menu</button>
-                <button className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Users</button>
+                <Link to ='/Admin/menu' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Menu</Link>
+                <Link to='/Admin/user' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Users</Link>
                 <button className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Booking</button>
             </div>
 
-            <AdminMenu/>
         </div>
         </>
     )
