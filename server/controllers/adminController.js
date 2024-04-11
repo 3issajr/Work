@@ -2,15 +2,97 @@ const Admin = require('../models/adminModel')
 const Menu = require('../models/menuModel')
 const User = require('../models/userModel')
 
+var validateEmail = function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+  };
 
-exports.addAdmin = async (req , res) =>{
+
+
+//Admin Section Starts
+
+exports.adminRegister = async (req , res)=>{
     try{
+      const newAdmin = new Admin(req.body)
+      const existingAdmin = await Admin.findOne({email : newAdmin.email})
 
+      if(!newAdmin.name){
+        res.status(400).json({error : "Fill Your Name"})
+        console.log("Admin Name Error")
+        return;
+      }
+      else if (!newAdmin.email){
+        res.status(400).json({error : "Fill Your Email"})
+        console.log("Admin Email Error")
+        return;
+      }
+      else if (!validateEmail(newAdmin.email)) {
+        res.status(400).json({ error: 'Invalid Email Format' });
+        console.log("Email Format Error")
+        return;
+    }
+      else if (existingAdmin) {
+        res.status(400).json({ error: 'Email Already Exists' });
+        console.log("Email already exists ")
+        return;
+    }
+      else if (!newAdmin.firstpass){
+        res.status(400).json({error : "Fill Your Password"})
+        console.log("Admin FirstPass Error")
+        return;
+      }
+      else if (!newAdmin.secondpass){
+        res.status(400).json({error : "Fill Your Password"})
+        console.log("Admin SecondPass Error")
+        return;
+      }
+      else if(newAdmin.firstpass !== newAdmin.secondpass){
+        res.status(400).json({error : "Password MisMatch"})
+        console.log("Password Error")
+        return;
+    }
+      else if (newAdmin.firstpass.length & newAdmin.secondpass.length <6) {
+        res.status(400).json({ error: 'Minimum Password  length is 6' });
+        console.log("Password Length Error")
+        return;
+    }
+      else if (!newAdmin.level){
+        res.status(400).json({error : "Choose Your Level"})
+        console.log("Admin Level Error")
+        return;
+      }
+    else {
+        await newAdmin.save();
+        res.status(201).json({message:"Registeration Successfully"})
+    }
     }
     catch(err){
-
+        res.status(400).json({error : err.message})
+        res.status(500).json({error : err.message})
     }
 }
+
+exports.adminLogin = async (req , res) =>{
+    const {email , password} = req.body
+    try{
+        const admin = await Admin.login(email, password);
+        res.status(200).json({admin,message:"Login Succesfully"})
+        console.log("Admin Login Successfully")
+    }
+    catch(err){
+        res.status(400).json({error : err.message})
+    }
+}
+
+exports.getAdmin = async (req , res)=>{
+  try{
+   const admin = Admin.findOne(Admin.email)
+  }
+  catch(err){
+
+  }
+}
+//Admin Section Ends
 
 
 // Menu Section Starts

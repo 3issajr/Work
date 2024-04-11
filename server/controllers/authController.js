@@ -10,20 +10,27 @@ exports.addUser = async (req , res)=>{
     try{
         const registeredUser = new User(req.body);
         const existingUser = await User.findOne({email : registeredUser.email})
-  
 
     if(!registeredUser.name){
         res.status(400).json({error: "Please Fill Your Name"})
         console.log("Name Error")
         return;
     }
-
     else if(!registeredUser.email){
         res.status(400).json({error :"Please Fill Your Email"})
         console.log("Email Error")
         return;
     }
-
+    else if (!validateEmail(registeredUser.email)) {
+        res.status(400).json({ error: 'Invalid Email Format' });
+        console.log("Email Format Error")
+        return;
+    }
+    else if (existingUser) {
+        res.status(400).json({ error: 'Email Already Exists' });
+        console.log("Email already exists ")
+        return;
+    }
     else if (!registeredUser.phone){
         res.status(400).json({error : "Please Fill Your Phone Number"})
         console.log("Phone Error")
@@ -49,11 +56,7 @@ exports.addUser = async (req , res)=>{
         console.log("Password Error")
         return;
     }
-    else if (!validateEmail(registeredUser.email)) {
-        res.status(400).json({ error: 'Invalid Email Format' });
-        console.log("Email Format Error")
-        return;
-    }
+
     else if (registeredUser.name.length <6) {
         res.status(400).json({ error: 'Minimum Username Character length is 6' });
         console.log("Username Format Error")
@@ -64,23 +67,17 @@ exports.addUser = async (req , res)=>{
         console.log("Password Length Error")
         return;
     }
-
-    else if (existingUser) {
-        res.status(400).json({ error: 'Email Already Exists' });
-        console.log("Email already exists ")
-        return;
+    else {
+        await registeredUser.save()
+        res.status(201).json({message:"Registeration Succesfully"})
+        console.log("User Created Successfully")
     }
-
-  await registeredUser.save()
-  res.status(201).json({message:"Registeration Succesfully"})
-  console.log("User Created Successfully")
 }
 catch(err){
     res.status(500).json({error : err.message})
     console.log(err)
 }
 }
-
 
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;

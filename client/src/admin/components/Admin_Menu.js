@@ -47,7 +47,7 @@ export default function AdminMenu() {
                     })
                     .catch(err => {
                         setAlertMessage(err.response.data.error);
-                        setAlertType('success');
+                        setAlertType('error');
                         setAlertVisible(true);
                     });
             })
@@ -115,11 +115,9 @@ export default function AdminMenu() {
                 </div>
             </Fade>
 
-          
             <div className='flex justify-center my-10'>
                 <button className='rounded-lg shadow-sm text-white bg-red-800 p-3' onClick={handleAddMenuBtnClick}>Add Menu Item</button>
             </div>
-
 
             <div className='flex justify-center'>
 
@@ -222,6 +220,7 @@ export default function AdminMenu() {
 
                             </tr>
                         )}
+                        
                     </tbody>
 
 

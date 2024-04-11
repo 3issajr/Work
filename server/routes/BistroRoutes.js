@@ -25,6 +25,9 @@ router.post('/book',bookController.addBook)
 
 //  Admin Section
 
+router.post('/adminregister',adminController.adminRegister)
+
+router.post('/adminlogin' , adminController.adminLogin)
 
 router.post('/menu',adminController.addMenu)
 
