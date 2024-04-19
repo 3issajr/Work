@@ -25,6 +25,27 @@
         font-size: 4rem;
         padding: 3rem 0px;
     } 
-
     
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #testimonals{
+        padding: 1rem;
+        #testimonals-header{
+          font-family: 'Fairplay Display';
+          font-size: 2rem;
+          font-weight: 600;
+        }
+    }
+   }
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+  #testimonals{
+    #testimonals-header{
+        font-family: 'Fairplay Display';
+        font-size: 2rem;
+        font-weight: 600;
+    }
+  }
+ }
+ 

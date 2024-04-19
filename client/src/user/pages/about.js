@@ -54,7 +54,7 @@ export default function About() {
                 <Fade duration={4000}>
                     <div id='box2' className='box'>
                         <img src={Icon2} width={100} height={100} alt='icon' />
-                        <div>
+                        <div id='test'>
                             <h1 className='text-3xl'>Easy To Order</h1>
                             <p>In the new era of technology we look in the future with certainty life.</p>
                         </div>
@@ -74,11 +74,11 @@ export default function About() {
 
                 <div id='mainbox' className='flex justify-center '>
 
-                <div className='flex flex-col' style={{width:"20%"}}>
+                <div id='test' className='flex flex-col'>
 
                     <div id='leftbox' className='py-10'>
 
-                        <div id='leftbox-header' style={{width:"90%"}} >
+                        <div id='leftbox-header' >
 
                             <div >
                                 <h1 className='text-4xl font-bold'>A little information for our valuable guest</h1>

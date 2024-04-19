@@ -5,14 +5,13 @@ import Event from '../public/images/event.png'
 
 export default function Services() {
   return (
-    <div id='services' className='py-8'>
-      <div className='container'>
+    <div id='services' className='flex flex-col py-8'>
 
-        <h1 id='services-header' className='text-4xl md:text-7xl text-start'>
+        <h1 id='services-header' className='text-4xl md:text-7xl text-start '>
           We also offer unique services for your events
         </h1>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8'>
+        <div className='w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8'>
 
           <div className='service-box'>
             <img src={Catering} width={370} height={300} alt=' '/>
@@ -49,6 +48,5 @@ export default function Services() {
         </div>
 
       </div>
-    </div>
   )
 }

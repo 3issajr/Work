@@ -6,11 +6,11 @@ export default function Hero() {
 
             <div className='flex flex-col md:flex-row justify-center items-center'>
 
-                <div id='heroimg' className='md:w-5/6 md:w-100 sm:w-5/6 relative'>
+                <div id='heroimg' className='w-full md:w-1/2 lg:w-5/6 relative mb-8 md:mb-0'>
                     <img src={heroImage} className="w-full h-auto" alt='hero' />
                 </div>
 
-                <div id='herotext' className='md:w-1/2 md:pl-8 lg:pl-12 mt-8 md:mt-0 absolute top-1/2 transform -translate-y-1/2 text-center'>
+                <div id='herotext' className='w-full md:w-1/2 md:pl-8 lg:pl-12 mt-8 md:mt-0 text-center'>
 
                     <h1 className='text-2xl md:text-4xl lg:text-7xl font-bold mb-4'>Best food for<br/>your taste</h1>
                     <div className='mb-4'>

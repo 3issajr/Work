@@ -12,3 +12,56 @@
         -o-border-radius: 20px;
     } 
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #topnav{
+        #logo{
+            width: 50%;
+            h1{
+                font-size: 1rem;
+                font-weight: 600;
+                margin-top: 15px;
+            }
+        }
+        #navitems{
+            font-size: 12px;
+        }
+        #user{
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px;
+        }
+    }
+    #navbtn{
+        margin-right: 5px;
+        font-size: 8px;
+    }
+   }
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    #topnav{
+        #logo{
+            width: 70%;
+            h1{
+                font-size: 2rem;
+                font-weight: 600;
+                margin-top: 15px;
+            }
+        }
+        #navitems{
+            font-size: 12px;
+        }
+        #user{
+            font-size: 15px;
+            font-weight: 600;
+            padding: 5px;
+        }
+     
+    }
+    #navbtn{
+        margin-right: 5px;
+        font-size: 12px;
+    }
+   }
+ 
+ 

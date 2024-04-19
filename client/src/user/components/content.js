@@ -9,11 +9,11 @@ export default function Content() {
   return (
     <div id='content' className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
 
-      <div className="md:col-span-2 lg:col-span-1">
+      <div id='oneimg' className="md:col-span-2 lg:col-span-1">
         <img src={img1} width={500} height={200} alt='man-cooking' />
       </div>
 
-      <div className="md:col-span-1 lg:col-span-2 grid grid-cols-1 gap-8">
+      <div id='twoimg' className="md:col-span-1 lg:col-span-2 grid grid-cols-1 gap-8 sm:">
         <div>
           <img src={img2} width={300} height={300} alt='man-cooking' />
         </div>
@@ -25,10 +25,10 @@ export default function Content() {
 
       <aside className="md:col-span-2 lg:col-span-3">
 
-        <h1 className='text-4xl md:text-6xl font-bold mb-3'>Fasted Food Delivery in City</h1>
-        <p className='text-sm md:text-base mt-3 md:mt-5'>Our visual designer lets you quickly and of drag a down your way to customapps for both keep desktop. </p>
+        <h1 className='text-4xl md:text-6xl sm:text-xl font-bold mb-3'>Fasted Food Delivery in City</h1>
+        <p className='text-sm  md:text-base mt-3 md:mt-5'>Our visual designer lets you quickly and of drag a down your way to custom apps for both keep desktop. </p>
 
-        <div className='mt-5 md:mt-8 grid grid-cols-1 md:grid-rows-3 gap-4'>
+        <div id='icons' className='mt-5 md:mt-8 grid grid-cols-1 md:grid-rows-3 gap-4'>
 
           <div id='clock' className='flex items-center'>
             <div className='bg-red-500 rounded-full p-1'>

@@ -133,7 +133,7 @@ exports.getUser = async (req , res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        const userData = {id : user._id, email: user.email, name: user.name, gender: user.gender };
+        const userData = {id : user._id, email: user.email, name: user.name, gender: user.gender , phone: user.phone};
         res.status(200).json(userData);
         
     } catch (err) {
@@ -145,16 +145,14 @@ exports.getUser = async (req , res) => {
 exports.updateProfile = async (req, res) => {
     try {
         const  { id }  = req.params; 
-        const { name, email, gender } = req.body;
+        const { name, email, gender , phone } = req.body;
 
-        const user = await User.findByIdAndUpdate(id , {name , email , gender}, {new:true});
+        const user = await User.findByIdAndUpdate(id , {name , email , gender , phone}, {new:true});
 
-        console.log(id)
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
+        if (req.cookies['token']) {
+            res.clearCookie('token', { path: "/" });
+            res.status(200).json(user);
         }
-
-        res.status(200).json(user);
     } catch (error) {
         console.error("Error updating user profile:", error);
         res.status(500).json({ error: "Internal server error" });

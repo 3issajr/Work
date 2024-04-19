@@ -5,8 +5,8 @@ import { Bounce } from 'react-awesome-reveal';
 
 export default function UserBook() {
     const [book, setBooking] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const user = localStorage.getItem('user')
 
     useEffect(() => {
@@ -17,23 +17,14 @@ export default function UserBook() {
                     withCredentials: true,
                     headers: {'Authorization': `${token}`}
                 });
-                setBooking(response.data.booking);
-                setLoading(false);
-             
-            } catch (error) {
-                if(!user){
-                    setError("You Must Login First")
-                }
-                else{
+                    setBooking(response.data.booking);
+                    setLoading(false)
+                } catch (error) {
                     setError(error.response.data.error);
                 }
-                setLoading(false);
-            }
-        };
-        fetchBooking();
-    }, []);
-    
-    
+            };
+            fetchBooking();
+        }, []);
 
     if (loading) {
         return(
@@ -46,10 +37,9 @@ export default function UserBook() {
     if (error) {
         return(
         <Bounce>
-            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+            <div className="text-red-800  flex justify-center items-center h-screen">
                 <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
-                <h1 className=' text-5xl p-5 '>{error}</h1>
-                <NavLink to='/login'>Click To Login</NavLink>
+                    {!user ? (<div><p className='text-5xl p-5'>You Must Login First</p> <p className='text-2xl'><NavLink to='/login'>Click To Login</NavLink></p></div>)  :<h1 className='text-5xl'>{error}</h1>}
                 </div>
             </div>
         </Bounce>
@@ -61,8 +51,6 @@ export default function UserBook() {
         <div id='userbook' className="flex justify-center items-center h-screen">
 
             <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
-                <h1 className='text-4xl font-bold mb-4 text-center'>My Bookings</h1>
-
                 
             {book.map(book => (
                 <div key={book._id} className='grid grid-cols-2 gap-4 p-5'>
@@ -100,7 +88,6 @@ export default function UserBook() {
                     </div>
                 </div>
             ))}
-
 
             </div>
 

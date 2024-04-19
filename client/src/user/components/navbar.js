@@ -98,7 +98,7 @@ function NavBar() {
           </div>
         </Bounce>
 
-        <div className="hidden md:flex items-center">
+        <div id='navitems' className="hidden md:flex items-center">
           {NavLinks.map((link) => {
             const isActive = pathname.startsWith(link.to);
             return (
@@ -117,7 +117,7 @@ function NavBar() {
 
         <Dropdown menu={{ items }}>
           <Link onClick={(e) => e.preventDefault()}>
-            <Space className='text-2xl bg-slate-200 rounded-lg shadow-md capitalize p-2'>
+            <Space id='user' className='text-2xl bg-slate-200 rounded-lg shadow-md capitalize p-2'>
               {users}
               <DownOutlined />
             </Space>

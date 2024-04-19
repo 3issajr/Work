@@ -43,12 +43,61 @@
                 background-color: white;
             }
         }
+        #test{
+            width: 20%;
+        }
     }
     #leftbox{
         #leftbox-header{
+            width: 90%;
             p{
                 font-family: $dmsans;
             }
         }
     }
 }
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #aboutpage{
+    #aboutimage{
+        img{
+           width: 100%;
+        }
+        #playbutton{
+            img{
+               width: 20%;
+            }
+            h1{
+                font-size: 2rem;
+            }
+        }
+    }
+    #boxs{
+        display: flex;
+        flex-direction: column;
+    }
+    #mainbox{
+        display: flex;
+        justify-content: start;
+        width: 100%;
+        background-color: red;
+        #test{
+            background-color: green;
+        }
+        #leftbox{
+            width: 100%;
+            #leftbox-header{
+                width: 100%;
+            }
+        }
+    }
+  }
+  #rightbox{
+    width: 100%;
+  }
+}
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+  
+ }

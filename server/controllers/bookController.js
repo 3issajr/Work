@@ -66,11 +66,12 @@ exports.getBook = async (req, res) => {
  
      const booking = await Book.find({ email : email });
  
-     if (!booking) {
-         return res.status(404).json({ error: "No booking found for this user" });
-        }
-        
-    return res.status(200).json({ booking });
+     if (booking.length === 0) {
+         return res.status(404).json({ error: "No Booking Found" });
+          }
+     else {
+      return res.status(200).json({ booking });
+      }
 
     } catch (err) {
          console.error("Error fetching user bookings:", err);

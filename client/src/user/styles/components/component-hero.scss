@@ -42,3 +42,35 @@
         font-size: 15px;
     }
 }
+
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+     #hero{
+        #heroimg{
+            width: 100%;
+        }
+        #herotext{
+            h1{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 12px;
+            }
+            #herobtns{
+                button{
+                    padding: 2px 5px;
+                }
+            }
+        }
+     }
+   }
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+     #hero{
+        #heroimg{
+            width: 100%;
+        }
+     }
+ }
+ 

@@ -7,7 +7,7 @@ export default function Testimonals() {
     <div id='testimonals' className=" py-8">
       <div className="container">
 
-        <h1 id='testimonals-header' className="text-4xl md:text-7xl text-center mb-8">
+        <h1 id='testimonals-header' className="sm:text-5xl text-4xl md:text-7xl text-center mb-8">
           What Our Customers Say
         </h1>
 

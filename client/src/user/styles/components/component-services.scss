@@ -1,5 +1,4 @@
 #services{
-    
     @include FlexCenter();
     h1 {
       width: 70%;
@@ -12,4 +11,27 @@
             padding: 20px 0px;
         }
     } 
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+   #services{
+    h1{
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+   }
+  }
+
+ @media (min-width: 992px) and (max-width: 1199.98px) {
+    #services{
+        h1{
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    }
 }
