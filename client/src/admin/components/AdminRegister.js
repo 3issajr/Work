@@ -25,9 +25,7 @@ export default function AdminRegister(){
             setAlertMessage(response.data.message);
             setAlertType('success');
             setAlertVisible(true);
-            setTimeout(() => {
-                Navigate('/Admin/dashboard')
-            }, 2000);
+            setTimeout(() => { Navigate('/Admin/dashboard')}, 2000);
         })
         .catch((err)=>{
             setAlertMessage(err.response.data.error);

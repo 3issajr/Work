@@ -1,6 +1,7 @@
 const Admin = require('../models/adminModel')
 const Menu = require('../models/menuModel')
 const User = require('../models/userModel')
+const Book = require('../models/bookModel')
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -10,7 +11,6 @@ var validateEmail = function(email) {
 
 
 //Admin Section Starts
-
 exports.adminRegister = async (req , res)=>{
     try{
       const newAdmin = new Admin(req.body)
@@ -68,8 +68,8 @@ exports.adminRegister = async (req , res)=>{
     }
     catch(err){
         res.status(400).json({error : err.message})
-        res.status(500).json({error : err.message})
-    }
+        res.status(500).json({ err: 'Internal server error' });
+      }
 }
 
 exports.adminLogin = async (req , res) =>{
@@ -86,12 +86,13 @@ exports.adminLogin = async (req , res) =>{
 
 exports.getAdmin = async (req , res)=>{
   try{
-   const admin = Admin.findOne(Admin.email)
+   const admin = await Admin.findOne(Admin.email)
   }
   catch(err){
 
   }
 }
+
 //Admin Section Ends
 
 
@@ -122,23 +123,28 @@ exports.addMenu = async (req , res)=>{
 }
 
 exports.getMenu = async (req , res)=>{
-    try{
+    try {
       const menu = await Menu.find()
+
+      if(menu.length === 0){
+        res.status(400).json({error : "No Menu Items Found"})
+        return
+      }
+
       res.status(200).json({menu , message : "Menu Fetched Successfully"})
       console.log("Menu Fetched")
     }
-    catch(err){
+    catch (err){
       console.log(err)
-      res.status(500).json({error : err.message})
+      res.status(500).json({ err: 'Internal server error' });
     }
 }
 
 exports.updateMenu = async (req, res) => {
     try {
-        const { id } = req.params; // Extract the menu item id from the request parameters
-        const updatedMenuData = req.body; // Extract the updated menu item data from the request body
+        const { id } = req.params; 
+        const updatedMenuData = req.body; 
 
-        // Update the menu item in the database
         const updatedMenu = await Menu.findByIdAndUpdate(id, updatedMenuData, { new: true });
 
         if (!updatedMenu) {
@@ -152,18 +158,20 @@ exports.updateMenu = async (req, res) => {
     }
 };
 
-
 exports.deleteMenu = async (req, res) => {
     try {
         const { id } = req.params; 
 
         const deletedMenu = await Menu.findByIdAndDelete(id);
+
         if (!deletedMenu) {
             console.log("Menu Deleting Item is Not Fond")
-            return res.status(404).json({ error: 'Menu item not found' });
+            return res.status(404).json({ error: 'Menu item not Found' });
         }
+
         res.status(200).json({ message: 'Menu Item deleted successfully' });
         console.log("Menu Item Deleted")
+
     } catch (err) {
         console.error('Error deleting menu item:', err);
         res.status(500).json({ err: 'Internal server error' });
@@ -172,18 +180,102 @@ exports.deleteMenu = async (req, res) => {
 // Menu Section Ends
 
 
-
-
 // User Section Starts
 exports.getUser = async (req , res)=>{
-    try{
+    try {
       const user = await User.find()
+
+      if(user.length === 0){
+        res.status(400).json({error : "No Users Found"})
+        console.log("Users Not Found")
+      }
       res.status(200).json({user , message :"User Fetched Succesfully"})
       console.log("Users Fetched")
     }
-    catch(err){
-      res.status(400).json({error : err.message})
-      console.log("Fetching User Error")
-    }
 
+    catch (err) {
+      res.status(400).json({error : err.message})
+      res.status(500).json({ err: 'Internal server error' });
+    }
 }
+
+exports.deleteUser = async (req , res) => {
+    try {
+      const { id } = req.params; 
+
+      const deletedUser = await User.findByIdAndDelete(id);
+
+      if (!deletedUser) {
+          console.log("Deleting User is Not Found")
+          return res.status(404).json({ error: 'There are no Users'});
+      }
+
+      res.status(200).json({ message: 'User Deleted Successfully' });
+      console.log("User Deleted")
+
+  } catch (err) {
+      console.error('Error deleting User Account:', err);
+      res.status(500).json({ err: 'Internal server error' });
+  }
+};
+// User Section Ends
+
+
+
+// Booking Section Starts
+exports.getBooking = async (req , res)=>{
+  try {
+   const booking = await Book.find()
+
+   if(booking.length === 0){
+    res.status(400).json({error : "No Booking Found"})
+    console.log("Admin Booking Not Found")
+   }
+
+   else {
+    res.status(200).json({ booking , message:"Bookings Fetched Succesfully"})
+    console.log("Fetched Booking")
+   }
+  }
+  catch (error) {
+    res.status(500).json({ err: 'Internal server error' });
+  }
+}
+
+exports.deleteBooking = async (req, res) => {
+  try {
+      const { id } = req.params; 
+
+      const deletedBooking = await Book.findByIdAndDelete(id);
+
+      if (!deletedBooking) {
+          console.log("Booking Deleting Order is Not Found")
+          return res.status(404).json({ error: 'There is no Booking Orders' });
+      }
+
+      res.status(200).json({ message: 'Booking Order Deleted Successfully' });
+      console.log("Booking Item Deleted")
+
+  } catch (err) {
+      console.error('Error deleting Booking Order:', err);
+      res.status(500).json({ err: 'Internal server error' });
+  }
+};
+
+exports.updateBooking = async (req , res)=>{
+    const { id } = req.params;
+    const { status } = req.body;
+
+    try {
+        const updatedBooking = await Book.findByIdAndUpdate(id, { status : status }, { new: true });
+        if (!updatedBooking) {
+            return res.status(404).json({ error: 'Booking not found' });
+        }
+        res.status(200).json({ message: 'Booking status updated successfully', booking: updatedBooking });
+    } 
+    catch (error) {
+        console.error('Error updating booking status:', error.message);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+// Booking Section Ends

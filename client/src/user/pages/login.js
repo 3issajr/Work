@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-
 import {Fade} from 'react-awesome-reveal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -17,9 +16,7 @@ export default function Login(){
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         axios.post('http://localhost:3000/signin',formData , {withCredentials:true})
-
         .then((result)=>{
                 document.getElementById('email-input').value=''
                 document.getElementById('password-input').value=''
@@ -60,13 +57,7 @@ export default function Login(){
             <Fade direction='up' >
                 <div className='text-5xl flex justify-center items-center'>
                 {alertVisible && (
-                        <Alert
-                        message={alertMessage}
-                        type={alertType}
-                        closable
-                        className='text-3xl'
-                        onClose={() => setAlertVisible(false)}
-                        />
+                        <Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
                     )}
                 </div>
             </Fade>
@@ -97,7 +88,6 @@ export default function Login(){
                             </td>
                         </tr>
 
-                       
                         <tr>
                             <td className="text-3xl py-2">Password</td>
                         </tr>

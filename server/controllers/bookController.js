@@ -1,8 +1,17 @@
 const Book = require('../models/bookModel')
+const User = require('../models/userModel')
+
 
 exports.addBook = async (req,res)=>{
     try{
-     const newBook = new Book(req.body)
+   
+        const userEmail = req.decodedToken.email;
+
+        if (!userEmail) {
+            return res.status(401).json({ error: "Unauthorized" });
+        }
+
+        const newBook = new Book({...req.body, email: userEmail});
 
          if(!newBook.date){
             res.status(400).json({error : "Fill You Date"})
@@ -47,3 +56,25 @@ exports.addBook = async (req,res)=>{
     }
 }
 
+exports.getBook = async (req, res) => {
+    try {
+     const email = req.decodedToken.email;
+ 
+     if (!email || email === '') { // Check if email is not provided or empty
+         return res.status(401).json({ error: "Unauthorized: User must log in first" });
+        }
+ 
+     const booking = await Book.find({ email : email });
+ 
+     if (!booking) {
+         return res.status(404).json({ error: "No booking found for this user" });
+        }
+        
+    return res.status(200).json({ booking });
+
+    } catch (err) {
+         console.error("Error fetching user bookings:", err);
+         return res.status(500).json({ error: "Internal server error" });
+    }
+ };
+ 

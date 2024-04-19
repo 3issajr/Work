@@ -62,13 +62,7 @@ export default function Register(){
             <Fade direction='up' >
                 <div className='text-5xl flex justify-center items-center'>
                 {alertVisible && (
-                        <Alert
-                        message={alertMessage}
-                        type={alertType}
-                        closable
-                        className='text-3xl'
-                        onClose={() => setAlertVisible(false)}
-                        />
+                        <Alert message={alertMessage} type={alertType} closable className='text-3xl'onClose={() => setAlertVisible(false)} />
                     )}
                 </div>
             </Fade>

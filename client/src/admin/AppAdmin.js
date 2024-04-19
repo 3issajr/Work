@@ -5,6 +5,7 @@ import AdminDashBoard from './components/AdminDashboard'
 import AdminMenu from './components/Admin_Menu'
 import AdminUser from './components/Admin_User'
 import AdminRegister from './components/AdminRegister'
+import AdminBooking from './components/Admin_Booking'
 function App(){
 return(
     <>
@@ -14,6 +15,7 @@ return(
         <Route path='/menu' element={<AdminMenu/>}></Route>
         <Route path='/user' element={<AdminUser/>}></Route>
         <Route path='/register' element={<AdminRegister/>}></Route>
+        <Route path='/book' element={<AdminBooking/>}></Route>
     </Routes>
     </>
 )

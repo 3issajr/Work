@@ -87,7 +87,8 @@ exports.loginUser = async (req, res) => {
     try {
       const user = await User.login(email, password);
       const token = jwt.sign({ id: user._id, email: user.email }, secret, { expiresIn: maxAge });
-  
+      console.log(req.decodedToken)
+
       res.cookie('token', token, {
         httpOnly: true,
         path: "/",
@@ -110,7 +111,6 @@ try {
     res.clearCookie('token', { path: "/" });
     res.status(200).json({ message: "Successfully Logged Out" });
     } else {
-    // If no token is present, assume the user is already logged out
     res.status(200).json({ message: "Already logged out" });
     }
 } catch (err) {
@@ -133,9 +133,30 @@ exports.getUser = async (req , res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        const userData = {email: user.email, name: user.name, gender: user.gender };
+        const userData = {id : user._id, email: user.email, name: user.name, gender: user.gender };
         res.status(200).json(userData);
+        
     } catch (err) {
+        res.status(404).json({err: 'aasda'})
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const  { id }  = req.params; 
+        const { name, email, gender } = req.body;
+
+        const user = await User.findByIdAndUpdate(id , {name , email , gender}, {new:true});
+
+        console.log(id)
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        console.error("Error updating user profile:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };

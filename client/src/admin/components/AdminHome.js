@@ -19,8 +19,9 @@ export default function AdminHome(){
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-       await axios.post('http://localhost:3000/adminlogin',formData)
+        await axios.post('http://localhost:3000/adminlogin',formData)
         .then((response)=>{
+            console.log(response)
             setAlertMessage(response.data.message);
             setAlertType('success');
             setAlertVisible(true);
@@ -62,7 +63,7 @@ export default function AdminHome(){
                         onChange={(e)=>setFormData({...formData , email : e.target.value})}
                         type='text' 
                         className="rounded-lg p-2 text-2xl text-center border-black border-solid border-4" 
-                        placeholder="Username"/>
+                        placeholder="Email"/>
                     </div>
 
                     <div>

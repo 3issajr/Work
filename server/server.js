@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const route = require('./routes/BistroRoutes')
@@ -14,6 +15,7 @@ mongoose.connect('mongodb+srv://eissa:test123@cluster0.wqvn0jh.mongodb.net/Bistr
 .catch((err)=>{console.error("Database connection failed"),err})
 
 app.use(cookieParser())
+app.use(bodyParser.json());
 
 app.use(
     cors({

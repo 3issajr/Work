@@ -14,21 +14,31 @@ export default function AdminUser(){
 
     useEffect(()=>{
         axios.get('http://localhost:3000/user')
-        .then(response=>{
-            console.log(response)
+        .then(response=>{ 
             setAlertMessage(response.data.message);
-            setAlertType('success');
-            setAlertVisible(true);
             setUsers(response.data.user)
-        })
-        .catch(err=>{
-            setAlertMessage(err.response.data.error);
             setAlertType('success');
             setAlertVisible(true);
-            console.error('Error fetching menu:', error);
+        })
+        .catch(error=>{
+            setAlertMessage(error.response.data.error);
+            setAlertType('error');
+            setAlertVisible(true);
         })
     },[])
 
+    const handleDeleteMenuItem = (itemId) => {
+        axios.delete(`http://localhost:3000/user/${itemId}`)
+            .then(response => {
+                setUsers(prevUsers => prevUsers.filter(item => item._id !== itemId));
+                setAlertMessage(response.data.message);
+                setAlertType('success');
+                setAlertVisible(true);
+            })
+            .catch(error => {
+                console.error('Error deleting menu item:', error);
+            });
+    };
     return (
         <>
             <div id='user' className='h-screen'>
@@ -36,15 +46,9 @@ export default function AdminUser(){
                 <AdminDashBoard/>
 
                 <Fade direction='up' >
-                    <div className='text-5xl flex justify-center items-center my-10'>
+                    <div className='flex justify-center items-center my-10'>
                     {alertVisible && (
-                            <Alert
-                            message={alertMessage}
-                            type={alertType}
-                            closable
-                            className='text-3xl'
-                            onClose={() => setAlertVisible(false)}
-                            />
+                            <Alert  message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
                         )}
                     </div>
                 </Fade>

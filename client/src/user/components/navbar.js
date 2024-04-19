@@ -46,10 +46,7 @@ function NavBar() {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
       setIsLoggedIn(false);
-      setTimeout(() => {
-        setUsers('');
-        navigate('/'); // Navigate to the default route (e.g., Home)
-      },);
+      setTimeout(() => {setUsers(''); navigate('/'); },);
     })
     .catch((err)=>{
       setLogoutMessage(`${err.reponse.data.error}`);
@@ -63,12 +60,11 @@ function NavBar() {
     },
     {
       key: '2',
-      label: (
-        <a onClick={handleLogout}>
-          Logout
-        </a>
-        
-      ),
+      label:  <Link to='/mybooking'> My Booking </Link>
+    },
+    {
+      key: '3',
+      label:  <a onClick={handleLogout}> Logout </a>
     },
   ];
 

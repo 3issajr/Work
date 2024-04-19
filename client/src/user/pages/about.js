@@ -41,7 +41,6 @@ export default function About() {
                 </div>
 
                 <div id='boxs' className='md:grid-cols-3'>
-
                 <Fade direction='left' duration={2000}>
                     <div id='box1' className='box'>
                         <img src={Icon1} width={100} height={100} alt='icon' />
@@ -142,7 +141,6 @@ export default function About() {
                             <img src={Infoimg2}  alt='' style={contentStyle} />
                         </div>
                     </Carousel>
-
                 </div>
             </div>
 

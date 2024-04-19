@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const bookSchema = mongoose.Schema({
     date : {
-        type : Date,
+        type : String,
         required:true
     },
     time : {
@@ -17,14 +17,23 @@ const bookSchema = mongoose.Schema({
     },
     phone : {
         type : String,
-        unique:true,
         requrired:true
     },
     persons : {
         type : String,
         enum : ['1','2','3'],
         required:true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    status : {
+        type: String,
+        enum : ['pending','rejected','accepted'],
+        default: 'pending'  
     }
+
 },{timestamps:true})
 
 const bookModel = mongoose.model("books",bookSchema)

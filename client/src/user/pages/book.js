@@ -21,6 +21,7 @@ export default function Book(){
         axios.post('http://localhost:3000/book',formData , {withCredentials:true})
 
         .then((result)=>{
+            console.log(result)
                 setAlertMessage(result.data.message)
                 setAlertType('success');
                 setAlertVisible(true);
@@ -64,15 +65,9 @@ return(
     
 
             <Fade direction='left' >
-                <div className='text-5xl flex justify-center items-center mt-10  '>
+                <div className='text-5xl flex justify-center items-center mt-3'>
                 {alertVisible && (
-                        <Alert
-                        message={alertMessage}
-                        type={alertType}
-                        closable
-                        className='text-3xl'
-                        onClose={() => setAlertVisible(false)}
-                        />
+                        <Alert message={alertMessage} type={alertType} closable className='text-3xl'  onClose={() => setAlertVisible(false)}  />
                     )}
                 </div>
             </Fade>

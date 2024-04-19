@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Bounce } from 'react-awesome-reveal';
 
 export default function Profile() {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [newName, setNewName] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newGender, setNewGender] = useState(''); 
+    const navigate = useNavigate()
+console.log(profile)
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -14,10 +19,9 @@ export default function Profile() {
                 const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
                 const response = await axios.get('http://localhost:3000/profile', {
                     withCredentials: true,
-                    headers: {
-                        'Authorization': `${token}` // Assuming you're using a JWT token
-                    }
+                    headers: {'Authorization': `${token}`}
                 });
+                console.log(response.data)
                 setProfile(response.data);
                 setLoading(false);
             } catch (error) {
@@ -28,6 +32,27 @@ export default function Profile() {
         fetchProfile();
     }, []);    
 
+    const handleUpdateProfile = async (userId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.put(`http://localhost:3000/profile/${userId}`, {
+                name: newName,
+                email: newEmail,
+                gender: newGender
+            }, {
+                withCredentials: true,
+                headers: {'Authorization': `${token}`}
+            });
+
+            setProfile(response.data);
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+            setTimeout(()=>navigate('/signin'),2000)
+        } catch (error) {
+            console.log(error)
+            setError(error.message);
+        }
+    };
 
     if (loading) {
         return(
@@ -37,49 +62,67 @@ export default function Profile() {
         )
     }
 
-    if (error) {
-        return(
-        <Bounce>
-            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
-                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
-                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
-                <NavLink to='/login'>Click To Login</NavLink>
-                </div>
-            </div>
-        </Bounce>
-        )
-    }
+    // if (error) {
+    //     return(
+    //     <Bounce>
+    //         <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+    //             <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+    //             <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+    //             <NavLink to='/login'>Click To Login</NavLink>
+    //             </div>
+    //         </div>
+    //     </Bounce>
+    //     )
+    // }
 
     return (
         <div id='profile' className="flex justify-center items-center h-screen">
 
+                    <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
+                        <h1 className='text-4xl font-bold mb-4 text-center'>Profile</h1>
+                        <div className='flex flex-col gap-4 p-5'>
+                            <div className='flex items-center p-5'>
+                                <label className='mr-4'>Name:</label>
+                                <p>{profile.name}</p>
+                            </div>
+                            <div className='flex items-center p-5'>
+                                <label className='mr-4'>Email:</label>
+                                <p>{profile.email}</p>
+                            </div>
+                            <div className='flex items-center p-5'>
+                                <label className='mr-4'>Gender:</label>
+                                <p>{profile.gender}</p>
+                            </div>
+                            <div className='flex items-center gap-5 pt-2'>
+                                <button onClick={()=>handleUpdateProfile(profile.id)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Update Profile</button>
+                                <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Change Password</button>
+                                <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Forgot Password</button>
+                            </div>
+                        </div>
+                    </div>
+
             <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
                 <h1 className='text-4xl font-bold mb-4 text-center'>Profile</h1>
-
                 <div className='flex flex-col gap-4 p-5'>
                     <div className='flex items-center p-5'>
                         <label className='mr-4'>Name:</label>
-                        <span>{profile.name}</span>
+                        <input type="text" value={profile.name} onChange={(e) => setNewName(e.target.value)} />
                     </div>
-
                     <div className='flex items-center p-5'>
                         <label className='mr-4'>Email:</label>
-                        <span>{profile.email}</span>
+                        <input type="email" value={profile.email} onChange={(e) => setNewEmail(e.target.value)} />
                     </div>
-
                     <div className='flex items-center p-5'>
                         <label className='mr-4'>Gender:</label>
-                        <span>{profile.gender}</span>
+                        <input type="text" value={profile.gender} onChange={(e) => setNewGender(e.target.value)} />
                     </div>
-
                     <div className='flex items-center gap-5 pt-2'>
+                        <button onClick={()=>handleUpdateProfile(profile.id)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Update Profile</button>
                         <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Change Password</button>
                         <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Forgot Password</button>
                     </div>
-
                 </div>
             </div>
-
         </div>
     );
 }

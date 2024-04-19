@@ -15,6 +15,7 @@ import Contact from './pages/contact'
 import Register from './pages/register'
 import Login from './pages/login'
 import Profile from './pages/profile'
+import UserBook from './pages/userbook'
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/mybooking' element={<UserBook/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
           <Route path='*' element={<NotFound/>} />
     </Routes> 

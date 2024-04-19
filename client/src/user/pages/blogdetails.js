@@ -7,11 +7,7 @@ import Data from './data/blogsdata'
 export default function BlogDetails() {
     const { id } = useParams();
     const blog = Data.find(blogs => blogs.id == id);
-
-    if (!blog) {
-        return <div>Blog not found</div>;
-    }
-
+    
 return (
     <>
         <div id='blogdetails-page' className='flex flex-col justify-center'>

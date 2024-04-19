@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios'
-
 import {Alert} from 'antd'
 import { Fade } from 'react-awesome-reveal';
 
@@ -9,12 +8,7 @@ export default function Contact() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('');
-  const [formData , setFormData] =useState ({
-    name : '',
-    email: '',
-    subject:'',
-    message:''
-  })
+  const [formData , setFormData] =useState ({name : '', email: '', subject:'', message:'' })
 
 
  const handleSubmit = async (e)=>{
@@ -45,19 +39,13 @@ export default function Contact() {
           </Fade>
         </div>
 
-            <Fade direction='up' >
-                <div className='text-5xl flex justify-center items-center mt-10'>
-                {alertVisible && (
-                        <Alert
-                        message={alertMessage}
-                        type={alertType}
-                        closable
-                        className='text-3xl'
-                        onClose={() => setAlertVisible(false)}
-                        />
-                    )}
-                </div>
-            </Fade>
+        <Fade direction='up' >
+            <div className='text-5xl flex justify-center items-center mt-10'>
+            {alertVisible && (
+                    <Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
+                )}
+            </div>
+        </Fade>
 
         <div id='contact-form' className='flex justify-center lg:flex-row py-5 px-5'>
 
@@ -113,11 +101,9 @@ export default function Contact() {
 
             </div>
         
-              
             </form>
 
         </div>
-
 
         <div id='contactmethods' className='bg-white w-full flex flex-col md:flex-row justify-center  md:justify-evenly gap-5 px-5 py-10 '> {/* Adjust layout for different screensizes and add padding */}
 

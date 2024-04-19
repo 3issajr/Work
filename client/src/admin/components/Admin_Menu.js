@@ -22,13 +22,15 @@ export default function AdminMenu() {
     useEffect(() => {
         axios.get('http://localhost:3000/menu')
             .then(response => {
-                setMenu(response.data.menu);
                 setAlertMessage(response.data.message);
+                setMenu(response.data.menu);
                 setAlertType('success');
                 setAlertVisible(true);
             })
             .catch(error => {
-                console.error('Error fetching menu:', error);
+                setAlertMessage(error.response.data.error);
+                setAlertType('error');
+                setAlertVisible(true);
             });
     }, []);
 
@@ -92,7 +94,6 @@ export default function AdminMenu() {
                     .catch(error => {
                         console.error('Error fetching updated menu:', error);
                     });
-                    
             })
             .catch(error => {
                 console.error('Error updating menu item:', error);
