@@ -1,40 +1,37 @@
 import React, { useState } from 'react';
 import { NavLink , useNavigate } from 'react-router-dom';
 import axios from 'axios'
-
 import {Fade} from 'react-awesome-reveal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import {Alert} from 'antd'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Register(){
     
     const Navigate = useNavigate();
     const [showPassword , setShowPassword] = useState(true)
-    const [alertVisible, setAlertVisible] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
     const [formData , setFormData] = useState({ name:'', email:'', phone:'',  gender:'', firstpass:'', secondpass:'' })
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         axios.post('http://localhost:3000/signup',formData)
-
         .then((result)=>{
-                setAlertMessage(result.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+            toast.success(result.data.message, {
+                position: "top-center",
+                autoClose: 2000
+            });
                 setTimeout(()=>{Navigate('/login')},3000)
         })
         .catch((err)=>{
-                setAlertMessage(err.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);            
+            toast.error(err.response.data.error, {
+                position: "top-center"
+            });          
             if(err.response.status == 500){
-                setAlertMessage(err.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true); 
+                toast.error(err.response.data.error, {
+                    position: "top-center"
+                });
             }
         })
 
@@ -56,26 +53,15 @@ export default function Register(){
             {/* Register Header Ends*/}
 
 
-
             {/* Register Form Start*/}
 
-            <Fade direction='up' >
-                <div className='text-5xl flex justify-center items-center'>
-                {alertVisible && (
-                        <Alert message={alertMessage} type={alertType} closable className='text-3xl'onClose={() => setAlertVisible(false)} />
-                    )}
-                </div>
-            </Fade>
+        <div id='registration-form' className="flex justify-center text-center mt-5 xxs:p-5  ">
 
-            <div id='registration-form' className="flex justify-center text-center mt-5">
+            <form onSubmit={handleSubmit} className='py-5 '>
 
-            <form onSubmit={handleSubmit} className='py-5'>
-
-                <table className='bg-white shadow-md rounded-lg flex justify-center flex-col '>
-
+                <table className='bg-white shadow-md rounded-lg flex justify-center flex-col  '>
                 <FontAwesomeIcon icon={faUser} className='text-4xl pt-2'/>
-
-                    <tbody>
+                    <tbody className=''>
 
                         <tr>
                             <td className="text-3xl py-2">Full Name</td>
@@ -164,7 +150,7 @@ export default function Register(){
                 </div>
 
                 <div id='register-btns' className='pt-5 gap-5 flex justify-center items-center flex-col'>
-                    <NavLink to='/login' className='btn w-1/2 text-2xl rounded-full text-white p-2'>
+                    <NavLink to='/login' className='btn w-1/2 text-2xl rounded-full text-white p-2 xs:w-1/2'>
                         Already have an Account?
                     </NavLink>
 
@@ -175,8 +161,8 @@ export default function Register(){
 
 
             </form>    
-
-            </div>
+            <ToastContainer position="top-center" />
+        </div>
             
             {/* Register Form Ends*/}
 

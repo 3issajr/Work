@@ -23,3 +23,19 @@
         font-weight: 600;
     }
 }
+@media (min-width:0px) and (max-width:575.98px){
+    #browse{
+        #browse-header{
+          font-size: 2rem;
+          font-weight: 600;
+        }
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #browse{
+        #browse-header{
+          font-size: 2rem;
+          font-weight: 600;
+        }
+    }
+}

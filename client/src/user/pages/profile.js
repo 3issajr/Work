@@ -61,7 +61,6 @@ export default function Profile() {
         )
     }
     
-   
     if (error) {
         return(
         <Bounce>
@@ -76,7 +75,7 @@ export default function Profile() {
     }
     
     return (
-        <div id='profile' className="flex justify-center items-center h-screen">
+        <div id='profile' className="flex flex-col justify-center items-center lg:h-screen ">
             <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
                 <h1 className='text-4xl font-bold mb-4 text-center'>Profile</h1>
                 <div className='flex flex-col gap-4 p-5'>
@@ -96,7 +95,7 @@ export default function Profile() {
                         <label className='mr-4'>Mobile:</label>
                         <p>{profile.phone}</p>
                     </div>
-                    <div className='flex items-center gap-5 pt-2'>
+                    <div id='profile-btns' className='flex items-center gap-5 pt-2'>
                         <button onClick={() => setShowUpdateForm(prevState => !prevState)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>
                             {showUpdateForm ? "Close Form" : "Update Form"}
                         </button>   
@@ -107,7 +106,7 @@ export default function Profile() {
             </div>
 
             {showUpdateForm && (
-                <div id='update-profile-form' className='bg-slate-200 px-10 py-6 rounded-lg m-5'>
+                <div id='update-profile-form' className='bg-slate-200 px-10 py-6 rounded-lg m-5 '>
                     <h1 className='text-4xl font-bold mb-4 text-center'>Update Profile</h1>
                     <div className='flex flex-col gap-4 p-5 '>
                         <div className='flex items-center p-5'>
@@ -126,7 +125,7 @@ export default function Profile() {
                             <label className='mr-4'>Mobile:</label>
                             <input type="text" value={newPhone} onChange={(e) => setNewPhone(e.target.value)} />
                         </div>
-                        <div className='flex items-center gap-5 pt-2'>
+                        <div id='profile-btn' className='flex items-center gap-5 pt-2'>
                             <button onClick={()=>handleUpdateProfile(profile.id)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Update Profile</button>
                         </div>
                     </div>

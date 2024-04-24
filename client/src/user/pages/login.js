@@ -4,40 +4,37 @@ import axios from 'axios'
 import {Fade} from 'react-awesome-reveal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import {Alert} from 'antd'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Login(){
     const Navigate = useNavigate()
     const [showPassword , setShowPassword] = useState(true)
-    const [alertVisible, setAlertVisible] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
     const [formData , setFormData] = useState({email:'',  password:''})
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/signin',formData , {withCredentials:true})
-        .then((result)=>{
-                document.getElementById('email-input').value=''
-                document.getElementById('password-input').value=''
-                localStorage.setItem("user",JSON.stringify(result.data.user.name))
-                localStorage.setItem("token",JSON.stringify(result.data.token))
-                setAlertMessage('Login successful!');
-                setAlertType('success');
-                setAlertVisible(true);
-                setTimeout(()=>{Navigate('/home')},2000)
-
-        })
-        .catch((err)=>{
-                setAlertMessage(err.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
-        })
+        axios.post('http://localhost:3000/signin', formData, { withCredentials: true })
+            .then((result) => {
+                document.getElementById('email-input').value = '';
+                document.getElementById('password-input').value = '';
+                localStorage.setItem("user", JSON.stringify(result.data.user.name));
+                localStorage.setItem("token", JSON.stringify(result.data.token));
+                toast.success('Login successful!', {
+                    position: "top-center",
+                    autoClose: 2000
+                });
+                setTimeout(() => { Navigate('/home') }, 3000);
+            })
+            .catch((err) => {
+                toast.error(err.response.data.error, {
+                    position: "top-center"
+                });
+            });
     };
- 
     return(
         <>
-        <div id='loginpage'>
+        <div id='loginpage' className='h-screen'>
 
             {/* Login Header Starts*/}
 
@@ -54,22 +51,14 @@ export default function Login(){
 
 
             {/* Login Form Starts*/}
-            <Fade direction='up' >
-                <div className='text-5xl flex justify-center items-center'>
-                {alertVisible && (
-                        <Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
-                    )}
-                </div>
-            </Fade>
 
-            <div id='login-form' className="flex justify-center text-center mt-5 ">
+
+        <div id='login-form' className="flex justify-center text-center mt-16 ">
 
             <form onSubmit={handleSubmit} className='py-5'>
 
                 <table className='bg-white shadow-md rounded-lg '>
-                    
                     <FontAwesomeIcon icon={faUser} className='text-4xl pt-2'/>
-
                     <tbody>
 
                         <tr>
@@ -124,8 +113,10 @@ export default function Login(){
                 </div>
 
             </form>  
+            <ToastContainer position="top-center" />
+
               
-            </div>
+        </div>
 
             {/* Login Form Ends*/}
 

@@ -13,7 +13,7 @@ export default function AdminDashBoard(){
                 <h1 className="text-7xl text-red-800 italic" >Dashboard</h1>
             </div>
 
-            <div className="flex justify-center gap-10 mt-20">
+            <div id='navitems' className="flex justify-center gap-10 mt-20">
                 <Link to ='/Admin/menu' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Menu</Link>
                 <Link to='/Admin/user' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Users</Link>
                 <Link to='/Admin/book' className="bg-red-800 text-white p-10 rounded-lg shadow-md text-4xl">Booking</Link>

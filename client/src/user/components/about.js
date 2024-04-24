@@ -11,22 +11,20 @@ export default function About() {
       </div>
 
       <div id='aboutside' className='flex flex-col justify-center'>
+            <h1 className='text-4xl md:text-6xl pb-5 text-center md:text-left'>
+              We provide healthy food for your family.
+            </h1>
 
-        <h1 className='text-4xl md:text-6xl pb-5 text-center md:text-left'>
-          We provide healthy food for your family.
-        </h1>
+            <p id='aboutside-p1' className='text-sm md:text-lg text-center md:text-left'>
+              Our story began with a vision to create a unique dining experience that merges fine dining, exceptional service, and a vibrant ambiance. Rooted in city's rich culinary culture,
+              we aim to honor our local roots while infusing a global palate.
+            </p>
 
-        <p id='aboutside-p1' className='text-sm md:text-lg text-center md:text-left'>
-          Our story began with a vision to create a unique dining experience that merges fine dining, exceptional service, and a vibrant ambiance. Rooted in city's rich culinary culture,
-          we aim to honor our local roots while infusing a global palate.
-        </p>
+            <br />
 
-        <br />
-
-        <p id='aboutside-p2' className='text-sm md:text-lg text-center md:text-left'>
-          At place, we believe that dining is not just about food, but also about the overall experience. Our staff, renowned for their warmth and dedication, strives to make every visit an unforgettable event.
-        </p>
-
+            <p id='aboutside-p2' className='text-sm md:text-lg text-center md:text-left'>
+              At place, we believe that dining is not just about food, but also about the overall experience. Our staff, renowned for their warmth and dedication, strives to make every visit an unforgettable event.
+            </p>
       </div>
 
       <div id='aboutabs' className='md:col-span-2 mt-8 text-center md:text-left'>

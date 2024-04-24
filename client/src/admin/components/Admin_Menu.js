@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { Alert } from 'antd';
 import { Fade } from 'react-awesome-reveal';
 import AdminDashboard from './AdminDashboard';
@@ -10,20 +9,17 @@ export default function AdminMenu() {
     const [alertMessage, setAlertMessage] = useState('');
     const [alertType, setAlertType] = useState('');
 
-    //Adding Menu
     const [menu, setMenu] = useState([]);
     const [addMenuBtn, setAddMenuBtn] = useState(false);
-    const [newMenuItem, setNewMenuItem] = useState({ name: '', price: '', info: '' });
-
-    //Updating Menu
+    const [newMenuItem, setNewMenuItem] = useState({ name: '', price: '', info: '', photo: null });
     const [editItemId, setEditItemId] = useState(null);
-    const [updatedMenuItem, setUpdatedMenuItem] = useState({ name: '', price: '', info: '' });
+    const [updatedMenuItem, setUpdatedMenuItem] = useState({ name: '', price: '', info: '', photo: null });
 
     useEffect(() => {
         axios.get('http://localhost:3000/menu')
             .then(response => {
-                setAlertMessage(response.data.message);
                 setMenu(response.data.menu);
+                setAlertMessage(response.data.message);
                 setAlertType('success');
                 setAlertVisible(true);
             })
@@ -34,14 +30,28 @@ export default function AdminMenu() {
             });
     }, []);
 
-    const handleAddMenuBtnClick = () => {setAddMenuBtn(prevState => !prevState);};
+    const handleAddMenuBtnClick = () => {
+        setAddMenuBtn(prevState => !prevState);
+    };
 
     const handleAddMenuBtnItem = () => {
-        axios.post('http://localhost:3000/menu', newMenuItem)
+        const formData = new FormData();
+        formData.append('name', newMenuItem.name);
+        formData.append('price', newMenuItem.price);
+        formData.append('info', newMenuItem.info);
+        formData.append('photo', newMenuItem.photo);
+
+        axios.post('http://localhost:3000/menu', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
             .then(response => {
+                setMenu(response.data.menu);
                 setAlertMessage(response.data.message);
                 setAlertType('success');
                 setAlertVisible(true);
+                setAddMenuBtn(false);
                 axios.get('http://localhost:3000/menu')
                     .then(response => {
                         setMenu(response.data.menu);
@@ -53,9 +63,9 @@ export default function AdminMenu() {
                         setAlertVisible(true);
                     });
             })
-            .catch(err => {
-                setAlertMessage(err.response.data.error);
-                setAlertType('success');
+            .catch(error => {
+                setAlertMessage(error.response.data.error);
+                setAlertType('error');
                 setAlertVisible(true);
             });
     };
@@ -69,7 +79,9 @@ export default function AdminMenu() {
                 setAlertVisible(true);
             })
             .catch(error => {
-                console.error('Error deleting menu item:', error);
+                setAlertMessage(error.response.data.error);
+                setAlertType('error');
+                setAlertVisible(true);
             });
     };
 
@@ -82,21 +94,16 @@ export default function AdminMenu() {
     const handleUpdateMenuItem = (itemId) => {
         axios.put(`http://localhost:3000/menu/${itemId}`, updatedMenuItem)
             .then(response => {
-                setMenu(prevMenu => prevMenu.map(item => item._id === itemId ? updatedMenuItem : item));
+                setMenu(prevMenu => prevMenu.map(item => item._id === itemId ? response.data.menu : item));
                 setAlertMessage(response.data.message);
                 setAlertType('success');
-                setAlertVisible(true);   
-                    axios.get('http://localhost:3000/menu')
-                    .then(response => {
-                        setMenu(response.data.menu); // Update the menu state with the updated items
-                        setEditItemId(false)
-                    })
-                    .catch(error => {
-                        console.error('Error fetching updated menu:', error);
-                    });
+                setAlertVisible(true);
+                setEditItemId(null);
             })
             .catch(error => {
-                console.error('Error updating menu item:', error);
+                setAlertMessage(error.response.data.error);
+                setAlertType('error');
+                setAlertVisible(true);
             });
     };
 
@@ -105,14 +112,15 @@ export default function AdminMenu() {
         setUpdatedMenuItem(prevState => ({ ...prevState, [propertyName]: value }));
     };
 
+    const handleImageChange = (e) => {  setNewMenuItem(prevState => ({ ...prevState, photo: e.target.files[0] }));};
+
     return (
         <div id='menu' className='h-screen'>
-
             <AdminDashboard />
 
             <Fade direction='up'>
                 <div className='text-5xl flex justify-center items-center mt-10'>
-                    {alertVisible && ( <Alert  message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/> )}
+                    {alertVisible && (<Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)} />)}
                 </div>
             </Fade>
 
@@ -120,19 +128,17 @@ export default function AdminMenu() {
                 <button className='rounded-lg shadow-sm text-white bg-red-800 p-3' onClick={handleAddMenuBtnClick}>Add Menu Item</button>
             </div>
 
-            <div className='flex justify-center'>
-
+            <div className='flex justify-center pb-10'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
-
                     <thead>
                         <tr>
                             <th className="px-4 py-2 border-4">Name</th>
                             <th className="px-4 py-2 border-4">Price</th>
                             <th className="px-4 py-2 border-4">Info</th>
+                            <th className="px-4 py-2 border-4">Photo</th>
                             <th colSpan={2} className="px-4 py-2 border-4">Actions</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         {menu.map(item => (
                             <tr key={item._id}>
@@ -147,7 +153,6 @@ export default function AdminMenu() {
                                         item.name
                                     )}
                                 </td>
-
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
                                         <input
@@ -159,7 +164,6 @@ export default function AdminMenu() {
                                         item.price
                                     )}
                                 </td>
-
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
                                         <input
@@ -171,7 +175,9 @@ export default function AdminMenu() {
                                         item.info
                                     )}
                                 </td>
-
+                                <td className="px-4 py-2 border-4">
+                                    <img src={`http://localhost:3000/${item.photo}`} alt={item.name} style={{ width: '100px' }} />
+                                </td>
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
                                         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleUpdateMenuItem(item._id)}>Save</button>
@@ -179,13 +185,14 @@ export default function AdminMenu() {
                                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleEditClick(item._id)}>Update</button>
                                     )}
                                 </td>
-                                                
                                 <td className="px-4 py-2 border-4">
                                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
-                        {/* Additional row for adding menu item */}
+
+
+                        {/*On Pressing Add Menu Button */}
                         {addMenuBtn && (
                             <tr>
                                 <td className="px-4 py-2 border-4">
@@ -196,7 +203,6 @@ export default function AdminMenu() {
                                         placeholder="Name"
                                     />
                                 </td>
-
                                 <td className="px-4 py-2 border-4">
                                     <input
                                         type="text"
@@ -205,7 +211,6 @@ export default function AdminMenu() {
                                         placeholder="Price"
                                     />
                                 </td>
-
                                 <td className="px-4 py-2 border-4">
                                     <input
                                         type="text"
@@ -214,21 +219,20 @@ export default function AdminMenu() {
                                         placeholder="Info"
                                     />
                                 </td>
-
+                                <td className="px-4 py-2 border-4">
+                                    <input
+                                        type="file"
+                                        onChange={handleImageChange}
+                                    />
+                                </td>
                                 <td className="px-4 py-2 border-4" colSpan="2">
                                     <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddMenuBtnItem}>Add</button>
                                 </td>
-
                             </tr>
                         )}
-                        
                     </tbody>
-
-
                 </table>
-
             </div>
-
         </div>
     );
 }

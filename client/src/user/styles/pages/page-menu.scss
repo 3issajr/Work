@@ -89,28 +89,208 @@
         }
     }
 }
-@media (max-width: 768px) {
-    #menu-header p {
-        width: 80%; /* Adjust width for smaller screens */
-    }
 
-    #menu-navigation .button {
-        margin: 10px; /* Adjust margin for smaller screens */
+@media (min-width : 0px) and (max-width:575.98px){
+    #menupage{
+        #menu-header{
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+        }
+        #menu-navigation{
+            display: flex;
+            gap:20px
+        }
+        #orderapp{
+            display: flex;
+            flex-direction: column;
+            #leftdiv{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                h1{
+                    font-size:2rem;
+                    font-weight: 600;
+                }
+            }
+            #rightdiv{
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                #firstrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+                #secondrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+                #thirdrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+            }
+           }
     }
-
-    #menuitem {
-        margin: 10px; /* Adjust margin for smaller screens */
-    }
-
-    #leftdiv, #rightdiv {
-        width: 100%; /* Make the divs full width on smaller screens */
-        margin-top: 20px; /* Adjust margin-top for smaller screens */
-    }
-
-    #rightdiv #firstrow, #rightdiv #secondrow, #rightdiv #thirdrow {
-        flex-direction: column; /* Change flex-direction to column for smaller screens */
-        align-items: center; /* Align items to center for smaller screens */
-    }
-
-    /* Additional media queries and adjustments as needed */
 }
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #menupage{
+        #menu-header{
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+        }
+        #menu-navigation{
+            display: flex;
+            gap:20px
+        }
+        #orderapp{
+            display: flex;
+            flex-direction: column;
+            #leftdiv{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                h1{
+                    font-size:2rem;
+                    font-weight: 600;
+                }
+            }
+            #rightdiv{
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                #firstrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+                #secondrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+                #thirdrow{
+                    display: flex;
+                    flex-direction: column;
+                    img{
+                        padding: 2rem;
+                    }
+                }
+            }
+           }
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+   
+   #menupage{
+    #menu-header{
+        h1{
+            font-size: 4rem;
+            font-weight: 600;
+        }
+    }
+       #menu-content{
+        padding: 0rem 1rem;
+       }
+       #orderapp{
+        display: flex;
+        flex-direction: column;
+        #leftdiv{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            h1{
+                font-size:2rem;
+                font-weight: 600;
+            }
+        }
+        #rightdiv{
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            #firstrow{
+                img{
+                    padding: 1rem;
+                }
+            }
+            #secondrow{
+                img{
+                    padding: 1rem;
+                }
+            }
+            #thirdrow{
+                img{
+                    padding: 1rem;
+                }
+            }
+        }
+       }
+   }
+}
+   
+@media (min-width: 992px) and (max-width: 1199.98px) {
+        #menu-content{
+            padding: 0rem 1rem;
+
+           }
+           #orderapp{
+            display: flex;
+            flex-direction: column;
+            #leftdiv{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                h1{
+                    font-size:2rem;
+                    font-weight: 600;
+                }
+            }
+            #rightdiv{
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                #firstrow{
+                    img{
+                        padding: 1rem;
+                    }
+                }
+                #secondrow{
+                    img{
+                        padding: 1rem;
+
+                    }
+                }
+                #thirdrow{
+                    img{
+                        padding: 1rem;
+
+                    }
+                }
+            }
+           }
+ }
+     

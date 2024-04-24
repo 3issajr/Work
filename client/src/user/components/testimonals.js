@@ -4,18 +4,17 @@ import Img3 from '../public/images/testimonals3.png'
 
 export default function Testimonals() {
   return (
-    <div id='testimonals' className=" py-8">
-      <div className="container">
+    <div id='testimonals' className=" flex flex-col  p-10">
 
-        <h1 id='testimonals-header' className="sm:text-5xl text-4xl md:text-7xl text-center mb-8">
+        <h1 id='testimonals-header' className="sm:text-5xl text-4xl md:text-7xl mb-8">
           What Our Customers Say
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid xxs:grid-cols-1  xs:grid-cols-1 grid-cols-3 gap-8 ">
 
-          <div className="testimonials-box">
+          <div className="testimonials-box ">
 
-            <div className="testimonials-box-title">
+            <div className="testimonials-box-title ">
               <h1 className="font-extrabold">"The Best Restaurant"</h1>
               <p className="mt-2">Last night, we dined at place and were simply blown away. From the moment we stepped in, we were enveloped in an inviting atmosphere and greeted with warm smiles.</p>
              
@@ -75,7 +74,6 @@ export default function Testimonals() {
           
         </div>
 
-      </div>
     </div>
   )
 }

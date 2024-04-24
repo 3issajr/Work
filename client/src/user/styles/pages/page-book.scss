@@ -1,5 +1,4 @@
 #bookpage{
-
     @include FlexCenter();
     flex-direction: column;
 
@@ -63,3 +62,69 @@
     }
 
 }
+
+@media (min-width : 0px) and (max-width:575.98px){
+    #bookpage{
+        #book-header{
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+        }
+        #book-form{
+            margin-top: 14rem;
+            width: 70%;
+        }
+        #location{
+            margin-top: 30rem;
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #bookpage{
+        #book-header{
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+        }
+        #book-form{
+            margin-top: 14rem;
+            width: 70%;
+        }
+        #location{
+            margin-top: 30rem;
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #bookpage{
+        #book-header{
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+        }
+        #book-form{
+            margin-top: 10rem;
+            width: 70%;
+        }
+        #location{
+            margin-top: 25rem;
+        }
+    }
+}
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    #bookpage{
+        #book-form{
+            margin-top: 12rem;
+            width: 70%;
+        }
+        #location{
+            margin-top: 25rem;
+        }
+    }
+}
+ 

@@ -6,13 +6,13 @@
         position: absolute;
         top: 62%;
         left: 50%;
-        transform: translate(-50%, -50%);
         text-align: center;
+        transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
-}
+    }
     #herobtns{
         margin-top: 1rem;
         @include FlexCenter();
@@ -37,20 +37,94 @@
             -o-border-radius: 20px;
         }
     }
- 
     p{
         font-size: 15px;
     }
+    .App {
+        text-align: center;
+        padding-top: 50px;
+      }
+      
+      .popupMessage {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #f44336;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 9999; /* Ensures it's on top */
+      }
+      
+      .closeButton {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+      }
+      
+      .closeButton:hover {
+        color: black;
+      }
+      
 }
 
 
+@media (min-width:0px) and (max-width:575.98px){
+    #hero{
+        background-image: url('../../public/images/hero.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 45vh;  
+        }
+        #herotext{
+            margin-bottom: 5rem;
+            h1{
+                font-size: 15px;
+            }
+            p{
+                font-size: 10px;
+            }
+            #herobtns{
+                button{
+                    font-size: 10px;
+                    padding: 3px;
+                }
+            }
+        }
+     } 
 
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #hero{
+        #herotext{
+            padding-bottom: 8rem;
+            h1{
+                font-size: 1.5rem;
+            }
+            p{
+                font-size: 12px;
+            }
+            #herobtns{
+                button{
+                    padding: 2px 5px;
+                }
+            }
+        }
+     } 
+}
+  
 @media (min-width: 768px) and (max-width: 991.98px) {
      #hero{
         #heroimg{
             width: 100%;
         }
         #herotext{
+            padding-bottom: 5rem;
+
             h1{
                 font-size: 2rem;
             }

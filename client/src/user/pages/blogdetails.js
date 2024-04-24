@@ -14,8 +14,8 @@ return (
 
             <div id='blogdetails-header' className='flex justify-center items-center flex-col pt-5'>
 
-                <div className='w-full md:w-1/2 text-center py-10'>
-                    <h1 className='text-7xl'>{blog.info}</h1>
+                <div className='w-full  text-center py-10'>
+                    <h1 className='text-7xl xxs:text-4xl xs:text-4xl sm:text-5xl'>{blog.info}</h1>
                 </div>
 
                 <div className="flex justify-center items-center flex-col  lg:flex-col px-5">

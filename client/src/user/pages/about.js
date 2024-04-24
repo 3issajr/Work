@@ -17,15 +17,8 @@ import Infoimg2 from '../public/images/aboutinfoimg2.png'
 
 export default function About() {
     
-    const contentStyle = {
-        width: '100%',
-        height: '100%',
-        lineHeight: '100px',
-        textAlign: 'center',
-        background: '#364d79',
-        borderRadius:"30px"
-    };
-
+    const contentStyle = {width: '100%', height: '100%', lineHeight: '100px', textAlign: 'center', background: '#364d79', borderRadius:"30px" };
+    
     return (
         <>
             <AboutComponent />
@@ -40,7 +33,7 @@ export default function About() {
                     </div>
                 </div>
 
-                <div id='boxs' className='md:grid-cols-3'>
+                <div id='boxs' className='grid-cols-3'>
                 <Fade direction='left' duration={2000}>
                     <div id='box1' className='box'>
                         <img src={Icon1} width={100} height={100} alt='icon' />
@@ -72,26 +65,22 @@ export default function About() {
                 </Fade>
                 </div>
 
-                <div id='mainbox' className='flex justify-center '>
+            <div id='mainbox' className='flex justify-center '>
 
                 <div id='test' className='flex flex-col'>
 
-                    <div id='leftbox' className='py-10'>
-
-                        <div id='leftbox-header' >
-
+                    <div id='leftbox' className='lg:py-16'>
+                        <div id='leftbox-header' className='lg:py-10' >
                             <div >
                                 <h1 className='text-4xl font-bold'>A little information for our valuable guest</h1>
                             </div>
                             <br/>
-                            <div className='text-start'>
-                                <small className='text-xl'>At place, we believe that dining is not just about food, but also about the overall experience.
+                            <div className='lg:pt-20'>
+                                <small className=' text-xl'>At place, we believe that dining is not just about food, but also about the overall experience.
                                    Our staff, renowned for their warmth and dedication, strives to make every visit an unforgettable event.
                                 </small>
                             </div>
-
                         </div>
-
                     </div>
 
                     <div id='boxes' className='flex justify-start py-5 gap-5' style={{width:"80%"}}>
@@ -112,27 +101,27 @@ export default function About() {
                     </Fade>
                     </div>
 
-                      <div className='flex flex-col gap-5 '>
-                        <Fade direction='down' duration={2000}>
-                            <div id='box3' className='border rounded-md text-center w-52 p-3'>
-                                <h1 className='text-3xl'>1995</h1>
-                                <p>Founded</p>
-                            </div>
-                        </Fade>
-
-                        <Fade direction='up' duration={2000}>
-                        <div id='box4' className='border rounded-md  text-center w-52 p-3'>
-                            <h1 className='text-3xl'><CountUp suffix='%' end={100} duration={3}/></h1>
-                            <p>Satisfied Customers</p>
+                    <div className='flex flex-col gap-5 '>
+                    <Fade direction='down' duration={2000}>
+                        <div id='box3' className='border rounded-md text-center w-52 p-3'>
+                            <h1 className='text-3xl'>1995</h1>
+                            <p>Founded</p>
                         </div>
-                        </Fade>
-                      </div>
+                    </Fade>
+
+                    <Fade direction='up' duration={2000}>
+                    <div id='box4' className='border rounded-md  text-center w-52 p-3'>
+                        <h1 className='text-3xl'><CountUp suffix='%' end={100} duration={3}/></h1>
+                        <p>Satisfied Customers</p>
+                    </div>
+                    </Fade>
+                    </div>
 
                     </div>
 
                 </div>
 
-                <div id='rightbox' className="bg-black border rounded-md" style={{width:"20%"}}>
+                <div id='rightbox' className=" border-0 rounded-md" style={{width:"30%"}}>
                     <Carousel dotPosition='right' autoplay>
                         <div >
                             <img src={Infoimg}  alt='' style={contentStyle} />
@@ -142,12 +131,11 @@ export default function About() {
                         </div>
                     </Carousel>
                 </div>
-            </div>
 
+            </div>
 
             <Testimonals/>
                 
- 
             </div>
         </>
     );

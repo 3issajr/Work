@@ -69,13 +69,10 @@ export default function AdminBooking(){
 
                 <Fade direction='up' >
                     <div className='text-5xl flex justify-center items-center my-10'>
-                    {alertVisible && (
-                            <Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)} />
-                        )}
+                    {alertVisible && (<Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)} /> )}
                     </div>
                 </Fade>
 
- 
                 <div  className='flex justify-center'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
                     <thead >

@@ -17,7 +17,7 @@ export default function Blogs() {
 
             <div className='flex flex-wrap justify-center'>
 
-                <div id='blogmain' className='w-full md:w-1/2 lg:w-1/5 md:mr-4 mb-4'>
+                <div id='blogmain' className='w-full  lg:w-1/5  mb-4'>
                     <div>
                         <img src={Img1} width={300} height={100} alt='burger' id='blog-img' />
                     </div>
@@ -26,7 +26,7 @@ export default function Blogs() {
                     <p id='blogmain-p2' className='text-sm md:text-base'>Lorem ipsum dolor sit amet consectetur of a adipiscing elitilmim semper adipiscing massa gravida nisi cras enim quis nibholm varius amet gravida ut facilisis neque egestas</p>
                 </div>
 
-                <aside id='blogsubmain' className='grid grid-cols-2  md:w-1/2 lg:w-1/4 md:ml-4 gap-5 '>
+                <aside id='blogsubmain' className='grid grid-cols-2 xxs:w-full xs:w-full sm:w-full md:w-full w-1/4 lg:ml-4 gap-5 '>
 
                     <div id='box1'>
                         <div >
@@ -59,7 +59,7 @@ export default function Blogs() {
                         <small className='block'>January 3, 2023</small>
                         <p className='text-sm md:text-base'>How to prepare delicious chicken tenders</p>
                     </div>
-
+                    
                 </aside>
 
             </div>

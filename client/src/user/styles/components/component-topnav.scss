@@ -1,6 +1,6 @@
 #topnav{
     @include FlexEvenly() ;
-    padding-top: 20px;
+    padding-top: 30px;
     #navbtn {
         font-family: $dmsansBlack;
         padding: 5px 10px;
@@ -13,10 +13,50 @@
     } 
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width : 0px) and (max-width:575.98px){
+    #topnav{
+        display: flex;
+        flex-direction: row;
+        #logo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            h1{
+                font-size: 1rem;
+                font-weight: 600;
+                margin-left: -10px;
+            }
+        }
+        #navitems{
+            font-size: 12px;
+            margin: 0px 1.5rem;
+        }
+        #navlink{
+            padding: 10px;
+            text-align: center;
+        }
+        #alertmsg{
+            z-index: 1;
+            top: 25%;
+            right: 15%;
+            font-size: 1px;
+        }
+        #user{
+            font-size: 12px;
+            font-weight: 600;
+        }
+      
+        #navbtn{
+            font-size: 10px;        
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
     #topnav{
         #logo{
-            width: 50%;
+            width: 100%;
             h1{
                 font-size: 1rem;
                 font-weight: 600;
@@ -25,20 +65,66 @@
         }
         #navitems{
             font-size: 12px;
+            margin: 0px 10px;
+            text-align: center;      
+        }
+        #navlink{
+            padding: 10px;
+        }
+        #alertmsg{
+            z-index: 1;
+            top: 2%;
+            right: 20%;
+            font-size: 1px;
         }
         #user{
             font-size: 12px;
             font-weight: 600;
-            padding: 5px;
         }
+      
+        #navbtn{
+            font-size: 10px;
+            margin-right: 1rem;
+        }
+    }
+   
+  }
+  
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #topnav{
+        #logo{
+            width: 50%;
+            h1{
+                font-size: 2rem;
+                font-weight: 600;
+                margin-top: 15px;
+            }
+        }
+        #navitems{
+            font-size: 12px;
+            margin-right: 30px;
+        }
+        #alertmsg{
+            z-index: 1;
+            top: 20%;
+            right: 20%;
+            font-size: 1px;
+        }
+        #user{
+            font-size: 12px;
+            font-weight: 600;
+        }
+      
     }
     #navbtn{
         margin-right: 5px;
         font-size: 8px;
     }
-   }
+   
+}
  
-  @media (min-width: 992px) and (max-width: 1199.98px) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
     #topnav{
         #logo{
             width: 70%;
@@ -51,6 +137,12 @@
         #navitems{
             font-size: 12px;
         }
+        #alertmsg{
+            z-index: 1;
+            top: 18%;
+            right: 25%;
+            font-size: 1px;
+        }
         #user{
             font-size: 15px;
             font-weight: 600;
@@ -62,6 +154,6 @@
         margin-right: 5px;
         font-size: 12px;
     }
-   }
+ }
  
  

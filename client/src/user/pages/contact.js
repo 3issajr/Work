@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios'
-import {Alert} from 'antd'
 import { Fade } from 'react-awesome-reveal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 export default function Contact() {
-  const [alertVisible, setAlertVisible] = useState(false);
-  const [alertMessage, setAlertMessage] = useState('');
-  const [alertType, setAlertType] = useState('');
   const [formData , setFormData] =useState ({name : '', email: '', subject:'', message:'' })
 
 
@@ -15,14 +13,16 @@ export default function Contact() {
   e.preventDefault()
   axios.post('http://localhost:3000/contact',formData)
     .then((result)=>{
-      setAlertMessage(result.data.message)
-      setAlertType('success');
-      setAlertVisible(true);
+      console.log(result)
+      toast.success(result.data.message, {
+        position: "top-center",
+        autoClose: 2000
+    });
     })
     .catch((err)=>{
-      setAlertMessage(err.response.data.error);
-      setAlertType('error');
-      setAlertVisible(true);
+      toast.error(err.response.data.error, {
+        position: "top-center"
+    });
     })
   }
 
@@ -32,28 +32,20 @@ export default function Contact() {
 
         <div id='contact-header'>
           <Fade direction='down' duration={2000}>
-            <div id="login-header" className="flex justify-center text-center flex-col mb-4">
+            <div id="login-header" className="flex justify-center text-center flex-col pt-10">
               <h1 className='text-7xl pb-5'>Contact Us</h1>
               <p>We consider all the drivers of change gives you the components<br/> you need to change to create a truly happens.</p>
             </div>
           </Fade>
         </div>
 
-        <Fade direction='up' >
-            <div className='text-5xl flex justify-center items-center mt-10'>
-            {alertVisible && (
-                    <Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
-                )}
-            </div>
-        </Fade>
+        <div id='contact-form' className='flex justify-center lg:flex-row py-5 px-5 '>
 
-        <div id='contact-form' className='flex justify-center lg:flex-row py-5 px-5'>
+            <form className="xs:w-5/6 w-1/2 xxs:w-full" onSubmit={handleSubmit}> 
 
-            <form className="w-full md:w-1/2" onSubmit={handleSubmit}> 
+            <div  id='subcontact-form' className='rounded-lg bg-white shadow-md sm:flex-col '>
 
-            <div  id='subcontact-form' className='rounded-lg bg-white shadow-md sm:flex-col'>
-
-              <div id='firstrow' className='flex flex-col sm:flex-row justify-between gap-5 p-10'> 
+              <div id='firstrow' className='flex flex-col  justify-between gap-5 p-10'> 
                 <div id='name' className='flex flex-col w-full'>
                   <label className='text-2xl font-bold'>Name</label>
                   <input 
@@ -61,7 +53,7 @@ export default function Contact() {
                   className='w-full'
                   type='text'
                   placeholder='Enter Your Name'/>
-                </div>
+              </div>
 
                 <div id='email' className='flex flex-col w-full'>
                   <label className='text-2xl font-bold'>Email</label>
@@ -102,10 +94,11 @@ export default function Contact() {
             </div>
         
             </form>
+            <ToastContainer position="top-center" />
 
         </div>
 
-        <div id='contactmethods' className='bg-white w-full flex flex-col md:flex-row justify-center  md:justify-evenly gap-5 px-5 py-10 '> {/* Adjust layout for different screensizes and add padding */}
+        <div id='contactmethods' className='bg-white w-full flex justify-center gap-10 px-5 py-10'> {/* Adjust layout for different screensizes and add padding */}
 
            <div id='call' className='text-start flex flex-col gap-5 '>
               <h1 className='text-2xl font-light'>Call us:</h1>

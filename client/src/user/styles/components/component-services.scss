@@ -13,7 +13,16 @@
     } 
 }
 
-
+@media (min-width:0px) and (max-width:575.98px){
+    #services{
+        h1{
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+       }
+}
 
 @media (min-width: 768px) and (max-width: 991.98px) {
    #services{

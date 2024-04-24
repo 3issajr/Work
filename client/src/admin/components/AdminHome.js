@@ -21,7 +21,6 @@ export default function AdminHome(){
         e.preventDefault()
         await axios.post('http://localhost:3000/adminlogin',formData)
         .then((response)=>{
-            console.log(response)
             setAlertMessage(response.data.message);
             setAlertType('success');
             setAlertVisible(true);

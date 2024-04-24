@@ -10,7 +10,7 @@ import Logo from '../public/images/footerlogo.png'
 
 export default function Footer() {
   return (
-    <div id='footer' className='grid grid-cols-1 md:grid-cols-3  py-8 bg-gray-800 text-white mt-auto z-auto'>
+    <div id='footer' className='grid grid-cols-3  py-8 bg-gray-800 text-white mt-auto z-auto'>
 
       <div id='leftfooter' className='flex flex-col  md:items-start'>
 
@@ -70,7 +70,7 @@ export default function Footer() {
 
       </div>
 
-      <div id='rightfooter' className='mt-8 md:mt-0'>
+      <div id='rightfooter' className='mt-8'>
 
         <div id='rightfooter-header' className='mb-4'>
           <h1 className='text-2xl'>Follow Us On Instagram</h1>

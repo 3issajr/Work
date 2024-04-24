@@ -3,7 +3,49 @@
     background-color: #474747;
 
     #leftheader,#rightheader {
-        @include FlexCenter;
+        // @include FlexCenter;
         color: white;
     }
 }
+
+
+@media (min-width:0px) and (max-width:575.98px){
+    #header{
+        display: flex;
+        justify-content: space-between;
+        #leftheader{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+    
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #header{
+        display: flex;
+        justify-content: space-between;
+        #leftheader{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}  
+  
+@media (min-width: 768px) and (max-width: 991.98px) {
+   #header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+   }
+}
+ 
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #header{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+       }
+}
+ 

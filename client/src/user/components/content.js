@@ -14,13 +14,13 @@ export default function Content() {
       </div>
 
       <div id='twoimg' className="md:col-span-1 lg:col-span-2 grid grid-cols-1 gap-8 sm:">
-        <div>
-          <img src={img2} width={300} height={300} alt='man-cooking' />
-        </div>
+          <div>
+            <img src={img2} width={300} height={300} alt='man-cooking' />
+          </div>
 
-        <div>
-          <img src={img3} width={300} height={200} alt='man-cooking' />
-        </div>
+          <div>
+            <img src={img3} width={300} height={200} alt='man-cooking' />
+          </div>
       </div>
 
       <aside className="md:col-span-2 lg:col-span-3">

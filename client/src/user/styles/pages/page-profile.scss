@@ -1,0 +1,135 @@
+@media (min-width : 0px) and (max-width:575.98px){
+    #profile{
+        margin: 5rem;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: start;
+        #profile-content{
+            width: 85%;
+            #profile-btns{
+                display: flex;
+                flex-direction: column;
+                button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #update-profile-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 85%;
+        #profile-btn{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            button{
+                width: 100%;
+            }
+        }
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #profile{
+        margin: 5rem;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: start;
+        #profile-content{
+            height: fit-content;
+            width: 65%;
+            #profile-btns{
+                display: flex;
+                flex-direction: column;
+                button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #update-profile-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 65%;
+        height: fit-content;
+        #profile-btn{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            button{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #profile{
+        display: flex;
+        #profile-content{
+            padding: 10px;
+            margin: 30px;
+            height: fit-content;
+            width: 45%;
+            #profile-btns{
+                display: flex;
+                flex-direction: column;
+                button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #update-profile-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 45%;
+        height: fit-content;
+        #profile-btn{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            button{
+                width: 100%;
+            }
+        }
+    }
+}
+ 
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #profile{
+        display: flex;
+        #profile-content{
+            padding: 10px;
+            margin: 30px;
+            height: fit-content;
+            width: 45%;
+            #profile-btns{
+                display: flex;
+                flex-direction: column;
+                button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #update-profile-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 45%;
+        height: fit-content;
+        #profile-btn{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            button{
+                width: 100%;
+            }
+        }
+    }
+ }
+ 

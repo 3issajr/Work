@@ -31,7 +31,6 @@ export default function AdminRegister(){
             setAlertMessage(err.response.data.error);
             setAlertType('error');
             setAlertVisible(true);
-            console.log(err)
         })
     }
     return(

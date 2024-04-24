@@ -19,10 +19,36 @@
             }
         }
     }
+}
 
-    @media (max-width: 768px) { 
-        #blogitem {
-            margin: 10px;
+@media (min-width : 0px) and (max-width:575.98px){
+    #pagespage{
+        #blog-header{
+            h1{
+                font-size: 2rem;
+                font-weight: 600;
+            }
+        }
+     }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #pagespage{
+        #blog-header{
+            h1{
+                font-size: 3rem;
+                font-weight: 600;
+            }
+        }
+     }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+ #pagespage{
+    #blog-header{
+        h1{
+            font-size: 3rem;
+            font-weight: 600;
         }
     }
+ }
 }

@@ -47,9 +47,7 @@ export default function AdminUser(){
 
                 <Fade direction='up' >
                     <div className='flex justify-center items-center my-10'>
-                    {alertVisible && (
-                            <Alert  message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>
-                        )}
+                    {alertVisible && (<Alert  message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/>)}
                     </div>
                 </Fade>
 

@@ -15,6 +15,9 @@ const menuSchema = mongoose.Schema({
         type: String,
         lowercase : true,
         required : [true]
+    },
+    photo : {
+        type: String,
     }
 },{timestamps : true})
 

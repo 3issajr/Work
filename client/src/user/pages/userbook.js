@@ -21,6 +21,8 @@ export default function UserBook() {
                     setLoading(false)
                 } catch (error) {
                     setError(error.response.data.error);
+                    setLoading(false)
+
                 }
             };
             fetchBooking();
@@ -50,7 +52,7 @@ export default function UserBook() {
      
         <div id='userbook' className="flex justify-center items-center h-screen">
 
-            <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
+            <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg  xxs:p-6  xs:p-5 xs:mt-5'>
                 
             {book.map(book => (
                 <div key={book._id} className='grid grid-cols-2 gap-4 p-5'>
@@ -86,6 +88,7 @@ export default function UserBook() {
                         : (<span className='text-red-500 font-bold'>{book.status}</span>)
                         )}
                     </div>
+                    <hr  className='font-bold bg-black p-1 rounded-md '/><hr  className='font-bold bg-black p-1 rounded-md '/>
                 </div>
             ))}
 

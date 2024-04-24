@@ -15,3 +15,71 @@
         }
     }
 }
+
+@media (min-width : 0px) and (max-width:575.98px){
+    #registerpage{
+        #registration-header{
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+            p{
+               width: 80%;
+            }
+        }
+        #registration-form{
+            table{
+                tr,td{
+                    padding: 1rem 1rem;
+                }
+                td{
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+            }
+        }
+     }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #registerpage{
+        #registration-header{
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+            p{
+               width: 80%;
+            }
+        }
+     }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+ #registerpage{
+    #registration-header{
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        p{
+           width: 80%;
+        }
+    }
+    #registration-form{
+        padding: 0rem 5rem;
+    }
+ }
+}

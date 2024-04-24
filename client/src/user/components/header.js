@@ -7,10 +7,10 @@ export default function Header() {
         <>
             <div id='header' className="items-center py-4 px-6 md:px-10 lg:px-20">
 
-                <div id='leftheader'>
-                    <div className="flex items-center">
+                <div id='leftheader' className='flex gap-3'>
+                    <div className="flex items-center ">
                         <FontAwesomeIcon icon={faPhone} className='w-5 h-5 mr-2 md:mr-4'/>
-                        <p className="text-xs md:text-base">(414) 857 - 0107</p>
+                        <p className="text-xs md:text-base ">(414) 857 - 0107</p>
                     </div>
                     <div className="flex items-center mt-2 md:mt-0 md:ml-6">
                         <FontAwesomeIcon icon={faEnvelope} className='w-5 h-5 mr-2 md:mr-4' />
@@ -18,11 +18,19 @@ export default function Header() {
                     </div>
                 </div>
 
-                <div id='rightheader' className="flex items-center">
+                <div id='rightheader' className="flex xxs:grid grid-cols-2 gap-3">
+                    <div>
                     <FontAwesomeIcon icon={faFacebook} className='w-5 h-5 mr-2 md:mr-4'/>
+                    </div>
+                    <div>
                     <FontAwesomeIcon icon={faInstagram} className='w-5 h-5 mr-2 md:mr-4'/>
+                    </div>
+                    <div>
                     <FontAwesomeIcon icon={faTwitter} className='w-5 h-5 mr-2 md:mr-4'/>
+                    </div>
+                    <div>
                     <FontAwesomeIcon icon={faGithub} className='w-5 h-5 mr-2 md:mr-4'/>
+                    </div>
                 </div>
 
             </div>

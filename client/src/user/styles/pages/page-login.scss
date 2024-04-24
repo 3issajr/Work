@@ -14,3 +14,63 @@
         }
     }
 }
+
+@media (min-width : 0px) and (max-width:575.98px){
+    #loginpage{
+        #login-form{
+            margin-top: 5px;
+        }
+        #login-header{
+            h1{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #loginpage{
+        #login-form{
+            margin-top: 5px;
+        }
+        #login-header{
+            h1{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #loginpage{
+        #login-form{
+            margin-top: 5px;
+        }
+        #login-header{
+            h1{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+    }
+}
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    #loginpage{
+        #login-header{
+            h1{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+    } 
+ }
+ 

@@ -2,6 +2,8 @@ const Admin = require('../models/adminModel')
 const Menu = require('../models/menuModel')
 const User = require('../models/userModel')
 const Book = require('../models/bookModel')
+const Contact = require('../models/contactModel')
+
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -83,23 +85,18 @@ exports.adminLogin = async (req , res) =>{
         res.status(400).json({error : err.message})
     }
 }
-
-exports.getAdmin = async (req , res)=>{
-  try{
-   const admin = await Admin.findOne(Admin.email)
-  }
-  catch(err){
-
-  }
-}
-
 //Admin Section Ends
 
 
 // Menu Section Starts
 exports.addMenu = async (req , res)=>{
     try{
-     const newMenu = new Menu(req.body)
+      const newMenu = new Menu({
+        name: req.body.name,
+        price: req.body.price,
+        info: req.body.info,
+        photo: req.file ? req.file.path : '' // Save the path to the photo if uploaded
+    });
      if(!newMenu.name){
         res.status(400).json({error : "Fill Menu Item Name"})
         console.log("Menu Name Error")
@@ -111,6 +108,10 @@ exports.addMenu = async (req , res)=>{
      else if(!newMenu.info){
         res.status(400).json({error : "Fill Menu Item Info"})
         console.log("Menu Info Error")
+     }
+     else if(!newMenu.photo){
+        res.status(400).json({error : "Fill Menu Item Photo"})
+        console.log("Menu Photo Error")
      }
      else {
         await newMenu.save()
@@ -279,3 +280,26 @@ exports.updateBooking = async (req , res)=>{
     }
   }
 // Booking Section Ends
+
+// Contact Section Starts
+
+exports.getContact = async (req , res)=>{
+  try{
+    const contact = await Contact.find()
+
+    if(contact.length === 0){
+      res.json(400).json({error : "No Messages Found"})
+      console.log("Admin Messages Not Found")
+    }
+    res.json(200).json({contact,message : "Messages Retrieved Successfully"})
+    console.log("Fetched Messages")
+
+  }
+  catch(err){
+    res.status(500).json({ err:'Internal Server Error'})
+  }
+  
+
+}
+
+// Contact Section Ends

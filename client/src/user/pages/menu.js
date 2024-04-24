@@ -1,6 +1,6 @@
 import { Fade } from 'react-awesome-reveal';
 import { NavLink } from 'react-router-dom';
-import images from './data/menudata'
+import axios from 'axios'
 
 import Img1 from '../public/images/app1.png'
 import Img2 from '../public/images/app2.png'
@@ -11,9 +11,24 @@ import Img6 from '../public/images/app6.png'
 import Img7 from '../public/images/app7.png'
 import Img8 from '../public/images/app8.png'
 import Img9 from '../public/images/app9.png'
+import { useEffect, useState } from 'react';
 
 
 export default function Menu(){
+    const [menu , setMenu] = useState([])
+    const [loading, setLoading] = useState(true);
+
+useEffect(()=>{
+    axios.get('http://localhost:3000/usermenu')
+    .then((response)=>{
+        setLoading(false)
+        setMenu(response.data.menu)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+},[])
+    
     
     const navLink = [
         {to:'/' , name:'All'},
@@ -23,8 +38,16 @@ export default function Menu(){
         {to:'/desserts' , name:'Desserts'},
     ]
 
+    if (loading) {
+        return(
+        <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+            <h1 className='bg-slate-200 text-5xl p-5 rounded-lg shadow-md font-bold'>Loading...</h1>
+        </div>
+        )
+    }
     return(
         <>
+        
         <div id='menupage' className='pt-8'>
 
 
@@ -50,15 +73,15 @@ export default function Menu(){
             <div id='menu-content'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'">
 
-                    {images.map((img , index)=>{
+                    {menu.map((img , index)=>{
                         return(
                             <>
                             <div id='menuitem' className='shadow-md rounded-md'>
-                             <img src={img.src} alt={img.name} className="itemimg w-full"/> 
+                            <img src={`http://localhost:3000/${img.photo}`} alt={img.name} className="itemimg w-full"/> 
                                 <div id="iteminfo" key={index} className='text-center'>
-                                    <p id="price" className="text-2xl ">${img.price}</p>
-                                    <p id='name' className="text-xl font-bold ">{img.name}</p>
-                                    <p id='info'>{img.info}</p>
+                                    <p id="price" className="text-2xl">${img.price}</p>
+                                    <p id='name' className="text-xl font-bold capitalize">{img.name}</p>
+                                    <p id='info' className='capitalize'>{img.info}</p>
                                 </div>
                             </div>
                             </>

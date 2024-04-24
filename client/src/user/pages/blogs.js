@@ -20,7 +20,7 @@ export default function Pages(){
               {Data.map((singleblog)=>{
                 return(
                     <>
-                    <div id='blogitem' key={singleblog.id} className='bg-white rounded-md border-solid border-2'>
+                    <div id='blogitem' key={singleblog.id} className='bg-white rounded-md border-solid shadow-md'>
                     <Link to={`${singleblog.id}`}> <img src={singleblog.src}  alt={singleblog.name} className='blogimg w-full'/> </Link>
                         <div id='bloginfo' className='p-4'>
                          <small>{singleblog.date}</small>
