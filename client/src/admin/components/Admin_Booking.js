@@ -1,42 +1,36 @@
+import AdminDashBoard from './AdminDashboard';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import {Alert} from 'antd'
-import {Fade} from 'react-awesome-reveal'
+import { Link } from 'react-router-dom';
 
-import AdminDashBoard from './AdminDashboard';
+import { Bounce } from 'react-awesome-reveal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 export default function AdminBooking(){
-    const [alertVisible, setAlertVisible] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
+    const username = localStorage.getItem('admin');
     const [booking , setBooking] = useState([])
 
     const handleDeleteMenuItem = (itemId) => {
         axios.delete(`http://localhost:3000/book/${itemId}`)
             .then(response => {
                 setBooking(prevBooking => prevBooking.filter(item => item._id !== itemId));
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             })
             .catch(error => {
-                console.error('Error deleting menu item:', error);
+                toast.error(error.response.data.error, { position: "top-center"});
             });
     };
 
     const updateBookingStatus = async (bookingId, status) => {
         try {
             const response = await axios.put(`http://localhost:3000/book/${bookingId}`, { status });
-            setAlertMessage(response.data.message);
-            setAlertType('success');
-            setAlertVisible(true);
+            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             setTimeout(()=>window.location.reload(),1000)
         } 
         catch (error) {
-            setAlertMessage(error.response.data.error);
-            setAlertType('error');
-            setAlertVisible(true); 
+            toast.error(error.response.data.error, { position: "top-center"});
         }
     };
 
@@ -45,35 +39,37 @@ export default function AdminBooking(){
             try {
                 const response = await axios.get('http://localhost:3000/book');
                 setBooking(response.data.booking);
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true)
+                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             }
             catch (error) {
-                setAlertMessage(error.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
+                toast.error(error.response.data.error, { position: "top-center"});
             }
         };
         fetchBookings();
     }, []);
 
  
-
-    
+    if (username == null) {
+        return(
+        <Bounce>
+            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+                <Link to='/Admin/'>Click To Login</Link>
+                </div>
+            </div>
+        </Bounce>
+        )  
+    }
     return (
         <>
             <div id='user' className='h-screen'>
 
                 <AdminDashBoard/>
+                <ToastContainer position="top-center" style={{width:"20rem"}} />
 
-                <Fade direction='up' >
-                    <div className='text-5xl flex justify-center items-center my-10'>
-                    {alertVisible && (<Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)} /> )}
-                    </div>
-                </Fade>
 
-                <div  className='flex justify-center'>
+                <div  className='flex justify-center p-32'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
                     <thead >
                         <tr>

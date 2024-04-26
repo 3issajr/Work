@@ -1,34 +1,34 @@
 import AdminDashBoard from './AdminDashboard';
+
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 import { Bounce } from 'react-awesome-reveal';
-import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 
 
 export default function AdminUser(){
-    const [users , setUsers] = useState([])
     const username = localStorage.getItem('admin');
+    const [messages , setMessage] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/user')
+        axios.get('http://localhost:3000/adminmessage')
         .then(response=>{ 
+            setMessage(response.data.contact)
             toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
-            setUsers(response.data.user)
-          
         })
         .catch(error=>{
             toast.error(error.response.data.error, { position: "top-center"});
         })
     },[])
 
-    const handleDeleteMenuItem = (itemId) => {
-        axios.delete(`http://localhost:3000/user/${itemId}`)
+    const handleDeleteMenuItem = (MessageId) => {
+        axios.delete(`http://localhost:3000/adminmessage/${MessageId}`)
             .then(response => {
-                setUsers(prevUsers => prevUsers.filter(item => item._id !== itemId));
+                setMessage(prevUsers => prevUsers.filter(item => item._id !== MessageId));
                 toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             })
             .catch(error => {
@@ -36,7 +36,6 @@ export default function AdminUser(){
             });
     };
 
-     
     if (username == null) {
         return(
         <Bounce>
@@ -47,11 +46,11 @@ export default function AdminUser(){
                 </div>
             </div>
         </Bounce>
-        )  
+        )
     }
     return (
         <>
-            <div id='user' className='h-screen'>
+            <div id='contact' className='h-screen'>
 
                 <AdminDashBoard/>
                 <ToastContainer position="top-center" style={{width:"20rem"}}/>
@@ -61,22 +60,22 @@ export default function AdminUser(){
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
                     <thead >
                         <tr>
-                            <th className="px-4 py-2 border-4">ID</th>
                             <th className="px-4 py-2 border-4">Name</th>
                             <th className="px-4 py-2 border-4">Email</th>
-                            <th className="px-4 py-2 border-4">Gender</th>
+                            <th className="px-4 py-2 border-4">Subject</th>
+                            <th className="px-4 py-2 border-4">Message</th> 
                             <th className="px-4 py-2 border-4">Action</th> 
                         </tr>
                     </thead>
                     <tbody className='border border-collapse border-gray-400'>
-                        {users.map(user => (
-                            <tr key={user._id}> 
-                                <td className="px-4 py-2 border-4">{user._id}</td>
-                                <td className="px-4 py-2 border-4">{user.name}</td>
-                                <td className="px-4 py-2 border-4">{user.email}</td>
-                                <td className="px-4 py-2 border-4">{user.gender}</td>
+                        {messages.map(message => (
+                            <tr key={message._id}> 
+                                <td className="px-4 py-2 border-4">{message.name}</td>
+                                <td className="px-4 py-2 border-4">{message.email}</td>
+                                <td className="px-4 py-2 border-4">{message.subject}</td>
+                                <td className="px-4 py-2 border-4">{message.message}</td>
                                 <td className="px-4 py-2 border-4">
-                                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeleteMenuItem(user._id)}>Delete</button>
+                                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeleteMenuItem(message._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

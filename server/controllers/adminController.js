@@ -2,7 +2,7 @@ const Admin = require('../models/adminModel')
 const Menu = require('../models/menuModel')
 const User = require('../models/userModel')
 const Book = require('../models/bookModel')
-const Contact = require('../models/contactModel')
+const Messages = require('../models/contactModel')
 
 
 var validateEmail = function(email) {
@@ -84,6 +84,16 @@ exports.adminLogin = async (req , res) =>{
     catch(err){
         res.status(400).json({error : err.message})
     }
+}
+
+exports.adminLogOut = async (req , res)=>{
+try {
+    res.status(200).json({ message: "Successfully Logged Out" });
+    }
+catch (err) {
+    console.error("Logout Error:", err);
+    res.status(500).json({ message: "Failed to logout" });
+}
 }
 //Admin Section Ends
 
@@ -283,23 +293,41 @@ exports.updateBooking = async (req , res)=>{
 
 // Contact Section Starts
 
-exports.getContact = async (req , res)=>{
+exports.getMessage = async (req , res)=>{
   try{
-    const contact = await Contact.find()
+    const contact = await Messages.find()
 
     if(contact.length === 0){
-      res.json(400).json({error : "No Messages Found"})
+      res.status(400).json({error : "No Messages Found"})
       console.log("Admin Messages Not Found")
     }
-    res.json(200).json({contact,message : "Messages Retrieved Successfully"})
-    console.log("Fetched Messages")
-
+    else {
+      res.status(200).json({contact, message : "Messages Retrieved Successfully"})
+      console.log("Fetched Messages")
+    }
   }
   catch(err){
     res.status(500).json({ err:'Internal Server Error'})
   }
-  
-
 }
 
+exports.deleteMessage = async (req , res)=>{
+  try {
+    const { id } = req.params; 
+
+    const deletedMessage = await Messages.findByIdAndDelete(id);
+
+    if (!deletedMessage) {
+        console.log("Message Deleting Order is Not Found")
+        return res.status(404).json({ error: 'There is no Messages' });
+    }
+
+    res.status(200).json({ message: 'Message Deleted Successfully' });
+    console.log("Message Item Deleted")
+
+} catch (err) {
+    console.error('Error deleting Message :', err);
+    res.status(500).json({ err: 'Internal server error' });
+}
+};
 // Contact Section Ends

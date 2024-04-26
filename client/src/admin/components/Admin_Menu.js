@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Alert } from 'antd';
-import { Fade } from 'react-awesome-reveal';
+import { Link } from 'react-router-dom';
+
+
+import { Bounce } from 'react-awesome-reveal';
 import AdminDashboard from './AdminDashboard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AdminMenu() {
-    const [alertVisible, setAlertVisible] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
-
+    const username = localStorage.getItem('admin');
     const [menu, setMenu] = useState([]);
     const [addMenuBtn, setAddMenuBtn] = useState(false);
     const [newMenuItem, setNewMenuItem] = useState({ name: '', price: '', info: '', photo: null });
@@ -19,14 +20,10 @@ export default function AdminMenu() {
         axios.get('http://localhost:3000/menu')
             .then(response => {
                 setMenu(response.data.menu);
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+                toast.success(response.data.message, { position: "top-center",autoClose: 2000});
             })
             .catch(error => {
-                setAlertMessage(error.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
+                toast.error(error.response.data.error, { position: "top-center" });
             });
     }, []);
 
@@ -48,25 +45,19 @@ export default function AdminMenu() {
         })
             .then(response => {
                 setMenu(response.data.menu);
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
                 setAddMenuBtn(false);
                 axios.get('http://localhost:3000/menu')
                     .then(response => {
                         setMenu(response.data.menu);
                         setAddMenuBtn(false);
                     })
-                    .catch(err => {
-                        setAlertMessage(err.response.data.error);
-                        setAlertType('error');
-                        setAlertVisible(true);
+                    .catch(error => {
+                        toast.error(error.response.data.error, { position: "top-center"});
                     });
             })
             .catch(error => {
-                setAlertMessage(error.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
+                toast.error(error.response.data.error, {position: "top-center"});
             });
     };
 
@@ -74,14 +65,10 @@ export default function AdminMenu() {
         axios.delete(`http://localhost:3000/menu/${itemId}`)
             .then(response => {
                 setMenu(prevMenu => prevMenu.filter(item => item._id !== itemId));
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+                toast.success(response.data.message, {position: "top-center",autoClose: 2000});
             })
             .catch(error => {
-                setAlertMessage(error.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
+                toast.error(error.response.data.error, { position: "top-center"});
             });
     };
 
@@ -95,15 +82,11 @@ export default function AdminMenu() {
         axios.put(`http://localhost:3000/menu/${itemId}`, updatedMenuItem)
             .then(response => {
                 setMenu(prevMenu => prevMenu.map(item => item._id === itemId ? response.data.menu : item));
-                setAlertMessage(response.data.message);
-                setAlertType('success');
-                setAlertVisible(true);
+                toast.success(response.data.message, { position: "top-center", autoClose: 2000});
                 setEditItemId(null);
             })
             .catch(error => {
-                setAlertMessage(error.response.data.error);
-                setAlertType('error');
-                setAlertVisible(true);
+                toast.error(error.response.data.error, { position: "top-center"});
             });
     };
 
@@ -114,15 +97,23 @@ export default function AdminMenu() {
 
     const handleImageChange = (e) => {  setNewMenuItem(prevState => ({ ...prevState, photo: e.target.files[0] }));};
 
+    if (username == null) {
+        return(
+        <Bounce>
+            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+                <Link to='/Admin/'>Click To Login</Link>
+                </div>
+            </div>
+        </Bounce>
+        )  
+    }
     return (
         <div id='menu' className='h-screen'>
-            <AdminDashboard />
 
-            <Fade direction='up'>
-                <div className='text-5xl flex justify-center items-center mt-10'>
-                    {alertVisible && (<Alert message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)} />)}
-                </div>
-            </Fade>
+                <ToastContainer position="top-center"  style={{width:"20rem"}}/>
+                <AdminDashboard />
 
             <div className='flex justify-center my-10'>
                 <button className='rounded-lg shadow-sm text-white bg-red-800 p-3' onClick={handleAddMenuBtnClick}>Add Menu Item</button>

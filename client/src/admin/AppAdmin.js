@@ -6,6 +6,7 @@ import AdminMenu from './components/Admin_Menu'
 import AdminUser from './components/Admin_User'
 import AdminRegister from './components/AdminRegister'
 import AdminBooking from './components/Admin_Booking'
+import Admin_Message from './components/Admin_Message'
 function App(){
 return(
     <>
@@ -16,6 +17,7 @@ return(
         <Route path='/user' element={<AdminUser/>}></Route>
         <Route path='/register' element={<AdminRegister/>}></Route>
         <Route path='/book' element={<AdminBooking/>}></Route>
+        <Route path='/message' element={<Admin_Message/>}></Route>
     </Routes>
     </>
 )

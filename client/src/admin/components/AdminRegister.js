@@ -1,18 +1,17 @@
 import AdminDashBoard from "./AdminDashboard"
 
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate , Link} from 'react-router-dom'
 import axios from 'axios'
 
-import { Alert } from 'antd';
-import { Fade } from 'react-awesome-reveal';
+import { Bounce } from 'react-awesome-reveal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function AdminRegister(){
-    const [alertVisible, setAlertVisible] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const [alertType, setAlertType] = useState('');
+    const username = localStorage.getItem('admin');
     const Navigate = useNavigate()
 
     const [formData , setFormData] = useState({name : "", email : "", firstpass:"", secondpass:"", level:""})
@@ -22,29 +21,37 @@ export default function AdminRegister(){
         e.preventDefault()
         await axios.post('http://localhost:3000/adminregister',formData)
         .then((response)=>{
-            setAlertMessage(response.data.message);
-            setAlertType('success');
-            setAlertVisible(true);
+            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             setTimeout(() => { Navigate('/Admin/dashboard')}, 2000);
         })
         .catch((err)=>{
-            setAlertMessage(err.response.data.error);
-            setAlertType('error');
-            setAlertVisible(true);
+            toast.error(error.response.data.error, { position: "top-center"});
+         
         })
     }
+
+    if (username == null) {
+        return(
+        <Bounce>
+            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+                <Link to='/Admin/'>Click To Login</Link>
+                </div>
+            </div>
+        </Bounce>
+        )
+    }
+    
     return(
         <>
         <div id = 'register'>
+
+            <ToastContainer position="top-center" style={{width:"20rem"}} />
             <AdminDashBoard/>
 
-            <Fade direction='up'>
-                <div className='text-5xl flex justify-center items-center mt-10'>
-                    {alertVisible && ( <Alert  message={alertMessage} type={alertType} closable className='text-3xl' onClose={() => setAlertVisible(false)}/> )}
-                </div>
-            </Fade>
 
-            <div id = 'register-form'>
+            <div id = 'register-form' className="p-32">
                 
             <form  className="flex  flex-col  justify-center gap-5 p-10 text-center ">
                     <FontAwesomeIcon icon={faUser} className='text-5xl'/>

@@ -50,7 +50,13 @@ router.post('/adminregister',adminController.adminRegister)
 
 router.post('/adminlogin',adminController.adminLogin)
 
-// router.get('/admins' , adminController)
+router.get('/adminsignout',adminController.adminLogOut)
+
+
+router.get('/adminmessage',adminController.getMessage)
+
+router.delete('/adminmessage/:id',adminController.deleteMessage)
+
 
 router.post('/menu',upload.single('photo'),adminController.addMenu)
 
@@ -71,6 +77,8 @@ router.get('/book',adminController.getBooking)
 router.delete('/book/:id',adminController.deleteBooking)
 
 router.put('/book/:id',adminController.updateBooking)
+
+
 
 
 module.exports = router
