@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-
 import { Bounce } from 'react-awesome-reveal';
-import AdminDashboard from './AdminDashboard';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
+import AdminDashboard from './AdminDashboard';
 
 export default function AdminMenu() {
     const username = localStorage.getItem('admin');
@@ -20,59 +18,53 @@ export default function AdminMenu() {
         axios.get('http://localhost:3000/menu')
             .then(response => {
                 setMenu(response.data.menu);
-                toast.success(response.data.message, { position: "top-center",autoClose: 2000});
+                toast.success(response.data.message);
             })
             .catch(error => {
-                toast.error(error.response.data.error, { position: "top-center" });
+                toast.error(error.response.data.error);
             });
     }, []);
 
-    const handleAddMenuBtnClick = () => {
-        setAddMenuBtn(prevState => !prevState);
-    };
+    const handleAddMenuBtnClick = () => setAddMenuBtn(prevState => !prevState);
 
-    const handleAddMenuBtnItem = () => {
+    const handleAddMenuItem = () => {
         const formData = new FormData();
         formData.append('name', newMenuItem.name);
         formData.append('price', newMenuItem.price);
         formData.append('info', newMenuItem.info);
         formData.append('photo', newMenuItem.photo);
 
-        axios.post('http://localhost:3000/menu', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
+        axios.post('http://localhost:3000/menu', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(response => {
                 setMenu(response.data.menu);
-                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+                toast.success(response.data.message);
                 setAddMenuBtn(false);
-                axios.get('http://localhost:3000/menu')
+                    axios.get('http://localhost:3000/menu')
                     .then(response => {
                         setMenu(response.data.menu);
-                        setAddMenuBtn(false);
+                        toast.success(response.data.message);
                     })
                     .catch(error => {
-                        toast.error(error.response.data.error, { position: "top-center"});
+                        toast.error(error.response.data.error);
                     });
             })
             .catch(error => {
-                toast.error(error.response.data.error, {position: "top-center"});
+                toast.error(error.response.data.error);
             });
     };
 
-    const handleDeleteMenuItem = (itemId) => {
+    const handleDeleteMenuItem = itemId => {
         axios.delete(`http://localhost:3000/menu/${itemId}`)
             .then(response => {
                 setMenu(prevMenu => prevMenu.filter(item => item._id !== itemId));
-                toast.success(response.data.message, {position: "top-center",autoClose: 2000});
+                toast.success(response.data.message);
             })
             .catch(error => {
-                toast.error(error.response.data.error, { position: "top-center"});
+                toast.error(error.response.data.error);
             });
     };
 
-    const handleEditClick = (itemId) => {
+    const handleEditClick = itemId => {
         setEditItemId(itemId);
         const itemToEdit = menu.find(item => item._id === itemId);
         setUpdatedMenuItem(itemToEdit);
@@ -82,11 +74,19 @@ export default function AdminMenu() {
         axios.put(`http://localhost:3000/menu/${itemId}`, updatedMenuItem)
             .then(response => {
                 setMenu(prevMenu => prevMenu.map(item => item._id === itemId ? response.data.menu : item));
-                toast.success(response.data.message, { position: "top-center", autoClose: 2000});
+                toast.success(response.data.message);
                 setEditItemId(null);
+                axios.get('http://localhost:3000/menu')
+                    .then(response => {
+                        setMenu(response.data.menu);
+                        toast.success(response.data.message);
+                    })
+                    .catch(error => {
+                        toast.error(error.response.data.error);
+                    });
             })
             .catch(error => {
-                toast.error(error.response.data.error, { position: "top-center"});
+                toast.error(error.response.data.error);
             });
     };
 
@@ -95,30 +95,32 @@ export default function AdminMenu() {
         setUpdatedMenuItem(prevState => ({ ...prevState, [propertyName]: value }));
     };
 
-    const handleImageChange = (e) => {  setNewMenuItem(prevState => ({ ...prevState, photo: e.target.files[0] }));};
+    const handleImageChange = e => setNewMenuItem(prevState => ({ ...prevState, photo: e.target.files[0] }));
 
     if (username == null) {
-        return(
-        <Bounce>
-            <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
-                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
-                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
-                <Link to='/Admin/'>Click To Login</Link>
+        return (
+            <Bounce>
+                <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+                    <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+                        <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+                        <Link to='/Admin/'>Click To Login</Link>
+                    </div>
                 </div>
-            </div>
-        </Bounce>
-        )  
+            </Bounce>
+        );
     }
+
     return (
         <div id='menu' className='h-screen'>
 
-                <ToastContainer position="top-center"  style={{width:"20rem"}}/>
-                <AdminDashboard />
+        <ToastContainer position="top-center" autoClose="2000" style={{width:"20rem"}}/>
+            <AdminDashboard />
 
             <div className='flex justify-center my-10'>
-                <button className='rounded-lg shadow-sm text-white bg-red-800 p-3' onClick={handleAddMenuBtnClick}>Add Menu Item</button>
+                <button className='rounded-lg shadow-sm text-white bg-red-800 p-3' onClick={handleAddMenuBtnClick}>
+                    Add Menu Item
+                </button>
             </div>
-
             <div className='flex justify-center pb-10'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
                     <thead>
@@ -131,43 +133,36 @@ export default function AdminMenu() {
                         </tr>
                     </thead>
                     <tbody>
-                        {menu.map(item => (
+                    {menu && menu.map(item => (
+                        item && item._id && (
                             <tr key={item._id}>
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
-                                        <input
-                                            type="text"
-                                            value={updatedMenuItem.name}
-                                            onChange={(e) => handleInputChange(e, 'name')}
-                                        />
+                                        <input type="text" value={updatedMenuItem.name} onChange={e => handleInputChange(e, 'name')} />
                                     ) : (
                                         item.name
                                     )}
                                 </td>
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
-                                        <input
-                                            type="text"
-                                            value={updatedMenuItem.price}
-                                            onChange={(e) => handleInputChange(e, 'price')}
-                                        />
+                                        <input type="text" value={updatedMenuItem.price} onChange={e => handleInputChange(e, 'price')} />
                                     ) : (
                                         item.price
                                     )}
                                 </td>
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
-                                        <input
-                                            type="text"
-                                            value={updatedMenuItem.info}
-                                            onChange={(e) => handleInputChange(e, 'info')}
-                                        />
+                                        <input type="text" value={updatedMenuItem.info} onChange={e => handleInputChange(e, 'info')} />
                                     ) : (
                                         item.info
                                     )}
                                 </td>
                                 <td className="px-4 py-2 border-4">
-                                    <img src={`http://localhost:3000/${item.photo}`} alt={item.name} style={{ width: '100px' }} />
+                                    {editItemId === item._id ? (
+                                        <input type="file" onChange={e => handleImageChange(e)} />
+                                    ) : (
+                                        <img src={`http://localhost:3000/${item.photo}`} alt={item.name} style={{ width: '100px' }} />
+                                    )}
                                 </td>
                                 <td className="px-4 py-2 border-4">
                                     {editItemId === item._id ? (
@@ -180,44 +175,25 @@ export default function AdminMenu() {
                                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
                                 </td>
                             </tr>
-                        ))}
+                        )
+                    ))}
 
-
-                        {/*On Pressing Add Menu Button */}
                         {addMenuBtn && (
                             <tr>
                                 <td className="px-4 py-2 border-4">
-                                    <input
-                                        type="text"
-                                        value={newMenuItem.name}
-                                        onChange={(e) => setNewMenuItem({ ...newMenuItem, name: e.target.value })}
-                                        placeholder="Name"
-                                    />
+                                    <input type="text" value={newMenuItem.name} onChange={e => setNewMenuItem({ ...newMenuItem, name: e.target.value })} placeholder="Name" />
                                 </td>
                                 <td className="px-4 py-2 border-4">
-                                    <input
-                                        type="text"
-                                        value={newMenuItem.price}
-                                        onChange={(e) => setNewMenuItem({ ...newMenuItem, price: e.target.value })}
-                                        placeholder="Price"
-                                    />
+                                    <input type="text" value={newMenuItem.price} onChange={e => setNewMenuItem({ ...newMenuItem, price: e.target.value })} placeholder="Price" />
                                 </td>
                                 <td className="px-4 py-2 border-4">
-                                    <input
-                                        type="text"
-                                        value={newMenuItem.info}
-                                        onChange={(e) => setNewMenuItem({ ...newMenuItem, info: e.target.value })}
-                                        placeholder="Info"
-                                    />
+                                    <input type="text" value={newMenuItem.info} onChange={e => setNewMenuItem({ ...newMenuItem, info: e.target.value })} placeholder="Info" />
                                 </td>
                                 <td className="px-4 py-2 border-4">
-                                    <input
-                                        type="file"
-                                        onChange={handleImageChange}
-                                    />
+                                    <input type="file" onChange={handleImageChange} />
                                 </td>
                                 <td className="px-4 py-2 border-4" colSpan="2">
-                                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddMenuBtnItem}>Add</button>
+                                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddMenuItem}>Add</button>
                                 </td>
                             </tr>
                         )}

@@ -22,7 +22,6 @@ export default function About() {
     return (
         <>
             <AboutComponent />
-
             <div id='aboutpage'>
 
                 <div id='aboutimage'>

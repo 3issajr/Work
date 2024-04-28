@@ -20,16 +20,11 @@ export default function Login(){
                 document.getElementById('password-input').value = '';
                 localStorage.setItem("user", JSON.stringify(result.data.user.name));
                 localStorage.setItem("token", JSON.stringify(result.data.token));
-                toast.success('Login successful!', {
-                    position: "top-center",
-                    autoClose: 2000
-                });
+                toast.success('Login successful!', {position: "top-center",autoClose: 2000});
                 setTimeout(() => { Navigate('/home') }, 3000);
             })
             .catch((err) => {
-                toast.error(err.response.data.error, {
-                    position: "top-center"
-                });
+                toast.error(err.response.data.error, { position: "top-center" });
             });
     };
     return(
@@ -113,7 +108,7 @@ export default function Login(){
                 </div>
 
             </form>  
-            <ToastContainer position="top-center" />
+            <ToastContainer/>
 
               
         </div>

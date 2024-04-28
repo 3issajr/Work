@@ -18,10 +18,10 @@ export default function AdminUser(){
         axios.get('http://localhost:3000/adminmessage')
         .then(response=>{ 
             setMessage(response.data.contact)
-            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+            toast.success(response.data.message);
         })
         .catch(error=>{
-            toast.error(error.response.data.error, { position: "top-center"});
+            toast.error(error.response.data.error);
         })
     },[])
 
@@ -52,9 +52,8 @@ export default function AdminUser(){
         <>
             <div id='contact' className='h-screen'>
 
-                <AdminDashBoard/>
-                <ToastContainer position="top-center" style={{width:"20rem"}}/>
-
+            <ToastContainer position="top-center" autoClose="2000" style={{width:"20rem"}}/>
+            <AdminDashBoard/>
  
                 <div  className='flex justify-center p-32'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">

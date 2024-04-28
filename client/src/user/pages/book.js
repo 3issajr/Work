@@ -128,7 +128,7 @@ return(
                         </div>
 
                 </form>
-                <ToastContainer position="top-center" />
+                <ToastContainer/>
 
             </div>
                   

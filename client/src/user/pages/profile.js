@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Bounce } from 'react-awesome-reveal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Profile() {
     const [profile, setProfile] = useState(null);
@@ -9,28 +11,34 @@ export default function Profile() {
     const [error, setError] = useState(null);
     const [newName, setNewName] = useState('');
     const [newEmail, setNewEmail] = useState('');
-    const [newGender, setNewGender] = useState(''); 
-    const [newPhone, setNewPhone] = useState(''); 
-    const [showUpdateForm, setShowUpdateForm] = useState(false); // New state
+    const [newGender, setNewGender] = useState('');
+    const [newPhone, setNewPhone] = useState('');
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+                const token = localStorage.getItem('token');
                 const response = await axios.get('http://localhost:3000/profile', {
                     withCredentials: true,
-                    headers: {'Authorization': `${token}`}
+                    headers: { 'Authorization': `${token}` }
                 });
                 setProfile(response.data);
                 setLoading(false);
+                if (response.data) {
+                    setNewName(response.data.name);
+                    setNewEmail(response.data.email);
+                    setNewGender(response.data.gender);
+                    setNewPhone(response.data.phone);
+                }
             } catch (error) {
                 setError(error.message);
                 setLoading(false);
             }
         };
         fetchProfile();
-    }, []);    
+    }, []);
 
     const handleUpdateProfile = async (userId) => {
         try {
@@ -39,41 +47,49 @@ export default function Profile() {
                 name: newName,
                 email: newEmail,
                 gender: newGender,
-                phone : newPhone
+                phone: newPhone
             }, {
                 withCredentials: true,
-                headers: {'Authorization': `${token}`}
+                headers: { 'Authorization': `${token}` }
             });
-            localStorage.removeItem('user')
-            localStorage.removeItem('token')
-            setTimeout(()=>navigate('/login'),2000)
+            console.log(response)
+
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            setTimeout(() => (navigate('/login'),window.location.reload()));
             setProfile(response.data);
+            axios.get('http://localhost:3000/profile', {
+                withCredentials: true,
+                headers: { 'Authorization': `${token}` }
+            });
+            setProfile(response.data);
+            setLoading(false);
         } catch (error) {
             setError(error.message);
         }
     };
 
     if (loading) {
-        return(
-        <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
-            <h1 className='bg-slate-200 text-5xl p-5 rounded-lg shadow-md font-bold'>Loading...</h1>
-        </div>
-        )
-    }
-    
-    if (error) {
-        return(
-        <Bounce>
+        return (
             <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
-                <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
-                <h1 className=' text-5xl p-5 '>You Must Login First</h1>
-                <NavLink to='/login'>Click To Login</NavLink>
-                </div>
+                <h1 className='bg-slate-200 text-5xl p-5 rounded-lg shadow-md font-bold'>Loading...</h1>
             </div>
-        </Bounce>
         )
     }
-    
+
+    if (error) {
+        return (
+            <Bounce>
+                <div className="text-red-800 text-3xl flex justify-center items-center h-screen">
+                    <div className='bg-slate-200 rounded-lg shadow-md font-bold text-center'>
+                        <h1 className=' text-5xl p-5 '>You Must Login First</h1>
+                        <NavLink to='/login'>Click To Login</NavLink>
+                    </div>
+                </div>
+            </Bounce>
+        )
+    }
+
     return (
         <div id='profile' className="flex flex-col justify-center items-center lg:h-screen ">
             <div id='profile-content' className='bg-slate-200 px-10 py-6 rounded-lg'>
@@ -98,7 +114,7 @@ export default function Profile() {
                     <div id='profile-btns' className='flex items-center gap-5 pt-2'>
                         <button onClick={() => setShowUpdateForm(prevState => !prevState)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>
                             {showUpdateForm ? "Close Form" : "Update Form"}
-                        </button>   
+                        </button>
                         <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Change Password</button>
                         <button className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Forgot Password</button>
                     </div>
@@ -126,7 +142,7 @@ export default function Profile() {
                             <input type="text" value={newPhone} onChange={(e) => setNewPhone(e.target.value)} />
                         </div>
                         <div id='profile-btn' className='flex items-center gap-5 pt-2'>
-                            <button onClick={()=>handleUpdateProfile(profile.id)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Update Profile</button>
+                            <button onClick={() => handleUpdateProfile(profile.id)} className='p-2 border-solid shadow-md bg-red-800 rounded-lg text-white'>Update Profile</button>
                         </div>
                     </div>
                 </div>

@@ -16,21 +16,21 @@ export default function AdminBooking(){
         axios.delete(`http://localhost:3000/book/${itemId}`)
             .then(response => {
                 setBooking(prevBooking => prevBooking.filter(item => item._id !== itemId));
-                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+                toast.success(response.data.message);
             })
             .catch(error => {
-                toast.error(error.response.data.error, { position: "top-center"});
+                toast.error(error.response.data.error);
             });
     };
 
     const updateBookingStatus = async (bookingId, status) => {
         try {
             const response = await axios.put(`http://localhost:3000/book/${bookingId}`, { status });
-            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
-            setTimeout(()=>window.location.reload(),1000)
+            toast.success(response.data.message);
+            setTimeout(()=>window.location.reload(),)
         } 
         catch (error) {
-            toast.error(error.response.data.error, { position: "top-center"});
+            toast.error(error.response.data.error);
         }
     };
 
@@ -39,10 +39,10 @@ export default function AdminBooking(){
             try {
                 const response = await axios.get('http://localhost:3000/book');
                 setBooking(response.data.booking);
-                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+                toast.success(response.data.message);
             }
             catch (error) {
-                toast.error(error.response.data.error, { position: "top-center"});
+                toast.error(error.response.data.error);
             }
         };
         fetchBookings();
@@ -64,10 +64,9 @@ export default function AdminBooking(){
     return (
         <>
             <div id='user' className='h-screen'>
+            <ToastContainer position="top-center" autoClose="2000" style={{width:"20rem"}}/>
 
                 <AdminDashBoard/>
-                <ToastContainer position="top-center" style={{width:"20rem"}} />
-
 
                 <div  className='flex justify-center p-32'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">

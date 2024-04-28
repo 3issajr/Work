@@ -19,7 +19,6 @@ export default function AdminHome(){
         e.preventDefault()
         await axios.post('http://localhost:3000/adminlogin',formData)
         .then((response)=>{
-            console.log(response)
             toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
             localStorage.setItem('admin',response.data.admin.name)
             setTimeout(()=>{Navigate('/admin/dashboard')},2000)

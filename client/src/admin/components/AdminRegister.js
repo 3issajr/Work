@@ -47,7 +47,6 @@ export default function AdminRegister(){
         <>
         <div id = 'register'>
 
-            <ToastContainer position="top-center" style={{width:"20rem"}} />
             <AdminDashBoard/>
 
 

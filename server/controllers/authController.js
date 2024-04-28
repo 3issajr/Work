@@ -151,7 +151,7 @@ exports.updateProfile = async (req, res) => {
 
         if (req.cookies['token']) {
             res.clearCookie('token', { path: "/" });
-            res.status(200).json(user);
+            res.status(200).json({user,message:"User Updated Succesfully"});
         }
     } catch (error) {
         console.error("Error updating user profile:", error);

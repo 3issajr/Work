@@ -51,7 +51,6 @@ export default function AdminDashboard() {
   return (
     <>
       <div id='dashboard'>
-        <ToastContainer position="top-center" style={{width:"20rem"}}/>
 
         <div id='dashboard-header' className="flex justify-center items-center">
           <h1 className="text-7xl text-red-800 italic">Dashboard</h1>

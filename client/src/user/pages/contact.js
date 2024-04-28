@@ -13,16 +13,10 @@ export default function Contact() {
   e.preventDefault()
   axios.post('http://localhost:3000/contact',formData)
     .then((result)=>{
-      console.log(result)
-      toast.success(result.data.message, {
-        position: "top-center",
-        autoClose: 2000
-    });
+      toast.success(result.data.message, { position: "top-center",autoClose: 2000});
     })
     .catch((err)=>{
-      toast.error(err.response.data.error, {
-        position: "top-center"
-    });
+      toast.error(err.response.data.error, {position: "top-center"});
     })
   }
 
@@ -94,7 +88,7 @@ export default function Contact() {
             </div>
         
             </form>
-            <ToastContainer position="top-center" />
+            <ToastContainer/>
 
         </div>
 

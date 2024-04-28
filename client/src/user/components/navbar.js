@@ -45,14 +45,9 @@ function NavBar() {
     axios.get('http://localhost:3000/signout', { withCredentials: true })
       .then((result) => {
         if (result.data.message === 'Already logged out') {
-          toast.warning(result.data.message, {
-            position: "top-center"
-          });
+          toast.warning(result.data.message, {position: "top-center" });
         } else {
-          toast.success(result.data.message, {
-            position: "top-center",
-            autoClose: 3000
-          });
+          toast.success(result.data.message, {position: "top-center",autoClose: 3000 });
           localStorage.removeItem('user');
           localStorage.removeItem('token');
           setIsLoggedIn(false);
@@ -60,9 +55,7 @@ function NavBar() {
         }
       })
       .catch((err) => {
-        toast.error(err.response.data.error, {
-          position: "top-center"
-        });
+        toast.error(err.response.data.error, { position: "top-center"});
       })
   };
 
@@ -99,7 +92,7 @@ function NavBar() {
 
   return (
     <>
-            <ToastContainer position="top-center" />
+            <ToastContainer/>
 
       <div id="topnav" className={`items-center py-4 px-6 ${pageBackgroundColors[pathname] || ''}`}>
 

@@ -16,12 +16,12 @@ export default function AdminUser(){
     useEffect(()=>{
         axios.get('http://localhost:3000/user')
         .then(response=>{ 
-            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+            toast.success(response.data.message);
             setUsers(response.data.user)
           
         })
         .catch(error=>{
-            toast.error(error.response.data.error, { position: "top-center"});
+            toast.error(error.response.data.error);
         })
     },[])
 
@@ -29,10 +29,10 @@ export default function AdminUser(){
         axios.delete(`http://localhost:3000/user/${itemId}`)
             .then(response => {
                 setUsers(prevUsers => prevUsers.filter(item => item._id !== itemId));
-                toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+                toast.success(response.data.message);
             })
             .catch(error => {
-                toast.error(error.response.data.error, { position: "top-center"});
+                toast.error(error.response.data.error);
             });
     };
 
@@ -53,9 +53,8 @@ export default function AdminUser(){
         <>
             <div id='user' className='h-screen'>
 
+            <ToastContainer position="top-center" autoClose="2000" style={{width:"20rem"}}/>
                 <AdminDashBoard/>
-                <ToastContainer position="top-center" style={{width:"20rem"}}/>
-
  
                 <div  className='flex justify-center p-32'>
                 <table className="table-auto text-3xl border-4 border-collapse border-gray-400">
@@ -65,6 +64,7 @@ export default function AdminUser(){
                             <th className="px-4 py-2 border-4">Name</th>
                             <th className="px-4 py-2 border-4">Email</th>
                             <th className="px-4 py-2 border-4">Gender</th>
+                            <th className="px-4 py-2 border-4">Phone</th>
                             <th className="px-4 py-2 border-4">Action</th> 
                         </tr>
                     </thead>
@@ -75,6 +75,7 @@ export default function AdminUser(){
                                 <td className="px-4 py-2 border-4">{user.name}</td>
                                 <td className="px-4 py-2 border-4">{user.email}</td>
                                 <td className="px-4 py-2 border-4">{user.gender}</td>
+                                <td className="px-4 py-2 border-4">{user.phone}</td>
                                 <td className="px-4 py-2 border-4">
                                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeleteMenuItem(user._id)}>Delete</button>
                                 </td>
