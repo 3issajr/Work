@@ -27,6 +27,8 @@ const upload = multer({ storage: storage });
 
 router.post('/signup', authController.addUser)
 
+router.get('/signin',authController.loginUser)
+
 router.post('/signin',authController.loginUser)
 
 router.get('/signout',authController.logOut)

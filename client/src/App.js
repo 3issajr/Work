@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
 import AdminIndex from './admin/AppAdmin';
 import UserIndex from './user/AppUser';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (

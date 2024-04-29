@@ -17,6 +17,7 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "flowbite-react": "^0.7.8",
+    "js-cookie": "^3.0.5",
     "postcss": "^8.4.38",
     "prefixer": "^0.0.3",
     "react": "^18.2.0",

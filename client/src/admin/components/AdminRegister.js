@@ -105,6 +105,8 @@ export default function AdminRegister(){
                     </div>
 
                 </form>
+                <ToastContainer/>
+
             </div>
         </div>
         

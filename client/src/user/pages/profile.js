@@ -52,13 +52,11 @@ export default function Profile() {
                 withCredentials: true,
                 headers: { 'Authorization': `${token}` }
             });
-            console.log(response)
-
             localStorage.removeItem('user');
             localStorage.removeItem('token');
             setTimeout(() => (navigate('/login'),window.location.reload()));
             setProfile(response.data);
-            axios.get('http://localhost:3000/profile', {
+            axios.get('http://localhost:3000/signin', {
                 withCredentials: true,
                 headers: { 'Authorization': `${token}` }
             });

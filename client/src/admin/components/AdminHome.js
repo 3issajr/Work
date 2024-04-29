@@ -19,9 +19,9 @@ export default function AdminHome(){
         e.preventDefault()
         await axios.post('http://localhost:3000/adminlogin',formData)
         .then((response)=>{
-            toast.success(response.data.message, {position: "top-center", autoClose: 2000 });
+            toast.success(response.data.message,{autoClose: 2000 });
             localStorage.setItem('admin',response.data.admin.name)
-            setTimeout(()=>{Navigate('/admin/dashboard')},2000)
+            setTimeout(()=>{Navigate('/admin/dashboard')},3000)
         })
         .catch((error)=>{
             toast.error(error.response.data.error, { position: "top-center"});
@@ -64,13 +64,11 @@ export default function AdminHome(){
                         <button onClick={handleSubmit} className="p-3 w-full rounded-lg shadow-sm bg-red-800 text-white text-2xl">Login</button>
                     </div>
                 </form>
-                <ToastContainer position="top-center" style={{width:"20rem"}}/>
-
+                <ToastContainer position="top-center"/>
 
             </div>
 
         </div>
-        
         </>
     )
 }

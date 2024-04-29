@@ -12,11 +12,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Logo from '../public/images/logo.png';
 
 function NavBar() {
-  const [users, setUsers] = useState([]); // State to hold logged in user
+  const [users, setUsers] = useState([]); 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const pathname = window.location.pathname; //Get the pathname from URL
+  const pathname = window.location.pathname; 
 
   const NavLinks = [
     { to: '/home', name: 'Home' },
@@ -90,12 +90,10 @@ function NavBar() {
   useEffect(() => { setIsLoggedIn(users.length !== 0); }, [users]);
 
 
+
   return (
     <>
-            <ToastContainer/>
-
       <div id="topnav" className={`items-center py-4 px-6 ${pageBackgroundColors[pathname] || ''}`}>
-
 
         <Bounce triggerOnce={false} duration={5000}>
           <div id="logo" className="flex justify-center gap-5">
@@ -134,8 +132,6 @@ function NavBar() {
 
 
       </div>
-      
-
     </>
   );
 }
