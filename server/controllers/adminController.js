@@ -13,222 +13,203 @@ var validateEmail = function(email) {
 
 
 //Admin Section Starts
-exports.adminRegister = async (req , res)=>{
-    try{
-      const newAdmin = new Admin(req.body)
-      const existingAdmin = await Admin.findOne({email : newAdmin.email})
+exports.adminRegister = async (req, res) => {
+  try {
+      const newAdmin = new Admin(req.body);
+      const existingAdmin = await Admin.findOne({ email: newAdmin.email });
 
-      if(!newAdmin.name){
-        res.status(400).json({error : "Fill Your Name"})
-        console.log("Admin Name Error")
-        return;
+      if (!newAdmin.name) {
+          throw new Error("Fill your name");
       }
-      else if (!newAdmin.email){
-        res.status(400).json({error : "Fill Your Email"})
-        console.log("Admin Email Error")
-        return;
+      if (!newAdmin.email) {
+          throw new Error("Fill your email");
       }
-      else if (!validateEmail(newAdmin.email)) {
-        res.status(400).json({ error: 'Invalid Email Format' });
-        console.log("Email Format Error")
-        return;
-    }
-      else if (existingAdmin) {
-        res.status(400).json({ error: 'Email Already Exists' });
-        console.log("Email already exists ")
-        return;
-    }
-      else if (!newAdmin.firstpass){
-        res.status(400).json({error : "Fill Your Password"})
-        console.log("Admin FirstPass Error")
-        return;
+      if (!validateEmail(newAdmin.email)) {
+          throw new Error("Invalid email format");
       }
-      else if (!newAdmin.secondpass){
-        res.status(400).json({error : "Fill Your Password"})
-        console.log("Admin SecondPass Error")
-        return;
+      if (existingAdmin) {
+          throw new Error("Email already exists");
       }
-      else if(newAdmin.firstpass !== newAdmin.secondpass){
-        res.status(400).json({error : "Password MisMatch"})
-        console.log("Password Error")
-        return;
-    }
-      else if (newAdmin.firstpass.length & newAdmin.secondpass.length <6) {
-        res.status(400).json({ error: 'Minimum Password  length is 6' });
-        console.log("Password Length Error")
-        return;
-    }
-      else if (!newAdmin.level){
-        res.status(400).json({error : "Choose Your Level"})
-        console.log("Admin Level Error")
-        return;
+      if (!newAdmin.firstpass) {
+          throw new Error("Fill your password");
       }
-    else {
-        await newAdmin.save();
-        res.status(201).json({message:"Registeration Successfully"})
-    }
-    }
-    catch(err){
-        res.status(400).json({error : err.message})
-        res.status(500).json({ err: 'Internal server error' });
+      if (!newAdmin.secondpass) {
+          throw new Error("Fill your password");
       }
-}
+      if (newAdmin.firstpass !== newAdmin.secondpass) {
+          throw new Error("Password mismatch");
+      }
+      if (newAdmin.firstpass.length < 6 || newAdmin.secondpass.length < 6) {
+          throw new Error("Minimum password length is 6");
+      }
+      if (!newAdmin.level) {
+          throw new Error("Choose your level");
+      }
 
-exports.adminLogin = async (req , res) =>{
-    const {email , password} = req.body
-    try{
-        const admin = await Admin.login(email, password);
-        res.status(200).json({admin,message:"Login Succesfully"})
-        console.log("Admin Login Successfully")
-    }
-    catch(err){
-        res.status(400).json({error : err.message})
-    }
-}
+      await newAdmin.save();
+      res.status(201).json({ message: "Registration successfully" });
+  } catch (error) {
+      console.error("Admin registration error:", error);
+      res.status(400).json({ error: error.message });
+  }
+};
 
-exports.adminLogOut = async (req , res)=>{
-try {
-    res.status(200).json({ message: "Successfully Logged Out" });
-    }
-catch (err) {
-    console.error("Logout Error:", err);
-    res.status(500).json({ message: "Failed to logout" });
-}
-}
+exports.adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+      if (!email || !password) {
+          throw new Error("Please provide both email and password");
+      }
+
+      const admin = await Admin.login(email, password);
+      if (!admin) {
+          throw new Error("Invalid email or password");
+      }
+
+      res.status(200).json({ admin, message: "Login successfully" });
+      console.log("Admin Login Successfully");
+  } catch (error) {
+      console.error("Admin login error:", error);
+      res.status(400).json({ error: error.message });
+  }
+};
+
+
+exports.adminLogOut = (req, res) => {
+  try {
+      res.status(200).json({ message: "Successfully Logged Out" });
+  } catch (error) {
+      console.error("Logout Error:", error);
+      res.status(500).json({ message: "Failed to logout" });
+  }
+};
+
 //Admin Section Ends
 
 
 // Menu Section Starts
-exports.addMenu = async (req , res)=>{
-    try{
+exports.addMenu = async (req, res) => {
+  try {
       const newMenu = new Menu({
-        name: req.body.name,
-        price: req.body.price,
-        info: req.body.info,
-        photo: req.file ? req.file.path : '' // Save the path to the photo if uploaded
-    });
-     if(!newMenu.name){
-        res.status(400).json({error : "Fill Menu Item Name"})
-        console.log("Menu Name Error")
-     }
-     else if (!newMenu.price){
-        res.status(400).json({error : "Fill Menu Item Price"})
-        console.log("Menu Price Error")
-     }
-     else if(!newMenu.info){
-        res.status(400).json({error : "Fill Menu Item Info"})
-        console.log("Menu Info Error")
-     }
-     else if(!newMenu.photo){
-        res.status(400).json({error : "Fill Menu Item Photo"})
-        console.log("Menu Photo Error")
-     }
-     else {
-        await newMenu.save()
-        res.status(201).json({message : "Menu Item Added Succesfully"})
-     }
-    }
-    catch(err){
-       res.status(400).json({error : err.message})
-    }
-}
+          name: req.body.name,
+          price: req.body.price,
+          info: req.body.info,
+          photo: req.file ? req.file.path : '' // Save the path to the photo if uploaded
+      });
 
-exports.getMenu = async (req , res)=>{
-    try {
-      const menu = await Menu.find()
-
-      if(menu.length === 0){
-        res.status(400).json({error : "No Menu Items Found"})
-        return
+      if (!newMenu.name) {
+          throw new Error("Fill Menu Item Name");
+      }
+      if (!newMenu.price) {
+          throw new Error("Fill Menu Item Price");
+      }
+      if (!newMenu.info) {
+          throw new Error("Fill Menu Item Info");
+      }
+      if (!newMenu.photo) {
+          throw new Error("Fill Menu Item Photo");
       }
 
-      res.status(200).json({menu , message : "Menu Fetched Successfully"})
-      console.log("Menu Fetched")
-    }
-    catch (err){
-      console.log(err)
-      res.status(500).json({ err: 'Internal server error' });
-    }
-}
+      await newMenu.save();
+      res.status(201).json({ message: "Menu Item Added Successfully" });
+  } catch (error) {
+      console.error("Menu item addition error:", error);
+      res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getMenu = async (req, res) => {
+  try {
+      const menu = await Menu.find();
+
+      if (menu.length === 0) {
+          throw new Error("No Menu Items Found");
+      }
+
+      res.status(200).json({ menu, message: "Menu Fetched Successfully" });
+      console.log("Menu Fetched");
+  } catch (error) {
+      console.error("Error fetching menu:", error);
+      res.status(400).json({ error: error.message });
+  }
+};
+
 
 exports.updateMenu = async (req, res) => {
-    try {
-        const { id } = req.params; 
-        const updatedMenuData = req.body; 
+  try {
+      const { id } = req.params;
+      const updatedMenuData = req.body;
 
-        const updatedMenu = await Menu.findByIdAndUpdate(id, updatedMenuData, { new: true });
+      const updatedMenu = await Menu.findByIdAndUpdate(id, updatedMenuData, { new: true });
 
-        if (!updatedMenu) {
-            return res.status(404).json({ error: 'Menu item not found' });
-        }
+      if (!updatedMenu) {
+          throw new Error("Menu item not found");
+      }
 
-        res.status(200).json({ message: 'Menu item updated successfully', updatedMenu });
-    } catch (error) {
-        console.error('Error updating menu item:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
+      res.status(200).json({ message: "Menu item updated successfully", updatedMenu });
+  } catch (error) {
+      console.error("Error updating menu item:", error);
+      res.status(404).json({ error: error.message });
+  }
 };
+
 
 exports.deleteMenu = async (req, res) => {
-    try {
-        const { id } = req.params; 
+  try {
+      const { id } = req.params;
 
-        const deletedMenu = await Menu.findByIdAndDelete(id);
+      const deletedMenu = await Menu.findByIdAndDelete(id);
 
-        if (!deletedMenu) {
-            console.log("Menu Deleting Item is Not Fond")
-            return res.status(404).json({ error: 'Menu item not Found' });
-        }
+      if (!deletedMenu) {
+          throw new Error("Menu item not found");
+      }
 
-        res.status(200).json({ message: 'Menu Item deleted successfully' });
-        console.log("Menu Item Deleted")
-
-    } catch (err) {
-        console.error('Error deleting menu item:', err);
-        res.status(500).json({ err: 'Internal server error' });
-    }
+      res.status(200).json({ message: "Menu item deleted successfully" });
+      console.log("Menu Item Deleted");
+  } catch (error) {
+      console.error("Error deleting menu item:", error);
+      res.status(404).json({ error: error.message });
+  }
 };
+
 // Menu Section Ends
 
 
 // User Section Starts
-exports.getUser = async (req , res)=>{
+exports.getUser = async (req, res) => {
     try {
-      const user = await User.find()
+        const users = await User.find();
 
-      if(user.length === 0){
-        res.status(400).json({error : "No Users Found"})
-        console.log("Users Not Found")
-      }
-      res.status(200).json({user , message :"User Fetched Succesfully"})
-      console.log("Users Fetched")
+        if (users.length === 0) {
+            throw new Error("No Users Found");
+        }
+
+        res.status(200).json({ users, message: "Users Fetched Successfully" });
+        console.log("Users Fetched");
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        res.status(400).json({ error: error.message });
     }
+};
 
-    catch (err) {
-      res.status(400).json({error : err.message})
-      res.status(500).json({ err: 'Internal server error' });
-    }
-}
-
-exports.deleteUser = async (req , res) => {
-    try {
-      const { id } = req.params; 
+exports.deleteUser = async (req, res) => {
+  try {
+      const { id } = req.params;
 
       const deletedUser = await User.findByIdAndDelete(id);
 
       if (!deletedUser) {
-          console.log("Deleting User is Not Found")
-          return res.status(404).json({ error: 'There are no Users'});
+          throw new Error("User not found");
       }
 
-      res.status(200).json({ message: 'User Deleted Successfully' });
-      console.log("User Deleted")
-
-  } catch (err) {
-      console.error('Error deleting User Account:', err);
-      res.status(500).json({ err: 'Internal server error' });
+      res.status(200).json({ message: "User deleted successfully" });
+      console.log("User Deleted");
+  } catch (error) {
+      console.error("Error deleting user account:", error);
+      res.status(404).json({ error: error.message });
   }
 };
+
 // User Section Ends
 
 
@@ -255,79 +236,76 @@ exports.getBooking = async (req , res)=>{
 
 exports.deleteBooking = async (req, res) => {
   try {
-      const { id } = req.params; 
+      const { id } = req.params;
 
       const deletedBooking = await Book.findByIdAndDelete(id);
 
       if (!deletedBooking) {
-          console.log("Booking Deleting Order is Not Found")
-          return res.status(404).json({ error: 'There is no Booking Orders' });
+          throw new Error("Booking order not found");
       }
 
-      res.status(200).json({ message: 'Booking Order Deleted Successfully' });
-      console.log("Booking Item Deleted")
-
-  } catch (err) {
-      console.error('Error deleting Booking Order:', err);
-      res.status(500).json({ err: 'Internal server error' });
+      res.status(200).json({ message: "Booking order deleted successfully" });
+      console.log("Booking Item Deleted");
+  } catch (error) {
+      console.error("Error deleting booking order:", error);
+      res.status(404).json({ error: error.message });
   }
 };
 
-exports.updateBooking = async (req , res)=>{
-    const { id } = req.params;
-    const { status } = req.body;
+exports.updateBooking = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
 
-    try {
-        const updatedBooking = await Book.findByIdAndUpdate(id, { status : status }, { new: true });
-        if (!updatedBooking) {
-            return res.status(404).json({ error: 'Booking not found' });
-        }
-        res.status(200).json({ message: 'Booking status updated successfully', booking: updatedBooking });
-    } 
-    catch (error) {
-        console.error('Error updating booking status:', error.message);
-        res.status(500).json({ error: 'Internal server error' });
-    }
+  try {
+      const updatedBooking = await Book.findByIdAndUpdate(id, { status }, { new: true });
+
+      if (!updatedBooking) {
+          throw new Error("Booking not found");
+      }
+
+      res.status(200).json({ message: "Booking status updated successfully", booking: updatedBooking });
+  } catch (error) {
+      console.error("Error updating booking status:", error);
+      res.status(404).json({ error: error.message });
   }
+};
+
 // Booking Section Ends
 
 // Contact Section Starts
 
-exports.getMessage = async (req , res)=>{
-  try{
-    const contact = await Messages.find()
-
-    if(contact.length === 0){
-      res.status(400).json({error : "No Messages Found"})
-      console.log("Admin Messages Not Found")
-    }
-    else {
-      res.status(200).json({contact, message : "Messages Retrieved Successfully"})
-      console.log("Fetched Messages")
-    }
-  }
-  catch(err){
-    res.status(500).json({ err:'Internal Server Error'})
-  }
-}
-
-exports.deleteMessage = async (req , res)=>{
+exports.getMessage = async (req, res) => {
   try {
-    const { id } = req.params; 
+      const messages = await Messages.find();
 
-    const deletedMessage = await Messages.findByIdAndDelete(id);
+      if (messages.length === 0) {
+          throw new Error("No Messages Found");
+      }
 
-    if (!deletedMessage) {
-        console.log("Message Deleting Order is Not Found")
-        return res.status(404).json({ error: 'There is no Messages' });
-    }
-
-    res.status(200).json({ message: 'Message Deleted Successfully' });
-    console.log("Message Item Deleted")
-
-} catch (err) {
-    console.error('Error deleting Message :', err);
-    res.status(500).json({ err: 'Internal server error' });
-}
+      res.status(200).json({ messages, message: "Messages Retrieved Successfully" });
+      console.log("Fetched Messages");
+  } catch (error) {
+      console.error("Error fetching messages:", error);
+      res.status(400).json({ error: error.message });
+  }
 };
+
+exports.deleteMessage = async (req, res) => {
+  try {
+      const { id } = req.params;
+
+      const deletedMessage = await Messages.findByIdAndDelete(id);
+
+      if (!deletedMessage) {
+          throw new Error("Message not found");
+      }
+
+      res.status(200).json({ message: "Message deleted successfully" });
+      console.log("Message Item Deleted");
+  } catch (error) {
+      console.error("Error deleting message:", error);
+      res.status(404).json({ error: error.message });
+  }
+};
+
 // Contact Section Ends

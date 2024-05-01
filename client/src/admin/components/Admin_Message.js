@@ -17,7 +17,7 @@ export default function AdminUser(){
     useEffect(()=>{
         axios.get('http://localhost:3000/adminmessage')
         .then(response=>{ 
-            setMessage(response.data.contact)
+            setMessage(response.data.messages)
             toast.success(response.data.message);
         })
         .catch(error=>{

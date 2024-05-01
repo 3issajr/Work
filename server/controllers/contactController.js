@@ -4,38 +4,30 @@ var validateEmail = function(email) {
     return re.test(email)
   };
 
-exports.addContact = async (req , res) =>{
-    try{
-        const newContact = new Contact(req.body)
-        if(!newContact.name){
-            res.status(400).json({error: "Please Fill Your Name"})
-            console.log("Contact Name Error")
-            return;
+  exports.addContact = async (req, res) => {
+    try {
+        const newContact = new Contact(req.body);
+
+        if (!newContact.name) {
+            throw new Error("Please fill your name");
         }
-        else if(!newContact.email){
-            res.status(400).json({error: "Please Fill Your Email"})
-            console.log("Contact Email Error")
-            return;
+        if (!newContact.email) {
+            throw new Error("Please fill your email");
         }
-        else if(!newContact.subject){
-            res.status(400).json({error: "Please Fill Your Subject"})
-            console.log("Contact Subject Error")
-            return;
+        if (!newContact.subject) {
+            throw new Error("Please fill your subject");
         }
-       else  if(!newContact.message){
-            res.status(400).json({error: "Please Fill Your Message"})
-            console.log("Contact Message Error")
-            return;
+        if (!newContact.message) {
+            throw new Error("Please fill your message");
         }
-        else if (!validateEmail(newContact.email)) {
-            res.status(400).json({ error: 'Invalid Email Format' });
-            console.log("Email Format Error")
-            return;
+        if (!validateEmail(newContact.email)) {
+            throw new Error("Invalid email format");
         }
-        await newContact.save()
-        res.status(201).json({message:"Thanks For Submitting"})
+
+        await newContact.save();
+        res.status(201).json({ message: "Thanks for submitting" });
+    } catch (error) {
+        console.error("Error adding contact:", error);
+        res.status(400).json({ error: error.message });
     }
-    catch (err){
-        res.status(400).json({error :"Something Went Wrong"})
-    }
-}
+};

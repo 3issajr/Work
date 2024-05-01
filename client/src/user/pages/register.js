@@ -19,11 +19,10 @@ export default function Register(){
         axios.post('http://localhost:3000/signup',formData)
         .then((result)=>{
             toast.success(result.data.message, { position: "top-center",autoClose: 2000});
-                setTimeout(()=>{Navigate('/login')},3000)
+            setTimeout(()=>{Navigate('/login')},3000)
         })
         .catch((err)=>{
             toast.error(err.response.data.error, { position: "top-center" });          
-            if(err.response.status == 500) {toast.error(err.response.data.error, { position: "top-center"});}
         })
 
     };

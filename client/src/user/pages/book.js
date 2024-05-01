@@ -17,15 +17,10 @@ export default function Book(){
         e.preventDefault()
         axios.post('http://localhost:3000/book',formData , {withCredentials:true})
         .then((result)=>{
-            toast.success(result.data.message, {
-                position: "top-center",
-                autoClose: 2000
-            });
+            toast.success(result.data.message, {position: "top-center", autoClose: 2000});
         })
         .catch((err)=>{
-            toast.error(err.response.data.error, {
-              position: "top-center"
-          });
+            toast.error(err.response.data.error, {position: "top-center"});
           })
     }
 

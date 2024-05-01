@@ -17,7 +17,7 @@ export default function AdminUser(){
         axios.get('http://localhost:3000/user')
         .then(response=>{ 
             toast.success(response.data.message);
-            setUsers(response.data.user)
+            setUsers(response.data.users)
           
         })
         .catch(error=>{

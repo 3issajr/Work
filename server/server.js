@@ -4,7 +4,8 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
-const route = require('./routes/BistroRoutes')
+const userRouter = require('./routes/userRoutes')
+const adminRouter = require('./routes/adminRoutes')
 
 
 const port = process.env.PORT || 3000;
@@ -53,4 +54,5 @@ app.use((req,res,next)=>{
     next();
   })
   
-app.use(route)
+app.use(userRouter)
+app.use(adminRouter)

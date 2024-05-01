@@ -1,20 +1,17 @@
 const Menu = require('../models/menuModel')
 
 
-exports.getMenu = async (req , res)=>{
+exports.getMenu = async (req, res) => {
     try {
-      const menu = await Menu.find()
+        const menu = await Menu.find();
 
-      if(menu.length === 0){
-        res.status(400).json({error : "No Menu Items Found"})
-        return
-      }
+        if (menu.length === 0) {
+            return res.status(404).json({ error: "No Menu Items Found" });
+        }
 
-      res.status(200).json({menu , message : "Menu Fetched Successfully"})
-      console.log("Menu Fetched")
+        return res.status(200).json({ menu, message: "Menu Fetched Successfully" });
+    } catch (error) {
+        console.error("Error fetching menu:", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
-    catch (err){
-      console.log(err)
-      res.status(500).json({ err: 'Internal server error' });
-    }
-}
+};
