@@ -20,7 +20,7 @@ return (
 
                 <div className="flex justify-center items-center flex-col  lg:flex-col px-5">
 
-                    <img src={blog.src} className='img rounded-lg w-full md:w-2/5' alt={blog.name} />
+                    <img src={blog.src} className=' rounded-lg w-full md:w-2/5 lg:w-2/5' alt={blog.name} />
 
                     <div id='firstquestion' className='w-full  md:w-2/5 flex flex-col justify-center items-center'>
                         <div>
@@ -54,7 +54,7 @@ return (
                         </div>
                     </div>
 
-                    <img src={Img} className='img rounded-lg w-full md:w-2/5 py-5' alt={blog.name} />
+                    <img src={Img} className='rounded-lg w-full md:w-2/5 py-5 lg:w-2/5' alt={blog.name} />
 
                     <div id='thirdquestion' className='w-full md:w-2/5 flex flex-col justify-center items-center'>
                         <div>
@@ -77,9 +77,9 @@ return (
                     <div id='readmore-articles' className='flex flex-wrap justify-center'>
                         {Data.slice(0, 4).map((article) => {
                             return (
-                                <div key={article.id} className='shadow-md rounded-md mr-5 mb-5 w-full md:w-48'>
+                                <div key={article.id} className='shadow-md rounded-md mr-5 mb-5 w-full md:w-48 lg:w-64'>
                                     <div style={{ height: '200px' }}>
-                                        <img src={article.src} className='w-full h-full object-cover' alt={`Article ${article.id}`} />
+                                        <img src={article.src} className='w-full h-full object-cover ' alt={`Article ${article.id}`} />
                                     </div>
                                     <div id='articles-info' className='p-5'>
                                         <small className='block'>{article.date}</small>
